@@ -2,17 +2,29 @@ package com.drawingapp.drawingapp.shapes_factory;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import com.drawingapp.drawingapp.shapes_color.ColorStrategy;
+import com.drawingapp.drawingapp.shapes_color.ShapeColorStrategy;
 
 public class CircleShape implements Shape {
     private double centerX, centerY;
     private double radius = 40; // half of 80 (original size)
     private boolean selected;
-    private Color color = Color.RED; // default color
+    private ColorStrategy colorStrategy = new ShapeColorStrategy();
+
+    // Add getter methods
+    public double getCenterX() { return centerX; }
+    public double getCenterY() { return centerY; }
+    public double getRadius() { return radius; }
+
+    // Add setter methods
+    public void setCenterX(double centerX) { this.centerX = centerX; }
+    public void setCenterY(double centerY) { this.centerY = centerY; }
+    public void setRadius(double radius) { this.radius = radius; }
 
     @Override
     public void draw(GraphicsContext gc) {
-        gc.setFill(color);
-        gc.setStroke(selected ? Color.BLACK : color);
+        gc.setFill(getColor());
+        gc.setStroke(selected ? Color.BLACK : getColor());
         gc.setLineWidth(selected ? 2 : 1);
         gc.fillOval(centerX, centerY, radius * 2, radius * 2);
         if (selected) {
@@ -52,14 +64,12 @@ public class CircleShape implements Shape {
     }
 
     @Override
-    public void setColor(Color color) {
-        this.color = color;
-    }
+    public void setColor(Color color) { colorStrategy.setColor(color); }
 
     @Override
-    public Color getColor() {
-        return color;
-    }
+    public Color getColor() { return colorStrategy.getColor(); }
+
+    public void setColorStrategy(ColorStrategy strategy) { this.colorStrategy = strategy; }
 
     @Override
     public void resize(double newWidth, double newHeight) {

@@ -12,11 +12,10 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.control.ColorPicker;
-import com.drawingapp.drawingapp.shapes_decorator.ColorableShape;
 import com.drawingapp.drawingapp.shapes_decorator.ResizableShape;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.drawingapp.drawingapp.services.ShapeManager;
+import com.drawingapp.drawingapp.services.ModeManager;
+import com.drawingapp.drawingapp.logging.LoggerManager;
 
 public class HelloController implements ShapeObserver {
 
@@ -29,88 +28,101 @@ public class HelloController implements ShapeObserver {
     private GraphicsContext gc;
     private String selectedShape = "";
     
-    // Add these new fields
-    private List<Shape> shapes = new ArrayList<>();
+    private ShapeManager shapeManager;
+    private ModeManager modeManager;
     private State currentState;
     private SelectState selectState;
     private MoveState moveState;
-    private boolean isDrawingMode = true;
     private Color currentColor = Color.BLACK;
-    private boolean isResizeMode = false;
     private double initialX, initialY;
     private Shape resizingShape;
 
-    @FXML
-    public void initialize() {
+    public void setShapeManager(ShapeManager shapeManager) {
+        this.shapeManager = shapeManager;
+    }
+
+    public void setModeManager(ModeManager modeManager) {
+        this.modeManager = modeManager;
+    }
+
+    public void postInjectInit() {
         gc = canvas.getGraphicsContext2D();
-
-        // Subscribe to shape selection updates
         ShapeSelector.getInstance().getSubject().addObserver(this);
-
-        // Initialize states
-        selectState = new SelectState(shapes);
+        selectState = new SelectState(shapeManager.getShapes(), shapeManager);
         moveState = new MoveState();
         currentState = selectState;
-
-        // Set up canvas event handlers
         canvas.setOnMousePressed(this::handleMousePressed);
         canvas.setOnMouseDragged(this::handleMouseDragged);
         canvas.setOnMouseReleased(this::handleMouseReleased);
-
         colorPicker.setValue(currentColor);
     }
 
     private void handleMousePressed(MouseEvent event) {
-        if (isResizeMode) {
-            for (Shape shape : shapes) {
-                if (shape.isSelected()) {
-                    resizingShape = shape;
+        switch (modeManager.getCurrentMode()) {
+            case RESIZE:
+                Shape selected = shapeManager.getSelectedShape();
+                if (selected != null) {
+                    resizingShape = selected;
                     initialX = event.getX();
                     initialY = event.getY();
-                    break;
+                    LoggerManager.getInstance().log("Started resizing shape at (" + initialX + ", " + initialY + ")");
                 }
-            }
-        } else if (isDrawingMode) {
-            if (selectedShape != null && !selectedShape.isEmpty()) {
-                Shape shape = ShapeFactory.createShape(selectedShape);
-                if (shape != null) {
-                    // Set the color before adding to shapes list
-                    shape.setColor(colorPicker.getValue());
-                    shape = new ResizableShape(shape);
-                    shapes.add(shape);
-                    shape.draw(gc, event.getX(), event.getY());
+                break;
+            case DRAW:
+                if (selectedShape != null && !selectedShape.isEmpty()) {
+                    Shape shape = ShapeFactory.createShape(selectedShape);
+                    if (shape != null) {
+                        shape.setColor(colorPicker.getValue());
+                        shape = new ResizableShape(shape);
+                        shapeManager.addShape(shape);
+                        shape.draw(gc, event.getX(), event.getY());
+                        LoggerManager.getInstance().log("Drew a " + selectedShape + " at (" + event.getX() + ", " + event.getY() + ")");
+                    }
                 }
-            }
-        } else {
-            currentState.onMousePressed(event.getX(), event.getY());
-            redrawCanvas();
+                break;
+            default:
+                currentState.onMousePressed(event.getX(), event.getY());
+                redrawCanvas();
         }
     }
 
     private void handleMouseDragged(MouseEvent event) {
-        if (isResizeMode && resizingShape != null) {
-            double newWidth = Math.abs(event.getX() - initialX);
-            double newHeight = Math.abs(event.getY() - initialY);
-            resizingShape.resize(newWidth, newHeight);
-            redrawCanvas();
-        } else if (!isDrawingMode) {
-            currentState.onMouseDragged(event.getX(), event.getY());
-            redrawCanvas();
+        switch (modeManager.getCurrentMode()) {
+            case RESIZE:
+                if (resizingShape != null) {
+                    double newWidth = Math.abs(event.getX() - initialX);
+                    double newHeight = Math.abs(event.getY() - initialY);
+                    resizingShape.resize(newWidth, newHeight);
+                    LoggerManager.getInstance().log("Resized shape to width=" + newWidth + ", height=" + newHeight);
+                    redrawCanvas();
+                }
+                break;
+            case DRAW:
+                // No drag logic for drawing
+                break;
+            default:
+                currentState.onMouseDragged(event.getX(), event.getY());
+                redrawCanvas();
         }
     }
 
     private void handleMouseReleased(MouseEvent event) {
-        if (isResizeMode) {
-            resizingShape = null;
-        } else if (!isDrawingMode) {
-            currentState.onMouseReleased(event.getX(), event.getY());
-            redrawCanvas();
+        switch (modeManager.getCurrentMode()) {
+            case RESIZE:
+                resizingShape = null;
+                break;
+            case DRAW:
+                // No release logic for drawing
+                break;
+            default:
+                currentState.onMouseReleased(event.getX(), event.getY());
+                redrawCanvas();
         }
     }
 
     private void redrawCanvas() {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        for (Shape shape : shapes) {
+        for (Shape shape : shapeManager.getShapes()) {
             shape.draw(gc);
         }
     }
@@ -118,68 +130,65 @@ public class HelloController implements ShapeObserver {
     @Override
     public void onShapeSelected(String shapeType) {
         this.selectedShape = shapeType;
-        isDrawingMode = true;
+        modeManager.setCurrentMode(ModeManager.Mode.DRAW);
+        LoggerManager.getInstance().log("Selected shape type: " + shapeType);
         System.out.println("Selected shape: " + shapeType);
     }
 
-    // Add these new button handlers
     @FXML
     private void onSelectModeClicked() {
-        isDrawingMode = false;
-        isResizeMode = false;
+        modeManager.setCurrentMode(ModeManager.Mode.SELECT);
         currentState = selectState;
     }
 
     @FXML
     private void onMoveModeClicked() {
-        isDrawingMode = false;
-        isResizeMode = false;
-        // Find the selected shape
-        Shape selected = null;
-        for (Shape shape : shapes) {
-            if (shape.isSelected()) {
-                selected = shape;
-                break;
-            }
-        }
-        moveState.setSelectedShape(selected); // Pass the selected shape to MoveState
+        modeManager.setCurrentMode(ModeManager.Mode.MOVE);
+        Shape selected = shapeManager.getSelectedShape();
+        moveState.setSelectedShape(selected);
         currentState = moveState;
     }
 
     @FXML
     private void onResizeModeClicked() {
-        isDrawingMode = false;
-        isResizeMode = true;
+        modeManager.setCurrentMode(ModeManager.Mode.RESIZE);
     }
 
-    // Button Handlers
     @FXML private void onRectangleClicked() {
-        isDrawingMode = true;
-        isResizeMode = false;
+        modeManager.setCurrentMode(ModeManager.Mode.DRAW);
         ShapeSelector.getInstance().selectShape("rectangle");
     }
 
     @FXML private void onCircleClicked() {
-        isDrawingMode = true;
-        isResizeMode = false;
+        modeManager.setCurrentMode(ModeManager.Mode.DRAW);
         ShapeSelector.getInstance().selectShape("circle");
     }
 
     @FXML private void onLineClicked() {
-        isDrawingMode = true;
-        isResizeMode = false;
+        modeManager.setCurrentMode(ModeManager.Mode.DRAW);
         ShapeSelector.getInstance().selectShape("line");
+    }
+
+    @FXML
+    private void onEllipseClicked() {
+        modeManager.setCurrentMode(ModeManager.Mode.DRAW);
+        ShapeSelector.getInstance().selectShape("ellipse");
+    }
+
+    @FXML
+    private void onStarClicked() {
+        modeManager.setCurrentMode(ModeManager.Mode.DRAW);
+        ShapeSelector.getInstance().selectShape("star");
     }
 
     @FXML
     private void onColorChanged() {
         Color newColor = colorPicker.getValue();
-        for (Shape shape : shapes) {
-            if (shape.isSelected()) {
-                shape.setColor(newColor);
-                redrawCanvas();
-                break;
-            }
+        Shape selected = shapeManager.getSelectedShape();
+        if (selected != null) {
+            selected.setColor(newColor);
+            LoggerManager.getInstance().log("Changed color of selected shape to " + newColor.toString());
+            redrawCanvas();
         }
         currentColor = newColor;
     }

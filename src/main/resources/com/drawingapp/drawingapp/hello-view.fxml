@@ -25,10 +25,13 @@
             <Button text="Select" onAction="#onSelectModeClicked" styleClass="btn,btn-primary"/>
             <Button text="Move" onAction="#onMoveModeClicked" styleClass="btn,btn-primary"/>
             <Button text="Resize" onAction="#onResizeModeClicked" styleClass="btn,btn-primary"/>
+            <Button text="Star" onAction="#onStarClicked"/>
             
             <!-- Add ColorPicker -->
             <Label text="Color:" style="-fx-font-weight: bold;"/>
             <ColorPicker fx:id="colorPicker" onAction="#onColorChanged"/>
+
+            <!-- Add Save/Load buttons -->
         </VBox>
     </left>
 

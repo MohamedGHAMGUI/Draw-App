@@ -2,18 +2,20 @@ package com.drawingapp.drawingapp.shapes_factory;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import com.drawingapp.drawingapp.shapes_color.ColorStrategy;
+import com.drawingapp.drawingapp.shapes_color.ShapeColorStrategy;
 
 public class RectangleShape implements Shape {
     private double x, y;
     private double width = 100;
     private double height = 70;
     private boolean selected;
-    private Color color = Color.BLUE; // default color
+    private ColorStrategy colorStrategy = new ShapeColorStrategy();
 
     @Override
     public void draw(GraphicsContext gc) {
-        gc.setFill(color);
-        gc.setStroke(selected ? Color.BLACK : color);
+        gc.setFill(getColor());
+        gc.setStroke(selected ? Color.BLACK : getColor());
         gc.setLineWidth(selected ? 2 : 1);
         gc.fillRect(x, y, width, height);
         if (selected) {
@@ -51,14 +53,12 @@ public class RectangleShape implements Shape {
     }
 
     @Override
-    public void setColor(Color color) {
-        this.color = color;
-    }
+    public void setColor(Color color) { colorStrategy.setColor(color); }
 
     @Override
-    public Color getColor() {
-        return color;
-    }
+    public Color getColor() { return colorStrategy.getColor(); }
+
+    public void setColorStrategy(ColorStrategy strategy) { this.colorStrategy = strategy; }
 
     @Override
     public void resize(double newWidth, double newHeight) {

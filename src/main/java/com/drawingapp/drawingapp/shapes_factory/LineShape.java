@@ -2,15 +2,17 @@ package com.drawingapp.drawingapp.shapes_factory;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import com.drawingapp.drawingapp.shapes_color.ColorStrategy;
+import com.drawingapp.drawingapp.shapes_color.ShapeColorStrategy;
 
 public class LineShape implements Shape {
     private double startX, startY, endX, endY;
     private boolean selected;
-    private Color color = Color.GREEN; // default color
+    private ColorStrategy colorStrategy = new ShapeColorStrategy();
 
     @Override
     public void draw(GraphicsContext gc) {
-        gc.setStroke(selected ? Color.BLACK : color);
+        gc.setStroke(selected ? Color.BLACK : getColor());
         gc.setLineWidth(selected ? 3 : 2);
         gc.strokeLine(startX, startY, endX, endY);
         if (selected) {
@@ -60,14 +62,10 @@ public class LineShape implements Shape {
     public boolean isSelected() { return selected; }
 
     @Override
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
+    public void setColor(Color color) { colorStrategy.setColor(color); }
     @Override
-    public Color getColor() {
-        return color;
-    }
+    public Color getColor() { return colorStrategy.getColor(); }
+    public void setColorStrategy(ColorStrategy strategy) { this.colorStrategy = strategy; }
 
     @Override
     public void resize(double newWidth, double newHeight) {
