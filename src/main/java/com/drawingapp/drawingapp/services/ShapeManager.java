@@ -5,8 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShapeManager {
-    private List<Shape> shapes = new ArrayList<>();
+    private List<Shape> shapes;
     private Shape selectedShape;
+
+    public ShapeManager() {
+        this.shapes = new ArrayList<>();
+    }
 
     public void addShape(Shape shape) {
         shapes.add(shape);
@@ -34,11 +38,7 @@ public class ShapeManager {
         return selectedShape;
     }
 
-    public void clearSelection() {
-        shapes.forEach(s -> s.setSelected(false));
-    }
-
-    public void clearShapes() {
+    public void clear() {
         shapes.clear();
         selectedShape = null;
     }

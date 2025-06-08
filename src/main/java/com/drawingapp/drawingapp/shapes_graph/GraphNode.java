@@ -1,83 +1,55 @@
-package com.drawingapp.drawingapp.shapes_factory;
+package com.drawingapp.drawingapp.shapes_graph;
 
+import com.drawingapp.drawingapp.shapes_factory.Shape;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import java.util.ArrayList;
+import java.util.List;
 
-public class LineShape implements Shape {
+public class GraphNode implements Shape {
     private double x;
     private double y;
-    private double width;
-    private double height;
+    private double width = NODE_RADIUS * 2;
+    private double height = NODE_RADIUS * 2;
     private Color color = Color.BLACK;
     private boolean selected = false;
-    private double endX;
-    private double endY;
+    private List<GraphEdge> edges;
+    private static final double NODE_RADIUS = 10.0;
+    private int id;
 
-    public LineShape() {
-        this.x = 0;
-        this.y = 0;
-        this.width = 100;
-        this.height = 0;
-        this.endX = 100;
-        this.endY = 0;
+    public GraphNode(double x, double y) {
+        this.x = x;
+        this.y = y;
+        this.edges = new ArrayList<>();
     }
 
     @Override
     public void draw(GraphicsContext gc) {
-        gc.setStroke(color);
+        gc.setFill(color);
+        gc.fillOval(x - NODE_RADIUS, y - NODE_RADIUS, NODE_RADIUS * 2, NODE_RADIUS * 2);
+        gc.setStroke(selected ? Color.BLACK : Color.GRAY);
         gc.setLineWidth(selected ? 2 : 1);
-        gc.strokeLine(x, y, endX, endY);
+        gc.strokeOval(x - NODE_RADIUS, y - NODE_RADIUS, NODE_RADIUS * 2, NODE_RADIUS * 2);
     }
 
     @Override
     public void draw(GraphicsContext gc, double x, double y) {
         this.x = x;
         this.y = y;
-        this.endX = x + width;
-        this.endY = y + height;
         draw(gc);
     }
 
     @Override
     public boolean contains(double x, double y) {
-        // Check if point is near the line
-        double A = x - this.x;
-        double B = y - this.y;
-        double C = endX - this.x;
-        double D = endY - this.y;
-
-        double dot = A * C + B * D;
-        double len_sq = C * C + D * D;
-        double param = -1;
-        
-        if (len_sq != 0) {
-            param = dot / len_sq;
-        }
-
-        double xx, yy;
-
-        if (param < 0) {
-            xx = this.x;
-            yy = this.y;
-        } else if (param > 1) {
-            xx = endX;
-            yy = endY;
-        } else {
-            xx = this.x + param * C;
-            yy = this.y + param * D;
-        }
-
-        double dx = x - xx;
-        double dy = y - yy;
-        return Math.sqrt(dx * dx + dy * dy) < 5;
+        double dx = this.x - x;
+        double dy = this.y - y;
+        return Math.sqrt(dx * dx + dy * dy) <= NODE_RADIUS;
     }
 
     @Override
     public void move(double dx, double dy) {
         x += dx;
         y += dy;
-        endX += dx;
-        endY += dy;
     }
 
     @Override
@@ -102,10 +74,7 @@ public class LineShape implements Shape {
 
     @Override
     public void resize(double newWidth, double newHeight) {
-        this.width = newWidth;
-        this.height = newHeight;
-        this.endX = x + width;
-        this.endY = y + height;
+        // Not used for nodes
     }
 
     @Override
@@ -131,24 +100,36 @@ public class LineShape implements Shape {
     @Override
     public void setX(double x) {
         this.x = x;
-        this.endX = x + width;
     }
 
     @Override
     public void setY(double y) {
         this.y = y;
-        this.endY = y + height;
     }
 
     @Override
     public void setWidth(double width) {
         this.width = width;
-        this.endX = x + width;
     }
 
     @Override
     public void setHeight(double height) {
         this.height = height;
-        this.endY = y + height;
     }
-}
+
+    public void addEdge(GraphEdge edge) {
+        edges.add(edge);
+    }
+
+    public List<GraphEdge> getEdges() {
+        return edges;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+} 

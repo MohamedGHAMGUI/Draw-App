@@ -14,4 +14,14 @@ public interface Shape {
     void setColor(Color color);
     Color getColor();
     void resize(double newWidth, double newHeight);
+    
+    // Position and size methods
+    double getX();
+    double getY();
+    double getWidth();
+    double getHeight();
+    void setX(double x);
+    void setY(double y);
+    void setWidth(double width);
+    void setHeight(double height);
 }

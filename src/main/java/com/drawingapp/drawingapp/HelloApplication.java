@@ -20,8 +20,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-        scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
-// Wider to fit sidebar + canvas
+        // scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
         stage.setTitle("Drawing App");
         stage.setScene(scene);
         HelloController controller = fxmlLoader.getController();
@@ -33,7 +32,7 @@ public class HelloApplication extends Application {
         
         
 
-        // For file logging:
+       
    
         
         
@@ -47,9 +46,9 @@ public class HelloApplication extends Application {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        LoggerManager.getInstance().setStrategy(new FileLogger("log.txt"));
-        LoggerManager.getInstance().log("===> FileLogger test entry");
+        // For file logging:
+        // LoggerManager.getInstance().setStrategy(new FileLogger("log.txt"));
+        // LoggerManager.getInstance().log("===> FileLogger test entry");
 
         stage.show();
     }

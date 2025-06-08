@@ -5,60 +5,110 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class SvgStarAdapter implements Shape {
-    private SvgStar adaptee;
-    private double centerX, centerY, radius;
-    private int points;
-    private boolean selected;
-    private Color fillColor = Color.GOLD;
-    private Color strokeColor = Color.BLACK;
+    private SvgStar svgStar;
+    private double x;
+    private double y;
+    private double width;
+    private double height;
+    private Color color = Color.BLACK;
+    private boolean selected = false;
 
-    public SvgStarAdapter(double centerX, double centerY, double radius, int points) {
-        this.adaptee = new SvgStar();
-        this.centerX = centerX;
-        this.centerY = centerY;
-        this.radius = radius;
-        this.points = points;
+    public SvgStarAdapter(SvgStar svgStar) {
+        this.svgStar = svgStar;
+        this.x = 0;
+        this.y = 0;
+        this.width = 100;
+        this.height = 100;
     }
 
     @Override
     public void draw(GraphicsContext gc) {
-        gc.setFill(fillColor);
-        gc.setStroke(selected ? strokeColor : fillColor);
-        adaptee.renderStar(gc, centerX, centerY, radius, points);
+        gc.setFill(color);
+        svgStar.draw(gc, x, y, width, height);
     }
 
     @Override
     public void draw(GraphicsContext gc, double x, double y) {
-        this.centerX = x;
-        this.centerY = y;
+        this.x = x;
+        this.y = y;
         draw(gc);
     }
 
     @Override
     public boolean contains(double x, double y) {
-        double dx = x - centerX;
-        double dy = y - centerY;
-        return (dx * dx + dy * dy) <= radius * radius;
+        return x >= this.x && x <= this.x + width &&
+               y >= this.y && y <= this.y + height;
     }
 
     @Override
     public void move(double dx, double dy) {
-        centerX += dx;
-        centerY += dy;
+        x += dx;
+        y += dy;
     }
 
     @Override
-    public void setSelected(boolean selected) { this.selected = selected; }
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+
     @Override
-    public boolean isSelected() { return selected; }
+    public boolean isSelected() {
+        return selected;
+    }
+
     @Override
-    public void setColor(Color color) { this.fillColor = color; }
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
     @Override
-    public Color getColor() { return fillColor; }
-    public void setStrokeColor(Color color) { this.strokeColor = color; }
-    public Color getStrokeColor() { return strokeColor; }
+    public Color getColor() {
+        return color;
+    }
+
     @Override
     public void resize(double newWidth, double newHeight) {
-        this.radius = Math.min(newWidth, newHeight) / 2.0;
+        this.width = newWidth;
+        this.height = newHeight;
+    }
+
+    @Override
+    public double getX() {
+        return x;
+    }
+
+    @Override
+    public double getY() {
+        return y;
+    }
+
+    @Override
+    public double getWidth() {
+        return width;
+    }
+
+    @Override
+    public double getHeight() {
+        return height;
+    }
+
+    @Override
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    @Override
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    @Override
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    @Override
+    public void setHeight(double height) {
+        this.height = height;
     }
 } 

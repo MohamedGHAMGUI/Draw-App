@@ -6,3 +6,15 @@ Drew a circle at (237.60000000000002, 6.399999999999999)
 Drew a circle at (364.0, 41.6)
 Drew a circle at (308.0, 116.79999999999998)
 Drew a circle at (226.39999999999998, 176.79999999999998)
+===> FileLogger test entry
+Selected shape type: rectangle
+Drew a rectangle at (362.4, 76.0)
+Drew a rectangle at (219.2, 53.6)
+Drew a rectangle at (188.0, 239.20000000000002)
+Drew a rectangle at (294.4, 296.0)
+Drew a rectangle at (358.4, 285.6)
+===> FileLogger test entry
+Selected shape type: rectangle
+Drew a rectangle at (189.60000000000002, 98.4)
+Drew a rectangle at (327.2, 35.199999999999996)
+Drew a rectangle at (419.20000000000005, 174.4)

@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
 
 <BorderPane xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml"
@@ -31,7 +32,15 @@
             <Label text="Color:" style="-fx-font-weight: bold;"/>
             <ColorPicker fx:id="colorPicker" onAction="#onColorChanged"/>
 
-            <!-- Add Save/Load buttons -->
+            <!-- Graph Tools -->
+            <Label text="Graph Tools:" style="-fx-font-weight: bold;"/>
+            <Button text="Add Node" onAction="#onAddNodeClicked"/>
+            <Button text="Add Edge" onAction="#onAddEdgeClicked"/>
+            <Button text="Find Path" onAction="#onFindPathClicked"/>
+            
+            <!-- Algorithm Selection -->
+            <Label text="Algorithm:" style="-fx-font-weight: bold;"/>
+            <ComboBox fx:id="algorithmComboBox"/>
         </VBox>
     </left>
 

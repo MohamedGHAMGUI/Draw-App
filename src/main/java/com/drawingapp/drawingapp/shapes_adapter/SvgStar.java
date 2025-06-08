@@ -1,26 +1,28 @@
 package com.drawingapp.drawingapp.shapes_adapter;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 public class SvgStar {
-    public void renderStar(GraphicsContext gc, double centerX, double centerY, double radius, int points) {
-        // Simple star drawing (not mathematically perfect, just for demo)
-        double angle = Math.PI / points;
-        double[] xPoints = new double[points * 2];
-        double[] yPoints = new double[points * 2];
-        for (int i = 0; i < points * 2; i++) {
-            double r = (i % 2 == 0) ? radius : radius / 2.5;
-            double a = i * angle;
-            xPoints[i] = centerX + Math.cos(a) * r;
-            yPoints[i] = centerY + Math.sin(a) * r;
+    private static final int DEFAULT_POINTS = 5;
+    private static final double DEFAULT_RADIUS = 40;
+
+    public void draw(GraphicsContext gc, double x, double y, double width, double height) {
+        double centerX = x + width / 2;
+        double centerY = y + height / 2;
+        double radius = Math.min(width, height) / 2;
+        
+        double[] xPoints = new double[DEFAULT_POINTS * 2];
+        double[] yPoints = new double[DEFAULT_POINTS * 2];
+        
+        for (int i = 0; i < DEFAULT_POINTS * 2; i++) {
+            double angle = Math.PI * i / DEFAULT_POINTS;
+            double r = (i % 2 == 0) ? radius : radius / 2;
+            xPoints[i] = centerX + r * Math.cos(angle);
+            yPoints[i] = centerY + r * Math.sin(angle);
         }
-        gc.beginPath();
-        gc.moveTo(xPoints[0], yPoints[0]);
-        for (int i = 1; i < xPoints.length; i++) {
-            gc.lineTo(xPoints[i], yPoints[i]);
-        }
-        gc.closePath();
-        gc.fill();   // Fill the star
-        gc.stroke(); // Outline the star
+        
+        gc.fillPolygon(xPoints, yPoints, DEFAULT_POINTS * 2);
+        gc.strokePolygon(xPoints, yPoints, DEFAULT_POINTS * 2);
     }
 } 
