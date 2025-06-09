@@ -41,6 +41,11 @@
             <!-- Algorithm Selection -->
             <Label text="Algorithm:" style="-fx-font-weight: bold;"/>
             <ComboBox fx:id="algorithmComboBox"/>
+
+            <!-- Save/Load Tools -->
+            <Label text="Save/Load:" style="-fx-font-weight: bold;"/>
+            <Button text="Save Drawing" onAction="#onSaveDrawingClicked"/>
+            <Button text="Load Drawing" onAction="#onLoadDrawingClicked"/>
         </VBox>
     </left>
 

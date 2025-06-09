@@ -8,6 +8,7 @@ import com.drawingapp.drawingapp.shapes_state_observer.SelectState;
 import com.drawingapp.drawingapp.shapes_state_observer.ShapeSelector;
 import com.drawingapp.drawingapp.shapes_state_observer.State;
 import com.drawingapp.drawingapp.shapes_graph.*;
+import com.drawingapp.drawingapp.services.DrawingRepository;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -22,6 +23,10 @@ import com.drawingapp.drawingapp.services.ModeManager;
 import com.drawingapp.drawingapp.logging.LoggerManager;
 import com.drawingapp.drawingapp.services.GraphManager;
 import java.util.List;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.ChoiceDialog;
+import javafx.scene.control.Alert;
+import java.util.Optional;
 
 public class HelloController implements ShapeObserver {
 
@@ -47,6 +52,7 @@ public class HelloController implements ShapeObserver {
     private Shape resizingShape;
     private GraphManager graphManager;
     private ShortestPathAlgorithm currentAlgorithm;
+    private DrawingRepository drawingRepository;
 
     public void setShapeManager(ShapeManager shapeManager) {
         this.shapeManager = shapeManager;
@@ -54,6 +60,10 @@ public class HelloController implements ShapeObserver {
 
     public void setModeManager(ModeManager modeManager) {
         this.modeManager = modeManager;
+    }
+
+    public void setDrawingRepository(DrawingRepository drawingRepository) {
+        this.drawingRepository = drawingRepository;
     }
 
     public void postInjectInit() {
@@ -290,5 +300,60 @@ public class HelloController implements ShapeObserver {
     @FXML
     private void onCreateExampleGraphClicked() {
         graphManager.createExampleGraph();
+    }
+
+    @FXML
+    private void onSaveDrawingClicked() {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Save Drawing");
+        dialog.setHeaderText("Enter a name for your drawing");
+        Optional<String> result = dialog.showAndWait();
+        
+        result.ifPresent(name -> {
+            drawingRepository.saveDrawing(
+                name,
+                shapeManager.getShapes(),
+                graphManager.getNodes(),
+                graphManager.getEdges()
+            );
+            LoggerManager.getInstance().log("Saved drawing: " + name);
+        });
+    }
+
+    @FXML
+    private void onLoadDrawingClicked() {
+        List<String> drawings = drawingRepository.listSavedDrawings();
+        if (drawings.isEmpty()) {
+            showAlert("No drawings found");
+            return;
+        }
+        
+        ChoiceDialog<String> dialog = new ChoiceDialog<>(drawings.get(0), drawings);
+        dialog.setTitle("Load Drawing");
+        dialog.setHeaderText("Select a drawing to load");
+        Optional<String> result = dialog.showAndWait();
+        
+        result.ifPresent(name -> {
+            DrawingRepository.DrawingData data = drawingRepository.loadDrawing(name);
+            if (data != null) {
+                shapeManager.clear();
+                graphManager.clear();
+                
+                data.getShapes().forEach(shapeManager::addShape);
+                data.getNodes().forEach(graphManager::addNode);
+                data.getEdges().forEach(graphManager::addEdge);
+                
+                redrawCanvas();
+                LoggerManager.getInstance().log("Loaded drawing: " + name);
+            }
+        });
+    }
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

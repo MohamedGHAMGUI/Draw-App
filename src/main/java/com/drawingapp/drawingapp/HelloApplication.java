@@ -7,9 +7,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 import com.drawingapp.drawingapp.services.ShapeManager;
 import com.drawingapp.drawingapp.services.ModeManager;
+import com.drawingapp.drawingapp.services.DrawingRepository;
+import com.drawingapp.drawingapp.services.JdbcDrawingRepository;
 import com.drawingapp.drawingapp.logging.*;
 
 public class HelloApplication extends Application {
@@ -26,24 +30,36 @@ public class HelloApplication extends Application {
         HelloController controller = fxmlLoader.getController();
         controller.setShapeManager(new ShapeManager());
         controller.setModeManager(new ModeManager());
+        
+        // Initialize database connection and repository
+        try {
+            // Load MySQL JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            // Connect to database with credentials
+            Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPass);
+            DrawingRepository repository = new JdbcDrawingRepository(connection);
+            controller.setDrawingRepository(repository);
+            System.out.println("Successfully connected to database");
+        } catch (SQLException e) {
+            System.err.println("Database connection error: " + e.getMessage());
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.err.println("MySQL JDBC Driver not found: " + e.getMessage());
+            e.printStackTrace();
+        }
+        
         controller.postInjectInit();
         LoggerManager.getInstance().setStrategy(new ConsoleLogger());
-        LoggerManager.getInstance().log("===> ConsoleLogger  entry");
-        
-        
-
-       
-   
-        
+        LoggerManager.getInstance().log("===> ConsoleLogger entry");
         
         // For database logging:
-         
-
         try {
             LoggerManager.getInstance().setStrategy(
                 new DatabaseLogger(dbUrl, dbUser, dbPass)
             );
         } catch (SQLException e) {
+            System.err.println("Logger database connection error: " + e.getMessage());
             e.printStackTrace();
         }
         // For file logging:
