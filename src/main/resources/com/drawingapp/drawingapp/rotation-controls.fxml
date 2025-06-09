@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml" fx:controller="com.drawingapp.drawingapp.HelloController">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    
+    <Label text="Rotation Controls"/>
+    
+    <Slider fx:id="rotationSlider" 
+            min="0" 
+            max="360" 
+            value="0"
+            showTickLabels="true"
+            showTickMarks="true"
+            majorTickUnit="90"
+            minorTickCount="3"
+            snapToTicks="true"/>
+            
+    <HBox spacing="10">
+        <Button text="Rotate Left" onAction="#onRotateLeftClicked"/>
+        <Button text="Rotate Right" onAction="#onRotateRightClicked"/>
+    </HBox>
+</VBox> 

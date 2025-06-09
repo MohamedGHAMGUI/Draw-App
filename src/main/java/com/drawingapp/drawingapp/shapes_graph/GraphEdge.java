@@ -1,6 +1,6 @@
 package com.drawingapp.drawingapp.shapes_graph;
 
-import com.drawingapp.drawingapp.shapes_factory.Shape;
+import com.drawingapp.drawingapp.domain.shapes.Shape;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -53,7 +53,7 @@ public class GraphEdge implements Shape {
         double distanceInUnits = distanceInPixels / PIXELS_PER_UNIT;
         
         // Draw white background for weight
-        gc.setFill(Color.WHITE);
+        gc.setFill(Color.BLACK);
         gc.fillOval(midX - 15, midY - 20, 30, 30);
         
         // Draw weight text
@@ -65,7 +65,7 @@ public class GraphEdge implements Shape {
         gc.fillText(weightText, midX - textWidth/2, midY - 5);
         
         // Draw white background for distance
-        gc.setFill(Color.WHITE);
+        gc.setFill(Color.BLACK);
         gc.fillOval(midX - 15, midY + 5, 30, 30);
         
         // Draw distance text

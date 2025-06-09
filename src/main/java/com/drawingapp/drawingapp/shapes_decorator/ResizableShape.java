@@ -1,6 +1,6 @@
 package com.drawingapp.drawingapp.shapes_decorator;
 
-import com.drawingapp.drawingapp.shapes_factory.Shape;
+import com.drawingapp.drawingapp.domain.shapes.Shape;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 

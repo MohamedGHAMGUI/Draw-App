@@ -2,37 +2,34 @@ package com.drawingapp.drawingapp.shapes_state_observer;
 
 import java.util.List;
 
-import com.drawingapp.drawingapp.shapes_factory.Shape;
-import com.drawingapp.drawingapp.services.ShapeManager;
-import com.drawingapp.drawingapp.logging.LoggerManager;
-
+import com.drawingapp.drawingapp.domain.shapes.Shape;
+import com.drawingapp.drawingapp.application.services.ShapeManager;
+import com.drawingapp.drawingapp.infrastructure.logging.ILogger;
 
 public class SelectState implements State {
-    private List<Shape> shapes;
     private Shape selectedShape;
-    private ShapeManager shapeManager;
+    private final ShapeManager shapeManager;
+    private final ILogger logger;
 
-    public SelectState(List<Shape> shapes, ShapeManager shapeManager) {
-        this.shapes = shapes;
+    public SelectState(List<Shape> shapes, ShapeManager shapeManager, ILogger logger) {
         this.shapeManager = shapeManager;
+        this.logger = logger;
     }
 
     @Override
     public void onMousePressed(double x, double y) {
         boolean found = false;
-        for (Shape shape : shapes) {
+        for (Shape shape : shapeManager.getShapes()) {
             if (shape.contains(x, y)) {
-                shape.setSelected(true);
-                selectedShape = shape;
-                shapeManager.setSelectedShape(shape);
-                LoggerManager.getInstance().log("Selected shape at (" + x + ", " + y + ")");
+                setSelectedShape(shape);
+                logger.log("Selected shape at (" + x + ", " + y + ")");
                 found = true;
             } else {
                 shape.setSelected(false);
             }
         }
         if (!found) {
-            shapeManager.setSelectedShape(null);
+            setSelectedShape(null);
         }
     }
 
@@ -43,4 +40,22 @@ public class SelectState implements State {
 
     @Override
     public void onMouseReleased(double x, double y) {}
+
+    public void setSelectedShape(Shape shape) {
+        if (selectedShape != null) {
+            selectedShape.setSelected(false);
+        }
+        selectedShape = shape;
+        if (selectedShape != null) {
+            selectedShape.setSelected(true);
+        }
+    }
+
+    public Shape getSelectedShape() {
+        return selectedShape;
+    }
+
+    public void clearSelection() {
+        setSelectedShape(null);
+    }
 }

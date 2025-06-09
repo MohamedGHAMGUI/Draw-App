@@ -1,19 +1,14 @@
 package com.drawingapp.drawingapp.shapes_decorator;
 
-import com.drawingapp.drawingapp.shapes_color.ColorStrategy;
-import com.drawingapp.drawingapp.shapes_color.ShapeColorStrategy;
-import com.drawingapp.drawingapp.shapes_factory.Shape;
-
+import com.drawingapp.drawingapp.domain.shapes.Shape;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public abstract class ShapeDecorator implements Shape {
     protected Shape decoratedShape;
-    protected ColorStrategy colorStrategy;
 
     public ShapeDecorator(Shape shape) {
         this.decoratedShape = shape;
-        this.colorStrategy = new ShapeColorStrategy();
     }
 
     @Override
@@ -48,12 +43,56 @@ public abstract class ShapeDecorator implements Shape {
 
     @Override
     public void setColor(Color color) {
-        colorStrategy.setColor(color);
         decoratedShape.setColor(color);
     }
 
     @Override
     public Color getColor() {
-        return colorStrategy.getColor();
+        return decoratedShape.getColor();
+    }
+
+    @Override
+    public void resize(double width, double height) {
+        decoratedShape.resize(width, height);
+    }
+
+    @Override
+    public double getX() {
+        return decoratedShape.getX();
+    }
+
+    @Override
+    public double getY() {
+        return decoratedShape.getY();
+    }
+
+    @Override
+    public double getWidth() {
+        return decoratedShape.getWidth();
+    }
+
+    @Override
+    public double getHeight() {
+        return decoratedShape.getHeight();
+    }
+
+    @Override
+    public void setX(double x) {
+        decoratedShape.setX(x);
+    }
+
+    @Override
+    public void setY(double y) {
+        decoratedShape.setY(y);
+    }
+
+    @Override
+    public void setWidth(double width) {
+        decoratedShape.setWidth(width);
+    }
+
+    @Override
+    public void setHeight(double height) {
+        decoratedShape.setHeight(height);
     }
 }

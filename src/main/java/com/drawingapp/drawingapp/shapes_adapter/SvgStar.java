@@ -1,7 +1,6 @@
 package com.drawingapp.drawingapp.shapes_adapter;
 
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
 
 public class SvgStar {
     private static final int DEFAULT_POINTS = 5;

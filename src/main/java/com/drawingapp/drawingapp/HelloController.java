@@ -1,14 +1,31 @@
 package com.drawingapp.drawingapp;
 
-import com.drawingapp.drawingapp.shapes_factory.Shape;
-import com.drawingapp.drawingapp.shapes_factory.ShapeFactory;
-import com.drawingapp.drawingapp.shapes_observer.ShapeObserver;
-import com.drawingapp.drawingapp.shapes_state_observer.MoveState;
+import com.drawingapp.drawingapp.application.controllers.interfaces.IDrawingController;
+import com.drawingapp.drawingapp.application.controllers.interfaces.IGraphController;
+import com.drawingapp.drawingapp.application.controllers.interfaces.IFileController;
+import com.drawingapp.drawingapp.application.controllers.DrawingController;
+import com.drawingapp.drawingapp.application.controllers.GraphController;
+import com.drawingapp.drawingapp.application.controllers.FileController;
+import com.drawingapp.drawingapp.application.services.ShapeManager;
+import com.drawingapp.drawingapp.application.services.ModeManager;
+import com.drawingapp.drawingapp.infrastructure.persistence.DrawingRepository;
+import com.drawingapp.drawingapp.application.services.GraphManager;
+import com.drawingapp.drawingapp.application.services.ShapeSelector;
+import com.drawingapp.drawingapp.domain.graph.Graph;
+import com.drawingapp.drawingapp.domain.algorithms.ShortestPathAlgorithm;
+import com.drawingapp.drawingapp.domain.algorithms.DijkstraAlgorithm;
+import com.drawingapp.drawingapp.domain.commands.Command;
+import com.drawingapp.drawingapp.domain.commands.DeleteShapeCommand;
+import com.drawingapp.drawingapp.domain.commands.ChangeColorCommand;
+import com.drawingapp.drawingapp.domain.commands.CommandHistory;
+import com.drawingapp.drawingapp.domain.commands.CommandFactory;
+import com.drawingapp.drawingapp.domain.shapes.ShapeFactory;
+import com.drawingapp.drawingapp.infrastructure.logging.ILogger;
+import com.drawingapp.drawingapp.infrastructure.logging.ConsoleLogger;
 import com.drawingapp.drawingapp.shapes_state_observer.SelectState;
-import com.drawingapp.drawingapp.shapes_state_observer.ShapeSelector;
+import com.drawingapp.drawingapp.shapes_state_observer.MoveState;
 import com.drawingapp.drawingapp.shapes_state_observer.State;
-import com.drawingapp.drawingapp.shapes_graph.*;
-import com.drawingapp.drawingapp.services.DrawingRepository;
+import com.drawingapp.drawingapp.shapes_observer.ShapeObserver;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -17,16 +34,17 @@ import javafx.scene.paint.Color;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.collections.FXCollections;
-import com.drawingapp.drawingapp.shapes_decorator.ResizableShape;
-import com.drawingapp.drawingapp.services.ShapeManager;
-import com.drawingapp.drawingapp.services.ModeManager;
-import com.drawingapp.drawingapp.logging.LoggerManager;
-import com.drawingapp.drawingapp.services.GraphManager;
-import java.util.List;
-import javafx.scene.control.TextInputDialog;
-import javafx.scene.control.ChoiceDialog;
+import com.drawingapp.drawingapp.domain.shapes.Shape;
 import javafx.scene.control.Alert;
-import java.util.Optional;
+import javafx.stage.Stage;
+
+import java.util.ArrayList;
+import javafx.scene.control.Slider;
+import com.drawingapp.drawingapp.application.services.NodeSelector;
+import com.drawingapp.drawingapp.infrastructure.logging.FileLogger;
+import com.drawingapp.drawingapp.infrastructure.logging.DatabaseLogger;
+import com.drawingapp.drawingapp.infrastructure.logging.CompositeLogger;
+import javafx.application.Application;
 
 public class HelloController implements ShapeObserver {
 
@@ -38,6 +56,9 @@ public class HelloController implements ShapeObserver {
 
     @FXML
     private ComboBox<String> algorithmComboBox;
+
+    @FXML
+    private Slider rotationSlider;
 
     private GraphicsContext gc;
     private String selectedShape = "";
@@ -53,6 +74,30 @@ public class HelloController implements ShapeObserver {
     private GraphManager graphManager;
     private ShortestPathAlgorithm currentAlgorithm;
     private DrawingRepository drawingRepository;
+    private IDrawingController drawingController;
+    private IGraphController graphController;
+    private IFileController fileController;
+    private ILogger logger;
+    private CommandHistory commandHistory;
+    private ShapeSelector shapeSelector;
+    private Stage stage;
+
+    public HelloController() {
+        String dbUrl = "jdbc:mysql://localhost:3306/drawingapp_logs?useSSL=false&serverTimezone=UTC";
+        String dbUser = "root";
+        String dbPass = "";
+        String logFile = "drawing_app.log";
+        
+        // Create a temporary logger until the real one is set
+        ILogger fileLogger = new FileLogger(logFile);
+        ILogger dbLogger = new DatabaseLogger(dbUrl, dbUser, dbPass, logFile);
+        ILogger consoleLogger = new ConsoleLogger();
+        this.logger = new CompositeLogger(fileLogger, dbLogger, consoleLogger);
+        
+        this.commandHistory = new CommandHistory(logger);
+        this.shapeSelector = new ShapeSelector(new ArrayList<>(), logger);
+        this.modeManager = new ModeManager(logger);
+    }
 
     public void setShapeManager(ShapeManager shapeManager) {
         this.shapeManager = shapeManager;
@@ -64,19 +109,43 @@ public class HelloController implements ShapeObserver {
 
     public void setDrawingRepository(DrawingRepository drawingRepository) {
         this.drawingRepository = drawingRepository;
+        this.shapeManager = new ShapeManager(logger);
+        this.shapeSelector = new ShapeSelector(shapeManager.getShapes(), logger);
+        NodeSelector nodeSelector = new NodeSelector(new ArrayList<>(), logger);
+        this.graphManager = new GraphManager(new Graph(), new DijkstraAlgorithm(), logger, nodeSelector);
+        CommandFactory commandFactory = new CommandFactory(shapeManager, graphManager, logger);
+        ShapeFactory shapeFactory = new ShapeFactory(logger);
+        this.drawingController = new DrawingController(shapeManager, modeManager, logger, commandFactory, commandHistory, shapeFactory);
+        this.graphController = new GraphController(graphManager, modeManager, logger);
+        this.fileController = new FileController(drawingRepository, shapeManager, graphManager, logger, commandFactory, commandHistory);
+        logger.log("All controllers initialized successfully");
+    }
+
+    public void setControllers(IDrawingController drawingController, 
+                             IGraphController graphController, 
+                             IFileController fileController) {
+        this.drawingController = drawingController;
+        this.graphController = graphController;
+        this.fileController = fileController;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+        if (fileController != null) {
+            ((FileController)fileController).setStage(stage);
+        }
     }
 
     public void postInjectInit() {
         gc = canvas.getGraphicsContext2D();
-        ShapeSelector.getInstance().getSubject().addObserver(this);
-        selectState = new SelectState(shapeManager.getShapes(), shapeManager);
-        moveState = new MoveState();
+        shapeSelector.getSubject().addObserver(this);
+        selectState = new SelectState(shapeManager.getShapes(), shapeManager, logger);
+        moveState = new MoveState(shapeManager, logger);
         currentState = selectState;
         canvas.setOnMousePressed(this::handleMousePressed);
         canvas.setOnMouseDragged(this::handleMouseDragged);
         canvas.setOnMouseReleased(this::handleMouseReleased);
         colorPicker.setValue(currentColor);
-        graphManager = new GraphManager();
         currentAlgorithm = new DijkstraAlgorithm();
         
         // Initialize algorithm combo box
@@ -84,269 +153,181 @@ public class HelloController implements ShapeObserver {
             "Dijkstra's Algorithm"
         ));
         algorithmComboBox.getSelectionModel().selectFirst();
+        
+        // Initialize controllers with graphics context
+        drawingController.setGraphicsContext(gc);
+        graphController.setGraphicsContext(gc);
+        
+        // Initialize rotation slider
+        rotationSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
+            if (drawingController != null) {
+                drawingController.rotateSelectedShape(newVal.doubleValue());
+            }
+        });
     }
 
     private void handleMousePressed(MouseEvent event) {
-        switch (modeManager.getCurrentMode()) {
-            case RESIZE:
-                Shape selected = shapeManager.getSelectedShape();
-                if (selected != null) {
-                    resizingShape = selected;
-                    initialX = event.getX();
-                    initialY = event.getY();
-                    LoggerManager.getInstance().log("Started resizing shape at (" + initialX + ", " + initialY + ")");
-                }
-                break;
-            case DRAW:
-                if (selectedShape != null && !selectedShape.isEmpty()) {
-                    Shape shape = ShapeFactory.createShape(selectedShape);
-                    if (shape != null) {
-                        shape.setColor(colorPicker.getValue());
-                        shape = new ResizableShape(shape);
-                        shapeManager.addShape(shape);
-                        shape.draw(gc, event.getX(), event.getY());
-                        LoggerManager.getInstance().log("Drew a " + selectedShape + " at (" + event.getX() + ", " + event.getY() + ")");
-                    }
-                }
-                break;
-            case NODE_DRAW:
-                GraphNode node = new GraphNode(event.getX(), event.getY());
-                graphManager.addNode(node);
-                LoggerManager.getInstance().log("Added node at (" + event.getX() + ", " + event.getY() + ")");
-                redrawCanvas();
-                break;
-            case EDGE_DRAW:
-                GraphNode selectedNode = graphManager.getNodeAt(event.getX(), event.getY());
-                if (selectedNode != null) {
-                    if (graphManager.getSelectedNode() == null) {
-                        graphManager.setSelectedNode(selectedNode);
-                        LoggerManager.getInstance().log("Selected node for edge creation");
-                    } else {
-                        // Create edge with weight 1 by default
-                        GraphEdge edge = new GraphEdge(
-                            graphManager.getSelectedNode(),
-                            selectedNode,
-                            1.0
-                        );
-                        graphManager.addEdge(edge);
-                        graphManager.clearSelection();
-                        LoggerManager.getInstance().log("Created edge between nodes");
-                    }
-                    redrawCanvas();
-                }
-                break;
-            case PATH_FIND:
-                GraphNode pathNode = graphManager.getNodeAt(event.getX(), event.getY());
-                if (pathNode != null) {
-                    if (graphManager.getStartNode() == null) {
-                        graphManager.setStartNode(pathNode);
-                        pathNode.setColor(Color.GREEN);
-                        LoggerManager.getInstance().log("Set start node for path finding");
-                    } else if (graphManager.getEndNode() == null) {
-                        graphManager.setEndNode(pathNode);
-                        pathNode.setColor(Color.RED);
-                        
-                        // Find and highlight shortest path
-                        List<GraphNode> path = currentAlgorithm.findShortestPath(
-                            graphManager.getStartNode(),
-                            graphManager.getEndNode(),
-                            graphManager
-                        );
-                        
-                        // Highlight path
-                        for (GraphNode nodeInPath : path) {
-                            nodeInPath.setColor(Color.YELLOW);
-                        }
-                        
-                        LoggerManager.getInstance().log("Found shortest path with " + path.size() + " nodes");
-                    }
-                    redrawCanvas();
-                }
-                break;
-            default:
-                currentState.onMousePressed(event.getX(), event.getY());
-                redrawCanvas();
-        }
+        logger.log("Mouse pressed at (" + event.getX() + ", " + event.getY() + ")");
+        drawingController.handleMousePressed(event.getX(), event.getY());
+        graphController.handleMousePressed(event.getX(), event.getY());
+        redrawCanvas();
     }
 
     private void handleMouseDragged(MouseEvent event) {
-        switch (modeManager.getCurrentMode()) {
-            case RESIZE:
-                if (resizingShape != null) {
-                    double newWidth = Math.abs(event.getX() - initialX);
-                    double newHeight = Math.abs(event.getY() - initialY);
-                    resizingShape.resize(newWidth, newHeight);
-                    LoggerManager.getInstance().log("Resized shape to width=" + newWidth + ", height=" + newHeight);
-                    redrawCanvas();
-                }
-                break;
-            case DRAW:
-                // No drag logic for drawing
-                break;
-            default:
-                currentState.onMouseDragged(event.getX(), event.getY());
-                redrawCanvas();
-        }
+        drawingController.handleMouseDragged(event.getX(), event.getY());
+        redrawCanvas();
     }
 
     private void handleMouseReleased(MouseEvent event) {
-        switch (modeManager.getCurrentMode()) {
-            case RESIZE:
-                resizingShape = null;
-                break;
-            case DRAW:
-                // No release logic for drawing
-                break;
-            default:
-                currentState.onMouseReleased(event.getX(), event.getY());
-                redrawCanvas();
-        }
+        logger.log("Mouse released at (" + event.getX() + ", " + event.getY() + ")");
+        drawingController.handleMouseReleased(event.getX(), event.getY());
+        redrawCanvas();
     }
 
     private void redrawCanvas() {
-        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        
-        // Draw edges first
-        for (GraphEdge edge : graphManager.getEdges()) {
-            edge.draw(gc);
-        }
-        
-        // Draw nodes on top
-        for (GraphNode node : graphManager.getNodes()) {
-            node.draw(gc);
-        }
-        
-        // Draw other shapes
-        for (Shape shape : shapeManager.getShapes()) {
-            shape.draw(gc);
-        }
+        drawingController.redrawCanvas();
+        graphController.redrawCanvas();
     }
 
     @Override
     public void onShapeSelected(String shapeType) {
-        this.selectedShape = shapeType;
-        modeManager.setCurrentMode(ModeManager.Mode.DRAW);
-        LoggerManager.getInstance().log("Selected shape type: " + shapeType);
-        System.out.println("Selected shape: " + shapeType);
+        drawingController.setSelectedShape(shapeType);
     }
 
     @FXML
     private void onSelectModeClicked() {
         modeManager.setCurrentMode(ModeManager.Mode.SELECT);
         currentState = selectState;
+        logger.log("Switched to SELECT mode");
+        redrawCanvas();
     }
 
     @FXML
     private void onMoveModeClicked() {
         modeManager.setCurrentMode(ModeManager.Mode.MOVE);
-        Shape selected = shapeManager.getSelectedShape();
-        moveState.setSelectedShape(selected);
         currentState = moveState;
+        logger.log("Switched to MOVE mode");
+        redrawCanvas();
     }
 
     @FXML
     private void onResizeModeClicked() {
         modeManager.setCurrentMode(ModeManager.Mode.RESIZE);
+        logger.log("Switched to RESIZE mode");
+        redrawCanvas();
     }
 
     @FXML private void onRectangleClicked() {
         modeManager.setCurrentMode(ModeManager.Mode.DRAW);
-        ShapeSelector.getInstance().selectShape("rectangle");
+        shapeSelector.selectShape("rectangle");
+        logger.log("Selected rectangle shape");
     }
 
     @FXML private void onCircleClicked() {
         modeManager.setCurrentMode(ModeManager.Mode.DRAW);
-        ShapeSelector.getInstance().selectShape("circle");
+        shapeSelector.selectShape("circle");
+        logger.log("Selected circle shape");
     }
 
     @FXML private void onLineClicked() {
         modeManager.setCurrentMode(ModeManager.Mode.DRAW);
-        ShapeSelector.getInstance().selectShape("line");
+        shapeSelector.selectShape("line");
+        logger.log("Selected line shape");
     }
 
     @FXML
     private void onStarClicked() {
         modeManager.setCurrentMode(ModeManager.Mode.DRAW);
-        ShapeSelector.getInstance().selectShape("star");
+        shapeSelector.selectShape("star");
+        logger.log("Selected star shape");
     }
 
     @FXML
     private void onColorChanged() {
-        Color newColor = colorPicker.getValue();
-        Shape selected = shapeManager.getSelectedShape();
+        Shape selected = shapeManager.getSelector().getSelectedShape();
         if (selected != null) {
-            selected.setColor(newColor);
-            LoggerManager.getInstance().log("Changed color of selected shape to " + newColor.toString());
+            Color oldColor = selected.getColor();
+            Color newColor = colorPicker.getValue();
+            Command colorCommand = new ChangeColorCommand(selected, oldColor, newColor, logger);
+            commandHistory.executeCommand(colorCommand);
+            logger.log("Changed color of shape to " + newColor);
             redrawCanvas();
         }
-        currentColor = newColor;
     }
 
     @FXML
     private void onAddNodeClicked() {
         modeManager.setCurrentMode(ModeManager.Mode.NODE_DRAW);
+        logger.log("Switched to NODE_DRAW mode");
     }
 
     @FXML
     private void onAddEdgeClicked() {
         modeManager.setCurrentMode(ModeManager.Mode.EDGE_DRAW);
+        logger.log("Switched to EDGE_DRAW mode");
     }
 
     @FXML
     private void onFindPathClicked() {
         modeManager.setCurrentMode(ModeManager.Mode.PATH_FIND);
-    }
-
-    @FXML
-    private void onCreateExampleGraphClicked() {
-        graphManager.createExampleGraph();
+        logger.log("Switched to PATH_FIND mode");
     }
 
     @FXML
     private void onSaveDrawingClicked() {
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Save Drawing");
-        dialog.setHeaderText("Enter a name for your drawing");
-        Optional<String> result = dialog.showAndWait();
-        
-        result.ifPresent(name -> {
-            drawingRepository.saveDrawing(
-                name,
-                shapeManager.getShapes(),
-                graphManager.getNodes(),
-                graphManager.getEdges()
-            );
-            LoggerManager.getInstance().log("Saved drawing: " + name);
-        });
+        logger.log("Attempting to save drawing");
+        fileController.saveDrawing();
     }
 
     @FXML
     private void onLoadDrawingClicked() {
-        List<String> drawings = drawingRepository.listSavedDrawings();
-        if (drawings.isEmpty()) {
-            showAlert("No drawings found");
-            return;
+        logger.log("Attempting to load drawing");
+        fileController.loadDrawing();
+        redrawCanvas();
+    }
+
+    @FXML
+    private void onDeleteClicked() {
+        Shape selected = shapeManager.getSelector().getSelectedShape();
+        if (selected != null) {
+            Command deleteCommand = new DeleteShapeCommand(shapeManager, selected, logger);
+            commandHistory.executeCommand(deleteCommand);
+            shapeManager.getSelector().clearSelection();
+            logger.log("Deleted selected shape");
+            redrawCanvas();
         }
-        
-        ChoiceDialog<String> dialog = new ChoiceDialog<>(drawings.get(0), drawings);
-        dialog.setTitle("Load Drawing");
-        dialog.setHeaderText("Select a drawing to load");
-        Optional<String> result = dialog.showAndWait();
-        
-        result.ifPresent(name -> {
-            DrawingRepository.DrawingData data = drawingRepository.loadDrawing(name);
-            if (data != null) {
-                shapeManager.clear();
-                graphManager.clear();
-                
-                data.getShapes().forEach(shapeManager::addShape);
-                data.getNodes().forEach(graphManager::addNode);
-                data.getEdges().forEach(graphManager::addEdge);
-                
-                redrawCanvas();
-                LoggerManager.getInstance().log("Loaded drawing: " + name);
-            }
-        });
+    }
+
+    @FXML
+    private void onUndoClicked() {
+        if (commandHistory.canUndo()) {
+            commandHistory.undo();
+            logger.log("Undid last action");
+            redrawCanvas();
+        }
+    }
+
+    @FXML
+    private void onRedoClicked() {
+        if (commandHistory.canRedo()) {
+            commandHistory.redo();
+            logger.log("Redid last action");
+            redrawCanvas();
+        }
+    }
+
+    @FXML
+    private void onRotateLeftClicked() {
+        double currentAngle = rotationSlider.getValue();
+        rotationSlider.setValue((currentAngle - 90) % 360);
+        logger.log("Rotated shape left by 90 degrees");
+    }
+
+    @FXML
+    private void onRotateRightClicked() {
+        double currentAngle = rotationSlider.getValue();
+        rotationSlider.setValue((currentAngle + 90) % 360);
+        logger.log("Rotated shape right by 90 degrees");
     }
 
     private void showAlert(String message) {
@@ -355,5 +336,12 @@ public class HelloController implements ShapeObserver {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    public void setLogger(ILogger logger) {
+        this.logger = logger;
+        this.commandHistory = new CommandHistory(logger);
+        this.shapeSelector = new ShapeSelector(new ArrayList<>(), logger);
+        this.modeManager = new ModeManager(logger);
     }
 }

@@ -1,20 +1,22 @@
-package com.drawingapp.drawingapp.shapes_adapter;
-import com.drawingapp.drawingapp.domain.shapes.RotatableShape;
+package com.drawingapp.drawingapp.domain.shapes;
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class SvgStarAdapter implements RotatableShape {
-    private SvgStar svgStar;
-    private double x;
-    private double y;
-    private double width;
-    private double height;
-    private Color color = Color.BLACK;
-    private boolean selected = false;
-    private double rotationAngle = 0;
+public class RectangleShape implements RotatableShape {
+    private double x, y, width, height;
+    private Color color;
+    private boolean selected;
+    private double rotationAngle;
 
-    public SvgStarAdapter(SvgStar svgStar) {
-        this.svgStar = svgStar;
+    public RectangleShape(double x, double y, double width, double height, Color color) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.color = color;
+        this.selected = false;
+        this.rotationAngle = 0;
     }
 
     @Override
@@ -29,8 +31,8 @@ public class SvgStarAdapter implements RotatableShape {
         gc.rotate(rotationAngle);
         gc.translate(-(x + width/2), -(y + height/2));
         
-        svgStar.draw(gc, x, y, width, height);
-        
+        gc.fillRect(x, y, width, height);
+        gc.strokeRect(x, y, width, height);
         gc.restore();
     }
 
@@ -64,8 +66,29 @@ public class SvgStarAdapter implements RotatableShape {
     }
 
     @Override
-    public void setColor(Color color) {
-        this.color = color;
+    public void resize(double width, double height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    @Override
+    public double getX() {
+        return x;
+    }
+
+    @Override
+    public double getY() {
+        return y;
+    }
+
+    @Override
+    public double getWidth() {
+        return width;
+    }
+
+    @Override
+    public double getHeight() {
+        return height;
     }
 
     @Override
@@ -74,9 +97,28 @@ public class SvgStarAdapter implements RotatableShape {
     }
 
     @Override
-    public void resize(double newWidth, double newHeight) {
-        this.width = newWidth;
-        this.height = newHeight;
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    @Override
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    @Override
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    @Override
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    @Override
+    public void setHeight(double height) {
+        this.height = height;
     }
 
     @Override
@@ -88,16 +130,4 @@ public class SvgStarAdapter implements RotatableShape {
     public double getRotationAngle() {
         return rotationAngle;
     }
-
-    // Getters for serialization
-    public double getX() { return x; }
-    public double getY() { return y; }
-    public double getWidth() { return width; }
-    public double getHeight() { return height; }
-
-    // Setters for deserialization
-    public void setX(double x) { this.x = x; }
-    public void setY(double y) { this.y = y; }
-    public void setWidth(double width) { this.width = width; }
-    public void setHeight(double height) { this.height = height; }
 } 
