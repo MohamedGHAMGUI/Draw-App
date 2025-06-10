@@ -1,10 +1,16 @@
 package com.drawingapp.drawingapp.logging;
 
+import com.drawingapp.drawingapp.logging.LoggerStrategy;
+import com.drawingapp.drawingapp.logging.ConsoleLogger;
+
 public class LoggerManager {
     private static LoggerManager instance;
     private LoggerStrategy strategy;
 
-    private LoggerManager() {}
+    private LoggerManager() {
+        // Set ConsoleLogger as default strategy
+        this.strategy = new ConsoleLogger();
+    }
 
     public static LoggerManager getInstance() {
         if (instance == null) {

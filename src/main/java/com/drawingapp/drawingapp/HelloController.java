@@ -1,6 +1,7 @@
 package com.drawingapp.drawingapp;
 
 import com.drawingapp.drawingapp.shapes_factory.Shape;
+import com.drawingapp.drawingapp.shapes_factory.RotatableShape;
 import com.drawingapp.drawingapp.shapes_factory.ShapeFactory;
 import com.drawingapp.drawingapp.shapes_observer.ShapeObserver;
 import com.drawingapp.drawingapp.shapes_state_observer.MoveState;
@@ -27,6 +28,11 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.Alert;
 import java.util.Optional;
+import javafx.scene.control.Slider;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import com.drawingapp.drawingapp.shapes_decorator.RotatableShapeDecorator;
 
 public class HelloController implements ShapeObserver {
 
@@ -38,6 +44,12 @@ public class HelloController implements ShapeObserver {
 
     @FXML
     private ComboBox<String> algorithmComboBox;
+
+    @FXML
+    private Slider rotationSlider;
+
+    @FXML
+    private DoubleProperty rotationValue;
 
     private GraphicsContext gc;
     private String selectedShape = "";
@@ -84,6 +96,17 @@ public class HelloController implements ShapeObserver {
             "Dijkstra's Algorithm"
         ));
         algorithmComboBox.getSelectionModel().selectFirst();
+
+        // Add rotation slider listener
+        rotationSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
+            Shape selected = shapeManager.getSelectedShape();
+            if (selected instanceof RotatableShape) {
+                RotatableShape rotatableShape = (RotatableShape) selected;
+                rotatableShape.setRotation(newVal.doubleValue());
+                LoggerManager.getInstance().log("Rotated shape to " + newVal.doubleValue() + " degrees");
+                redrawCanvas();
+            }
+        });
     }
 
     private void handleMousePressed(MouseEvent event) {
@@ -94,7 +117,8 @@ public class HelloController implements ShapeObserver {
                     resizingShape = selected;
                     initialX = event.getX();
                     initialY = event.getY();
-                    LoggerManager.getInstance().log("Started resizing shape at (" + initialX + ", " + initialY + ")");
+                    LoggerManager.getInstance().log(String.format("Started resizing shape at (%.2f, %.2f) with initial size: %.2f x %.2f", 
+                        initialX, initialY, selected.getWidth(), selected.getHeight()));
                 }
                 break;
             case DRAW:
@@ -103,16 +127,21 @@ public class HelloController implements ShapeObserver {
                     if (shape != null) {
                         shape.setColor(colorPicker.getValue());
                         shape = new ResizableShape(shape);
+                        // Add rotation capability for shapes that can be rotated
+                        if (selectedShape.equals("rectangle") || selectedShape.equals("line") || selectedShape.equals("star")) {
+                            shape = new RotatableShapeDecorator(shape);
+                        }
                         shapeManager.addShape(shape);
                         shape.draw(gc, event.getX(), event.getY());
-                        LoggerManager.getInstance().log("Drew a " + selectedShape + " at (" + event.getX() + ", " + event.getY() + ")");
+                        LoggerManager.getInstance().log(String.format("Created new %s at (%.2f, %.2f) with color %s", 
+                            selectedShape, event.getX(), event.getY(), colorPicker.getValue().toString()));
                     }
                 }
                 break;
             case NODE_DRAW:
                 GraphNode node = new GraphNode(event.getX(), event.getY());
                 graphManager.addNode(node);
-                LoggerManager.getInstance().log("Added node at (" + event.getX() + ", " + event.getY() + ")");
+                LoggerManager.getInstance().log(String.format("Added graph node at (%.2f, %.2f)", event.getX(), event.getY()));
                 redrawCanvas();
                 break;
             case EDGE_DRAW:
@@ -120,17 +149,15 @@ public class HelloController implements ShapeObserver {
                 if (selectedNode != null) {
                     if (graphManager.getSelectedNode() == null) {
                         graphManager.setSelectedNode(selectedNode);
-                        LoggerManager.getInstance().log("Selected node for edge creation");
+                        LoggerManager.getInstance().log(String.format("Selected node at (%.2f, %.2f) for edge creation", 
+                            selectedNode.getX(), selectedNode.getY()));
                     } else {
-                        // Create edge with weight 1 by default
-                        GraphEdge edge = new GraphEdge(
-                            graphManager.getSelectedNode(),
-                            selectedNode,
-                            1.0
-                        );
+                        GraphEdge edge = new GraphEdge(graphManager.getSelectedNode(), selectedNode, 1.0);
                         graphManager.addEdge(edge);
                         graphManager.clearSelection();
-                        LoggerManager.getInstance().log("Created edge between nodes");
+                        LoggerManager.getInstance().log(String.format("Created edge between nodes at (%.2f, %.2f) and (%.2f, %.2f)", 
+                            edge.getSource().getX(), edge.getSource().getY(),
+                            edge.getTarget().getX(), edge.getTarget().getY()));
                     }
                     redrawCanvas();
                 }
@@ -165,6 +192,19 @@ public class HelloController implements ShapeObserver {
                 break;
             default:
                 currentState.onMousePressed(event.getX(), event.getY());
+                Shape selectedShape = shapeManager.getSelectedShape();
+                if (selectedShape != null) {
+                    LoggerManager.getInstance().log(String.format("Selected shape at (%.2f, %.2f) with size %.2f x %.2f", 
+                        selectedShape.getX(), selectedShape.getY(), 
+                        selectedShape.getWidth(), selectedShape.getHeight()));
+                }
+                if (selectedShape instanceof RotatableShape) {
+                    rotationSlider.setValue(((RotatableShape) selectedShape).getRotation());
+                    rotationSlider.setDisable(false);
+                } else {
+                    rotationSlider.setValue(0);
+                    rotationSlider.setDisable(true);
+                }
                 redrawCanvas();
         }
     }
@@ -176,7 +216,7 @@ public class HelloController implements ShapeObserver {
                     double newWidth = Math.abs(event.getX() - initialX);
                     double newHeight = Math.abs(event.getY() - initialY);
                     resizingShape.resize(newWidth, newHeight);
-                    LoggerManager.getInstance().log("Resized shape to width=" + newWidth + ", height=" + newHeight);
+                    LoggerManager.getInstance().log(String.format("Resized shape to %.2f x %.2f", newWidth, newHeight));
                     redrawCanvas();
                 }
                 break;
@@ -185,6 +225,11 @@ public class HelloController implements ShapeObserver {
                 break;
             default:
                 currentState.onMouseDragged(event.getX(), event.getY());
+                Shape selected = shapeManager.getSelectedShape();
+                if (selected != null) {
+                    LoggerManager.getInstance().log(String.format("Moved shape to (%.2f, %.2f)", 
+                        selected.getX(), selected.getY()));
+                }
                 redrawCanvas();
         }
     }
@@ -276,7 +321,8 @@ public class HelloController implements ShapeObserver {
         Shape selected = shapeManager.getSelectedShape();
         if (selected != null) {
             selected.setColor(newColor);
-            LoggerManager.getInstance().log("Changed color of selected shape to " + newColor.toString());
+            LoggerManager.getInstance().log(String.format("Changed color of shape at (%.2f, %.2f) to %s", 
+                selected.getX(), selected.getY(), newColor.toString()));
             redrawCanvas();
         }
         currentColor = newColor;
@@ -316,7 +362,10 @@ public class HelloController implements ShapeObserver {
                 graphManager.getNodes(),
                 graphManager.getEdges()
             );
-            LoggerManager.getInstance().log("Saved drawing: " + name);
+            LoggerManager.getInstance().log(String.format("Saved drawing '%s' with %d shapes, %d nodes, and %d edges", 
+                name, shapeManager.getShapes().size(), 
+                graphManager.getNodes().size(), 
+                graphManager.getEdges().size()));
         });
     }
 
@@ -325,6 +374,7 @@ public class HelloController implements ShapeObserver {
         List<String> drawings = drawingRepository.listSavedDrawings();
         if (drawings.isEmpty()) {
             showAlert("No drawings found");
+            LoggerManager.getInstance().log("Attempted to load drawing but no saved drawings found");
             return;
         }
         
@@ -343,10 +393,39 @@ public class HelloController implements ShapeObserver {
                 data.getNodes().forEach(graphManager::addNode);
                 data.getEdges().forEach(graphManager::addEdge);
                 
+                LoggerManager.getInstance().log(String.format("Loaded drawing '%s' with %d shapes, %d nodes, and %d edges", 
+                    name, data.getShapes().size(), 
+                    data.getNodes().size(), 
+                    data.getEdges().size()));
+                
                 redrawCanvas();
-                LoggerManager.getInstance().log("Loaded drawing: " + name);
             }
         });
+    }
+
+    @FXML
+    private void onRotateLeftClicked() {
+        Shape selected = shapeManager.getSelectedShape();
+        if (selected instanceof RotatableShape) {
+            double currentAngle = rotationSlider.getValue();
+            double newAngle = (currentAngle - 90) % 360;
+            if (newAngle < 0) newAngle += 360;
+            rotationSlider.setValue(newAngle);
+            LoggerManager.getInstance().log(String.format("Rotated shape at (%.2f, %.2f) left by 90 degrees to %.2f degrees", 
+                selected.getX(), selected.getY(), newAngle));
+        }
+    }
+
+    @FXML
+    private void onRotateRightClicked() {
+        Shape selected = shapeManager.getSelectedShape();
+        if (selected instanceof RotatableShape) {
+            double currentAngle = rotationSlider.getValue();
+            double newAngle = (currentAngle + 90) % 360;
+            rotationSlider.setValue(newAngle);
+            LoggerManager.getInstance().log(String.format("Rotated shape at (%.2f, %.2f) right by 90 degrees to %.2f degrees", 
+                selected.getX(), selected.getY(), newAngle));
+        }
     }
 
     private void showAlert(String message) {

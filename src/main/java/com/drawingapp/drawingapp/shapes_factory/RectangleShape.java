@@ -3,13 +3,14 @@ package com.drawingapp.drawingapp.shapes_factory;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class RectangleShape implements Shape {
+public class RectangleShape implements RotatableShape {
     private double x;
     private double y;
     private double width;
     private double height;
-    private Color color = Color.BLACK;
+    private Color color = Color.TRANSPARENT;
     private boolean selected = false;
+    private double rotationAngle = 0.0;
 
     public RectangleShape() {
         this.x = 0;
@@ -20,10 +21,31 @@ public class RectangleShape implements Shape {
 
     @Override
     public void draw(GraphicsContext gc) {
+        gc.save(); // Save the current graphics context state
+        
+        // Translate to the center of the rectangle
+        double centerX = x + width / 2;
+        double centerY = y + height / 2;
+        gc.translate(centerX, centerY);
+        
+        // Rotate around the center
+        gc.rotate(rotationAngle);
+        
+        // Translate back
+        gc.translate(-centerX, -centerY);
+        
+        // Draw the rectangle
         gc.setFill(color);
         gc.fillRect(x, y, width, height);
-        gc.setStroke(Color.BLACK);
-        gc.strokeRect(x, y, width, height);
+        
+        // Add stroke if selected
+        if (selected) {
+            gc.setStroke(Color.BLACK);
+            gc.setLineWidth(2.0);
+            gc.strokeRect(x, y, width, height);
+        }
+        
+        gc.restore(); // Restore the graphics context state
     }
 
     @Override
@@ -35,8 +57,25 @@ public class RectangleShape implements Shape {
 
     @Override
     public boolean contains(double x, double y) {
-        return x >= this.x && x <= this.x + width &&
-               y >= this.y && y <= this.y + height;
+        // For rotated rectangle, we need to transform the point
+        double centerX = this.x + width / 2;
+        double centerY = this.y + height / 2;
+        
+        // Translate point to origin
+        double translatedX = x - centerX;
+        double translatedY = y - centerY;
+        
+        // Rotate point back
+        double angle = -rotationAngle * Math.PI / 180;
+        double rotatedX = translatedX * Math.cos(angle) - translatedY * Math.sin(angle);
+        double rotatedY = translatedX * Math.sin(angle) + translatedY * Math.cos(angle);
+        
+        // Translate point back
+        rotatedX += centerX;
+        rotatedY += centerY;
+        
+        return rotatedX >= this.x && rotatedX <= this.x + width &&
+               rotatedY >= this.y && rotatedY <= this.y + height;
     }
 
     @Override
@@ -109,5 +148,20 @@ public class RectangleShape implements Shape {
     @Override
     public void setHeight(double height) {
         this.height = height;
+    }
+
+    @Override
+    public void rotate(double angle) {
+        rotationAngle = (rotationAngle + angle) % 360;
+    }
+
+    @Override
+    public double getRotation() {
+        return rotationAngle;
+    }
+
+    @Override
+    public void setRotation(double angle) {
+        rotationAngle = angle % 360;
     }
 }

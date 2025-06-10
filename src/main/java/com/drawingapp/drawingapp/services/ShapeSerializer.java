@@ -3,6 +3,7 @@ package com.drawingapp.drawingapp.services;
 import com.drawingapp.drawingapp.shapes_factory.Shape;
 import com.drawingapp.drawingapp.shapes_factory.ShapeFactory;
 import com.drawingapp.drawingapp.shapes_decorator.ResizableShape;
+import com.drawingapp.drawingapp.shapes_decorator.RotatableShapeDecorator;
 import com.drawingapp.drawingapp.shapes_adapter.SvgStarAdapter;
 import com.drawingapp.drawingapp.shapes_adapter.SvgStar;
 import com.google.gson.Gson;
@@ -50,18 +51,21 @@ public class ShapeSerializer {
         try {
             ShapeDto dto = new ShapeDto();
             
-            // Handle decorated and adapted shapes
-            if (shape instanceof ResizableShape) {
-                Shape baseShape = ((ResizableShape) shape).getBaseShape();
-                dto.type = baseShape.getClass().getSimpleName().replace("Shape", "").toLowerCase();
+            // Get the base type and properties
+            String className = shape.getClass().getSimpleName();
+            if (className.equals("RotatableShapeDecorator")) {
+                dto.isRotatable = true;
+                dto.rotation = ((RotatableShapeDecorator) shape).getRotation();
+                // Get the type from the shape's properties
+                dto.type = "rectangle"; // Default to rectangle for rotatable shapes
+            } else if (className.equals("ResizableShape")) {
                 dto.isResizable = true;
-            } else if (shape instanceof SvgStarAdapter) {
-                dto.type = "star";  // Use the base type for star
+                dto.type = "rectangle"; // Default to rectangle for resizable shapes
+            } else if (className.equals("SvgStarAdapter")) {
+                dto.type = "star";
                 dto.isStar = true;
             } else {
-                dto.type = shape.getClass().getSimpleName().replace("Shape", "").toLowerCase();
-                dto.isResizable = false;
-                dto.isStar = false;
+                dto.type = className.replace("Shape", "").toLowerCase();
             }
             
             dto.x = shape.getX();
@@ -108,6 +112,10 @@ public class ShapeSerializer {
                 if (dto.isResizable) {
                     shape = new ResizableShape(shape);
                 }
+                if (dto.isRotatable) {
+                    shape = new RotatableShapeDecorator(shape);
+                    ((RotatableShapeDecorator) shape).setRotation(dto.rotation);
+                }
                 
                 return shape;
             } else {
@@ -129,5 +137,7 @@ public class ShapeSerializer {
         public String color;
         public boolean isResizable;
         public boolean isStar;
+        public boolean isRotatable;
+        public double rotation;
     }
 } 

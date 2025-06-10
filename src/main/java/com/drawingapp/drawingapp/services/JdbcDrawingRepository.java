@@ -21,6 +21,12 @@ public class JdbcDrawingRepository implements DrawingRepository {
     
     private void createTablesIfNotExists() throws SQLException {
         try (Statement stmt = connection.createStatement()) {
+            // Disable foreign key checks
+            stmt.execute("SET FOREIGN_KEY_CHECKS = 0");
+            
+        
+            
+            // Create the drawings table with the correct structure
             stmt.execute("CREATE TABLE IF NOT EXISTS drawings (" +
                 "id INTEGER PRIMARY KEY AUTO_INCREMENT," +
                 "name VARCHAR(255) UNIQUE," +
@@ -28,6 +34,9 @@ public class JdbcDrawingRepository implements DrawingRepository {
                 "nodes_data TEXT," +
                 "edges_data TEXT," +
                 "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)");
+            
+            // Re-enable foreign key checks
+            // stmt.execute("SET FOREIGN_KEY_CHECKS = 1");
         }
     }
     

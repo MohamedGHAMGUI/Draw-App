@@ -3,81 +3,83 @@ package com.drawingapp.drawingapp.shapes_factory;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class LineShape implements Shape {
+public class LineShape implements RotatableShape {
     private double x;
     private double y;
     private double width;
     private double height;
-    private Color color = Color.BLACK;
+    private Color color = Color.TRANSPARENT;
     private boolean selected = false;
-    private double endX;
-    private double endY;
+    private double rotationAngle = 0.0;
 
     public LineShape() {
         this.x = 0;
         this.y = 0;
         this.width = 100;
-        this.height = 0;
-        this.endX = 100;
-        this.endY = 0;
+        this.height = 2;
     }
 
     @Override
     public void draw(GraphicsContext gc) {
+        gc.save(); // Save the current graphics context state
+        
+        // Translate to the center of the line
+        double centerX = x + width / 2;
+        double centerY = y + height / 2;
+        gc.translate(centerX, centerY);
+        
+        // Rotate around the center
+        gc.rotate(rotationAngle);
+        
+        // Translate back
+        gc.translate(-centerX, -centerY);
+        
+        // Draw the line
         gc.setStroke(color);
-        gc.setLineWidth(selected ? 2 : 1);
-        gc.strokeLine(x, y, endX, endY);
+        gc.setLineWidth(2.0);
+        gc.strokeLine(x, y, x + width, y + height);
+        
+        // Add selection indicator if selected
+        if (selected) {
+            gc.setStroke(Color.BLACK);
+            gc.setLineWidth(1.0);
+            double handleSize = 6.0;
+            gc.strokeOval(x - handleSize/2, y - handleSize/2, handleSize, handleSize);
+            gc.strokeOval(x + width - handleSize/2, y + height - handleSize/2, handleSize, handleSize);
+        }
+        
+        gc.restore(); // Restore the graphics context state
     }
 
     @Override
     public void draw(GraphicsContext gc, double x, double y) {
         this.x = x;
         this.y = y;
-        this.endX = x + width;
-        this.endY = y + height;
         draw(gc);
     }
 
     @Override
     public boolean contains(double x, double y) {
-        // Check if point is near the line
-        double A = x - this.x;
-        double B = y - this.y;
-        double C = endX - this.x;
-        double D = endY - this.y;
-
-        double dot = A * C + B * D;
-        double len_sq = C * C + D * D;
-        double param = -1;
+        // For rotated line, we need to transform the point
+        // Translate point to origin
+        double translatedX = x - this.x;
+        double translatedY = y - this.y;
         
-        if (len_sq != 0) {
-            param = dot / len_sq;
-        }
-
-        double xx, yy;
-
-        if (param < 0) {
-            xx = this.x;
-            yy = this.y;
-        } else if (param > 1) {
-            xx = endX;
-            yy = endY;
-        } else {
-            xx = this.x + param * C;
-            yy = this.y + param * D;
-        }
-
-        double dx = x - xx;
-        double dy = y - yy;
-        return Math.sqrt(dx * dx + dy * dy) < 5;
+        // Rotate point back
+        double angle = -rotationAngle * Math.PI / 180;
+        double rotatedX = translatedX * Math.cos(angle) - translatedY * Math.sin(angle);
+        double rotatedY = translatedX * Math.sin(angle) + translatedY * Math.cos(angle);
+        
+        // Check if point is near the line
+        double tolerance = 5.0; // 5 pixels tolerance
+        return rotatedX >= -tolerance && rotatedX <= width + tolerance &&
+               Math.abs(rotatedY) <= tolerance;
     }
 
     @Override
     public void move(double dx, double dy) {
         x += dx;
         y += dy;
-        endX += dx;
-        endY += dy;
     }
 
     @Override
@@ -104,8 +106,6 @@ public class LineShape implements Shape {
     public void resize(double newWidth, double newHeight) {
         this.width = newWidth;
         this.height = newHeight;
-        this.endX = x + width;
-        this.endY = y + height;
     }
 
     @Override
@@ -131,24 +131,35 @@ public class LineShape implements Shape {
     @Override
     public void setX(double x) {
         this.x = x;
-        this.endX = x + width;
     }
 
     @Override
     public void setY(double y) {
         this.y = y;
-        this.endY = y + height;
     }
 
     @Override
     public void setWidth(double width) {
         this.width = width;
-        this.endX = x + width;
     }
 
     @Override
     public void setHeight(double height) {
         this.height = height;
-        this.endY = y + height;
+    }
+
+    @Override
+    public void rotate(double angle) {
+        rotationAngle = (rotationAngle + angle) % 360;
+    }
+
+    @Override
+    public double getRotation() {
+        return rotationAngle;
+    }
+
+    @Override
+    public void setRotation(double angle) {
+        rotationAngle = angle % 360;
     }
 }

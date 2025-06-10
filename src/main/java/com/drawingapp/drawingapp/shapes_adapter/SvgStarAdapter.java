@@ -1,10 +1,11 @@
 package com.drawingapp.drawingapp.shapes_adapter;
 
 import com.drawingapp.drawingapp.shapes_factory.Shape;
+import com.drawingapp.drawingapp.shapes_factory.RotatableShape;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class SvgStarAdapter implements Shape {
+public class SvgStarAdapter implements RotatableShape {
     private SvgStar svgStar;
     private double x;
     private double y;
@@ -12,6 +13,7 @@ public class SvgStarAdapter implements Shape {
     private double height;
     private Color color = Color.BLACK;
     private boolean selected = false;
+    private double rotationAngle = 0.0;
 
     public SvgStarAdapter(SvgStar svgStar) {
         this.svgStar = svgStar;
@@ -23,8 +25,31 @@ public class SvgStarAdapter implements Shape {
 
     @Override
     public void draw(GraphicsContext gc) {
+        gc.save(); // Save the current graphics context state
+        
+        // Translate to the center of the shape
+        double centerX = x + width / 2;
+        double centerY = y + height / 2;
+        gc.translate(centerX, centerY);
+        
+        // Rotate around the center
+        gc.rotate(rotationAngle);
+        
+        // Translate back
+        gc.translate(-centerX, -centerY);
+        
+        // Draw the star
         gc.setFill(color);
         svgStar.draw(gc, x, y, width, height);
+        
+        // Add stroke if selected
+        if (selected) {
+            gc.setStroke(Color.BLACK);
+            gc.setLineWidth(2.0);
+            gc.strokeRect(x, y, width, height);
+        }
+        
+        gc.restore(); // Restore the graphics context state
     }
 
     @Override
@@ -36,8 +61,25 @@ public class SvgStarAdapter implements Shape {
 
     @Override
     public boolean contains(double x, double y) {
-        return x >= this.x && x <= this.x + width &&
-               y >= this.y && y <= this.y + height;
+        // For rotated shape, we need to transform the point
+        double centerX = this.x + width / 2;
+        double centerY = this.y + height / 2;
+        
+        // Translate point to origin
+        double translatedX = x - centerX;
+        double translatedY = y - centerY;
+        
+        // Rotate point back
+        double angle = -rotationAngle * Math.PI / 180;
+        double rotatedX = translatedX * Math.cos(angle) - translatedY * Math.sin(angle);
+        double rotatedY = translatedX * Math.sin(angle) + translatedY * Math.cos(angle);
+        
+        // Translate point back
+        rotatedX += centerX;
+        rotatedY += centerY;
+        
+        return rotatedX >= this.x && rotatedX <= this.x + width &&
+               rotatedY >= this.y && rotatedY <= this.y + height;
     }
 
     @Override
@@ -110,5 +152,20 @@ public class SvgStarAdapter implements Shape {
     @Override
     public void setHeight(double height) {
         this.height = height;
+    }
+
+    @Override
+    public void rotate(double angle) {
+        rotationAngle = (rotationAngle + angle) % 360;
+    }
+
+    @Override
+    public double getRotation() {
+        return rotationAngle;
+    }
+
+    @Override
+    public void setRotation(double angle) {
+        rotationAngle = angle % 360;
     }
 } 

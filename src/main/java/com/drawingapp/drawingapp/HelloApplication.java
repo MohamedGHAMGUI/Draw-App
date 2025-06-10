@@ -9,12 +9,17 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.drawingapp.drawingapp.services.ShapeManager;
 import com.drawingapp.drawingapp.services.ModeManager;
 import com.drawingapp.drawingapp.services.DrawingRepository;
 import com.drawingapp.drawingapp.services.JdbcDrawingRepository;
 import com.drawingapp.drawingapp.logging.*;
+import com.drawingapp.drawingapp.shapes_factory.Shape;
+import com.drawingapp.drawingapp.shapes_graph.GraphNode;
+import com.drawingapp.drawingapp.shapes_graph.GraphEdge;
 
 public class HelloApplication extends Application {
     String dbUrl = "jdbc:mysql://localhost:3306/drawingapp_logs?useSSL=false&serverTimezone=UTC";
@@ -24,7 +29,6 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-        // scene.getStylesheets().add("org/kordamp/bootstrapfx/bootstrapfx.css");
         stage.setTitle("Drawing App");
         stage.setScene(scene);
         HelloController controller = fxmlLoader.getController();
@@ -44,27 +48,79 @@ public class HelloApplication extends Application {
         } catch (SQLException e) {
             System.err.println("Database connection error: " + e.getMessage());
             e.printStackTrace();
+            // Create a default repository that does nothing
+            controller.setDrawingRepository(new DrawingRepository() {
+                @Override
+                public void saveDrawing(String name, List<Shape> shapes, List<GraphNode> nodes, List<GraphEdge> edges) {
+                    System.err.println("Cannot save drawing - database connection failed");
+                }
+
+                @Override
+                public DrawingData loadDrawing(String name) {
+                    System.err.println("Cannot load drawing - database connection failed");
+                    return null;
+                }
+
+                @Override
+                public List<String> listSavedDrawings() {
+                    System.err.println("Cannot list drawings - database connection failed");
+                    return new ArrayList<>();
+                }
+
+                @Override
+                public void deleteDrawing(String name) {
+                    System.err.println("Cannot delete drawing - database connection failed");
+                }
+            });
         } catch (ClassNotFoundException e) {
             System.err.println("MySQL JDBC Driver not found: " + e.getMessage());
             e.printStackTrace();
+            // Create a default repository that does nothing
+            controller.setDrawingRepository(new DrawingRepository() {
+                @Override
+                public void saveDrawing(String name, List<Shape> shapes, List<GraphNode> nodes, List<GraphEdge> edges) {
+                    System.err.println("Cannot save drawing - MySQL driver not found");
+                }
+
+                @Override
+                public DrawingData loadDrawing(String name) {
+                    System.err.println("Cannot load drawing - MySQL driver not found");
+                    return null;
+                }
+
+                @Override
+                public List<String> listSavedDrawings() {
+                    System.err.println("Cannot list drawings - MySQL driver not found");
+                    return new ArrayList<>();
+                }
+
+                @Override
+                public void deleteDrawing(String name) {
+                    System.err.println("Cannot delete drawing - MySQL driver not found");
+                }
+            });
         }
         
         controller.postInjectInit();
-        LoggerManager.getInstance().setStrategy(new ConsoleLogger());
-        LoggerManager.getInstance().log("===> ConsoleLogger entry");
         
-        // For database logging:
+        // Initialize composite logger
+        CompositeLogger compositeLogger = new CompositeLogger();
+        compositeLogger.addLogger(new ConsoleLogger());
+        
+        // Add database logger if available
         try {
-            LoggerManager.getInstance().setStrategy(
-                new DatabaseLogger(dbUrl, dbUser, dbPass)
-            );
+            compositeLogger.addLogger(new DatabaseLogger(dbUrl, dbUser, dbPass));
         } catch (SQLException e) {
             System.err.println("Logger database connection error: " + e.getMessage());
             e.printStackTrace();
         }
-        // For file logging:
-        // LoggerManager.getInstance().setStrategy(new FileLogger("log.txt"));
-        // LoggerManager.getInstance().log("===> FileLogger test entry");
+        
+        // Add file logger
+        compositeLogger.addLogger(new FileLogger("log.txt"));
+        
+        // Set the composite logger as the strategy
+        LoggerManager.getInstance().setStrategy(compositeLogger);
+        LoggerManager.getInstance().log("Application started - logging to console, file, and database (if available)");
 
         stage.show();
     }

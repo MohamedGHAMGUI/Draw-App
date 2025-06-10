@@ -15,7 +15,6 @@ public class FileLogger implements LoggerStrategy {
 public void log(String message) {
     try (FileWriter fw = new FileWriter(filename, true)) {
         fw.write(message + System.lineSeparator());
-        System.out.println("Wrote to file: " + filename); 
     } catch (IOException e) {
         System.err.println("FileLogger failed to write to file: " + filename);
         e.printStackTrace();
