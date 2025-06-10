@@ -1,7 +1,6 @@
 package com.drawingapp.drawingapp.logging;
 
-import com.drawingapp.drawingapp.logging.LoggerStrategy;
-import com.drawingapp.drawingapp.logging.ConsoleLogger;
+
 
 public class LoggerManager {
     private static LoggerManager instance;

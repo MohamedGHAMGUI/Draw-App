@@ -56,4 +56,8 @@ public abstract class ShapeDecorator implements Shape {
     public Color getColor() {
         return colorStrategy.getColor();
     }
+
+    public Shape getDecoratedShape() {
+        return decoratedShape;
+    }
 }

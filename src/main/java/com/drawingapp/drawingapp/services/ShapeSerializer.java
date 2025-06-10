@@ -50,24 +50,38 @@ public class ShapeSerializer {
         if (shape == null) return null;
         try {
             ShapeDto dto = new ShapeDto();
-            
-            // Get the base type and properties
-            String className = shape.getClass().getSimpleName();
-            if (className.equals("RotatableShapeDecorator")) {
-                dto.isRotatable = true;
-                dto.rotation = ((RotatableShapeDecorator) shape).getRotation();
-                // Get the type from the shape's properties
-                dto.type = "rectangle"; // Default to rectangle for rotatable shapes
-            } else if (className.equals("ResizableShape")) {
-                dto.isResizable = true;
-                dto.type = "rectangle"; // Default to rectangle for resizable shapes
-            } else if (className.equals("SvgStarAdapter")) {
+
+            // Unwrap decorators to get the base shape
+            Shape base = shape;
+            boolean isRotatable = false;
+            double rotation = 0;
+            boolean isResizable = false;
+
+            // Unwrap decorators
+            while (base instanceof com.drawingapp.drawingapp.shapes_decorator.RotatableShapeDecorator ||
+                   base instanceof com.drawingapp.drawingapp.shapes_decorator.ResizableShape) {
+                if (base instanceof com.drawingapp.drawingapp.shapes_decorator.RotatableShapeDecorator) {
+                    isRotatable = true;
+                    rotation = ((com.drawingapp.drawingapp.shapes_decorator.RotatableShapeDecorator) base).getRotation();
+                    base = ((com.drawingapp.drawingapp.shapes_decorator.RotatableShapeDecorator) base).getDecoratedShape();
+                } else if (base instanceof com.drawingapp.drawingapp.shapes_decorator.ResizableShape) {
+                    isResizable = true;
+                    base = ((com.drawingapp.drawingapp.shapes_decorator.ResizableShape) base).getDecoratedShape();
+                }
+            }
+
+            String className = base.getClass().getSimpleName();
+            if (className.equals("SvgStarAdapter")) {
                 dto.type = "star";
                 dto.isStar = true;
             } else {
                 dto.type = className.replace("Shape", "").toLowerCase();
             }
-            
+
+            dto.isRotatable = isRotatable;
+            dto.rotation = rotation;
+            dto.isResizable = isResizable;
+
             dto.x = shape.getX();
             dto.y = shape.getY();
             dto.width = shape.getWidth();

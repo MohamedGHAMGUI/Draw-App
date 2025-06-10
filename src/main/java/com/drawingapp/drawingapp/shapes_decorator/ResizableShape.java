@@ -106,4 +106,9 @@ public class ResizableShape extends ShapeDecorator {
         setWidth(newWidth);
         setHeight(newHeight);
     }
+
+    @Override
+    public Shape getDecoratedShape() {
+        return decoratedShape;
+    }
 }

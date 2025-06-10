@@ -146,4 +146,9 @@ public class RotatableShapeDecorator extends ShapeDecorator implements Rotatable
     public Color getColor() {
         return decoratedShape.getColor();
     }
+
+    @Override
+    public Shape getDecoratedShape() {
+        return decoratedShape;
+    }
 } 
