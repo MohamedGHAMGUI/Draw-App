@@ -14,7 +14,7 @@ public class GraphNode implements Shape {
     private Color color = Color.BLACK;
     private boolean selected = false;
     private List<GraphEdge> edges;
-    private static final double NODE_RADIUS = 10.0;
+    private static final double NODE_RADIUS = 5.0;
     private int id;
 
     public GraphNode(double x, double y) {

@@ -18,6 +18,8 @@ import com.drawingapp.drawingapp.shapes_state_observer.State;
 import com.drawingapp.drawingapp.logging.LoggerManager;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import com.drawingapp.drawingapp.commands.CommandManager;
+import com.drawingapp.drawingapp.commands.AddShapeCommand;
 
 import java.util.List;
 
@@ -30,6 +32,7 @@ public class DrawingModeController extends BaseController implements DrawingMode
     private MoveState moveState;
     private Color currentColor = Color.BLACK;
     private ShortestPathAlgorithm currentAlgorithm;
+    private CommandManager commandManager;
     
     public DrawingModeController(ShapeManager shapeManager, ModeManager modeManager, 
                                GraphManager graphManager, DrawingRepository drawingRepository,
@@ -47,6 +50,10 @@ public class DrawingModeController extends BaseController implements DrawingMode
     
     public void setCurrentColor(Color color) {
         this.currentColor = color;
+    }
+
+    public void setCommandManager(CommandManager commandManager) {
+        this.commandManager = commandManager;
     }
 
     @Override
@@ -72,7 +79,12 @@ public class DrawingModeController extends BaseController implements DrawingMode
                         if (selectedShape.equals("rectangle") || selectedShape.equals("line") || selectedShape.equals("star")) {
                             shape = new RotatableShapeDecorator(shape);
                         }
-                        shapeManager.addShape(shape);
+                        // Use Command Pattern for adding shape
+                        if (commandManager != null) {
+                            commandManager.executeCommand(new AddShapeCommand(shapeManager, shape));
+                        } else {
+                            shapeManager.addShape(shape);
+                        }
                         shape.draw(gc, event.getX(), event.getY());
                         LoggerManager.getInstance().log(String.format("Created new %s at (%.2f, %.2f) with color %s", 
                             selectedShape, event.getX(), event.getY(), currentColor.toString()));

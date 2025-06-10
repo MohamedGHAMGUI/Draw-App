@@ -11,6 +11,11 @@ import com.drawingapp.drawingapp.services.ModeManager;
 import com.drawingapp.drawingapp.services.ShapeManager;
 import com.drawingapp.drawingapp.shapes_observer.ShapeObserver;
 import com.drawingapp.drawingapp.shapes_state_observer.ShapeSelector;
+import com.drawingapp.drawingapp.commands.CommandManager;
+import com.drawingapp.drawingapp.commands.DeleteShapeCommand;
+import com.drawingapp.drawingapp.commands.MoveShapeCommand;
+import com.drawingapp.drawingapp.commands.ResizeShapeCommand;
+import com.drawingapp.drawingapp.commands.ChangeColorCommand;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -45,6 +50,7 @@ public class HelloController implements ShapeObserver {
     private GraphManager graphManager;
     private DrawingRepository drawingRepository;
     private AppConfig appConfig;
+    private CommandManager commandManager;
 
     public void setShapeManager(ShapeManager shapeManager) {
         this.shapeManager = shapeManager;
@@ -75,6 +81,7 @@ public class HelloController implements ShapeObserver {
         shapeOperationHandler = appConfig.getShapeOperationHandler();
         graphOperationHandler = appConfig.getGraphOperationHandler();
         fileOperationHandler = appConfig.getFileOperationHandler();
+        commandManager = appConfig.getCommandManager();
         
         // Set up event handlers
         canvas.setOnMousePressed(drawingModeHandler::handleMousePressed);
@@ -83,7 +90,7 @@ public class HelloController implements ShapeObserver {
         
         // Set up color picker
         colorPicker.valueProperty().addListener((obs, oldVal, newVal) -> {
-            shapeOperationHandler.onColorChanged(newVal);
+            onColorChanged();
         });
         
         // Initialize algorithm combo box
@@ -143,7 +150,13 @@ public class HelloController implements ShapeObserver {
 
     @FXML
     private void onColorChanged() {
-        shapeOperationHandler.onColorChanged(colorPicker.getValue());
+        com.drawingapp.drawingapp.shapes_factory.Shape selected = shapeManager.getSelectedShape();
+        if (selected != null && commandManager != null) {
+            commandManager.executeCommand(new ChangeColorCommand(selected, selected.getColor(), colorPicker.getValue()));
+            drawingModeHandler.redrawCanvas();
+        } else {
+            shapeOperationHandler.onColorChanged(colorPicker.getValue());
+        }
     }
 
     @FXML
@@ -184,5 +197,30 @@ public class HelloController implements ShapeObserver {
     @FXML
     private void onRotateRightClicked() {
         shapeOperationHandler.onRotateRight();
+    }
+
+    @FXML
+    private void onUndoClicked() {
+        if (commandManager != null) {
+            commandManager.undo();
+            drawingModeHandler.redrawCanvas();
+        }
+    }
+
+    @FXML
+    private void onRedoClicked() {
+        if (commandManager != null) {
+            commandManager.redo();
+            drawingModeHandler.redrawCanvas();
+        }
+    }
+
+    @FXML
+    private void onDeleteShapeClicked() {
+        com.drawingapp.drawingapp.shapes_factory.Shape selected = shapeManager.getSelectedShape();
+        if (selected != null && commandManager != null) {
+            commandManager.executeCommand(new DeleteShapeCommand(shapeManager, selected));
+            drawingModeHandler.redrawCanvas();
+        }
     }
 }

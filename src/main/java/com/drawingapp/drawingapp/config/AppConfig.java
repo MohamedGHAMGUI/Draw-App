@@ -7,6 +7,7 @@ import com.drawingapp.drawingapp.services.ModeManager;
 import com.drawingapp.drawingapp.services.ShapeManager;
 import com.drawingapp.drawingapp.shapes_graph.DijkstraAlgorithm;
 import com.drawingapp.drawingapp.shapes_graph.ShortestPathAlgorithm;
+import com.drawingapp.drawingapp.commands.CommandManager;
 import javafx.scene.canvas.GraphicsContext;
 
 public class AppConfig {
@@ -15,6 +16,7 @@ public class AppConfig {
     private final GraphManager graphManager;
     private final DrawingRepository drawingRepository;
     private final ShortestPathAlgorithm shortestPathAlgorithm;
+    private final CommandManager commandManager;
     
     private DrawingModeController drawingModeController;
     private ShapeOperationController shapeOperationController;
@@ -28,6 +30,7 @@ public class AppConfig {
         this.graphManager = graphManager;
         this.drawingRepository = drawingRepository;
         this.shortestPathAlgorithm = new DijkstraAlgorithm();
+        this.commandManager = new CommandManager();
         
         initializeControllers();
         wireControllers();
@@ -41,6 +44,7 @@ public class AppConfig {
             drawingRepository,
             shortestPathAlgorithm
         );
+        drawingModeController.setCommandManager(commandManager);
         
         shapeOperationController = new ShapeOperationController(
             shapeManager,
@@ -91,5 +95,9 @@ public class AppConfig {
     
     public FileOperationHandler getFileOperationHandler() {
         return fileOperationController;
+    }
+    
+    public CommandManager getCommandManager() {
+        return commandManager;
     }
 } 

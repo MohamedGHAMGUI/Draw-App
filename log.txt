@@ -1817,3 +1817,885 @@ Changed color of shape at (180.80, 170.40) to 0xffffccff
 Saved drawing 'aaa' with 3 shapes, 0 nodes, and 0 edges
 Application started - logging to console, file, and database (if available)
 Loaded drawing 'aaa' with 3 shapes, 0 nodes, and 0 edges
+Application started - logging to console, file, and database (if available)
+Application started - logging to console, file, and database (if available)
+Selected shape type: rectangle
+Created new rectangle at (243.20, 192.80) with color 0x000000ff
+Selected shape at (296.8, 208.0)
+Selected shape at (243.20, 192.80) with size 100.00 x 50.00
+Started moving shape at (296.8, 228.79999999999998)
+Selected shape at (243.20, 192.80) with size 100.00 x 50.00
+Moved shape by (0.0, -1.599999999999966)
+Moved shape to (243.20, 191.20)
+Moved shape by (-2.3999999999999773, -1.6000000000000227)
+Moved shape to (240.80, 189.60)
+Moved shape by (-4.800000000000068, -3.1999999999999886)
+Moved shape to (236.00, 186.40)
+Moved shape by (-3.199999999999932, -1.6000000000000227)
+Moved shape to (232.80, 184.80)
+Moved shape by (-4.800000000000068, -0.8000000000000114)
+Moved shape to (228.00, 184.00)
+Moved shape by (-2.3999999999999773, -0.7999999999999545)
+Moved shape to (225.60, 183.20)
+Moved shape by (-2.3999999999999773, 0.0)
+Moved shape to (223.20, 183.20)
+Moved shape by (-0.7999999999999545, -0.8000000000000114)
+Moved shape to (222.40, 182.40)
+Moved shape by (-2.400000000000091, -0.8000000000000114)
+Moved shape to (220.00, 181.60)
+Moved shape by (-1.599999999999909, -0.8000000000000114)
+Moved shape to (218.40, 180.80)
+Moved shape by (-4.0, -2.3999999999999773)
+Moved shape to (214.40, 178.40)
+Moved shape by (-16.0, -6.400000000000006)
+Moved shape to (198.40, 172.00)
+Moved shape by (-15.200000000000045, -6.400000000000006)
+Moved shape to (183.20, 165.60)
+Moved shape by (-16.799999999999955, -7.199999999999989)
+Moved shape to (166.40, 158.40)
+Moved shape by (-19.200000000000045, -3.200000000000017)
+Moved shape to (147.20, 155.20)
+Moved shape by (-12.799999999999955, -4.799999999999983)
+Moved shape to (134.40, 150.40)
+Moved shape by (-10.400000000000091, -3.200000000000017)
+Moved shape to (124.00, 147.20)
+Moved shape by (-3.199999999999932, -0.799999999999983)
+Moved shape to (120.80, 146.40)
+Moved shape by (-6.399999999999977, -2.4000000000000057)
+Moved shape to (114.40, 144.00)
+Moved shape by (-15.200000000000045, -4.0)
+Moved shape to (99.20, 140.00)
+Moved shape by (-5.600000000000023, -0.8000000000000114)
+Moved shape to (93.60, 139.20)
+Moved shape by (-18.399999999999977, -5.599999999999994)
+Moved shape to (75.20, 133.60)
+Moved shape by (-4.0, 0.0)
+Moved shape to (71.20, 133.60)
+Moved shape by (-1.6000000000000227, -0.8000000000000114)
+Moved shape to (69.60, 132.80)
+Moved shape by (-0.7999999999999545, 0.0)
+Moved shape to (68.80, 132.80)
+Moved shape by (-0.8000000000000682, 0.0)
+Moved shape to (68.00, 132.80)
+Moved shape by (-1.599999999999909, 0.0)
+Moved shape to (66.40, 132.80)
+Moved shape by (-1.6000000000000227, -1.5999999999999943)
+Moved shape to (64.80, 131.20)
+Moved shape by (-0.8000000000000682, 0.0)
+Moved shape to (64.00, 131.20)
+Moved shape by (-0.7999999999999545, -0.799999999999983)
+Moved shape to (63.20, 130.40)
+Moved shape by (-0.7999999999999545, 0.0)
+Moved shape to (62.40, 130.40)
+Moved shape by (-0.8000000000000682, 0.0)
+Moved shape to (61.60, 130.40)
+Moved shape by (-1.6000000000000227, -0.8000000000000114)
+Moved shape to (60.00, 129.60)
+Moved shape by (-0.7999999999999545, 0.0)
+Moved shape to (59.20, 129.60)
+Moved shape by (-0.7999999999999545, 0.0)
+Moved shape to (58.40, 129.60)
+Started resizing shape at (160.00, 175.20) with initial size: 100.00 x 50.00
+Resized shape to 0.00 x 0.80
+Resized shape to 0.80 x 1.60
+Resized shape to 0.80 x 2.40
+Resized shape to 1.60 x 2.40
+Resized shape to 3.20 x 4.80
+Resized shape to 4.80 x 6.40
+Resized shape to 7.20 x 8.00
+Resized shape to 8.00 x 8.80
+Resized shape to 8.80 x 11.20
+Resized shape to 10.40 x 12.80
+Resized shape to 11.20 x 15.20
+Resized shape to 12.00 x 16.80
+Resized shape to 13.60 x 20.00
+Resized shape to 15.20 x 21.60
+Resized shape to 16.00 x 23.20
+Resized shape to 18.40 x 27.20
+Resized shape to 19.20 x 28.00
+Resized shape to 21.60 x 31.20
+Resized shape to 22.40 x 32.00
+Resized shape to 22.40 x 33.60
+Resized shape to 23.20 x 33.60
+Resized shape to 24.00 x 35.20
+Resized shape to 24.80 x 36.00
+Resized shape to 25.60 x 37.60
+Resized shape to 26.40 x 38.40
+Resized shape to 27.20 x 38.40
+Resized shape to 27.20 x 39.20
+Resized shape to 28.00 x 40.00
+Resized shape to 29.60 x 40.80
+Resized shape to 30.40 x 43.20
+Resized shape to 30.40 x 44.00
+Resized shape to 32.00 x 44.80
+Resized shape to 34.40 x 45.60
+Resized shape to 34.40 x 46.40
+Resized shape to 36.00 x 48.00
+Resized shape to 37.60 x 48.80
+Resized shape to 39.20 x 50.40
+Resized shape to 42.40 x 52.00
+Resized shape to 45.60 x 52.00
+Resized shape to 50.40 x 55.20
+Resized shape to 55.20 x 56.80
+Resized shape to 60.80 x 60.00
+Resized shape to 64.00 x 61.60
+Resized shape to 70.40 x 65.60
+Resized shape to 74.40 x 67.20
+Resized shape to 79.20 x 71.20
+Resized shape to 84.00 x 75.20
+Resized shape to 92.80 x 80.80
+Resized shape to 102.40 x 85.60
+Resized shape to 113.60 x 92.80
+Resized shape to 124.80 x 96.80
+Resized shape to 133.60 x 101.60
+Resized shape to 143.20 x 104.80
+Resized shape to 148.00 x 106.40
+Resized shape to 151.20 x 108.00
+Resized shape to 154.40 x 109.60
+Resized shape to 157.60 x 111.20
+Resized shape to 163.20 x 114.40
+Resized shape to 168.00 x 116.80
+Resized shape to 174.40 x 120.80
+Resized shape to 181.60 x 124.80
+Resized shape to 185.60 x 127.20
+Resized shape to 190.40 x 128.80
+Resized shape to 193.60 x 129.60
+Resized shape to 194.40 x 130.40
+Resized shape to 195.20 x 130.40
+Resized shape to 196.00 x 130.40
+Resized shape to 196.80 x 130.40
+Resized shape to 198.40 x 130.40
+Started resizing shape at (155.20, 200.00) with initial size: 198.40 x 130.40
+Selected shape type: star
+Created new star at (419.20, 178.40) with color 0x000000ff
+Created new star at (472.80, 219.20) with color 0x000000ff
+Selected shape at (480.00000000000006, 223.99999999999997)
+Selected shape at (480.00000000000006, 223.99999999999997)
+Selected shape at (472.80, 219.20) with size 100.00 x 100.00
+Selected shape at (464.8, 222.4)
+Selected shape at (419.20, 178.40) with size 100.00 x 100.00
+Selected shape at (464.8, 222.4)
+Selected shape at (419.20, 178.40) with size 100.00 x 100.00
+Rotated shape to 1.3899617213540096 degrees
+Rotated shape to 5.55984522845294 degrees
+Rotated shape to 8.33976867116096 degrees
+Rotated shape to 11.119692113868979 degrees
+Rotated shape to 12.509652178259891 degrees
+Rotated shape to 16.67953568535882 degrees
+Rotated shape to 18.069499063675927 degrees
+Rotated shape to 19.45945912806684 degrees
+Rotated shape to 20.84942250638395 degrees
+Rotated shape to 22.23938257077486 degrees
+Rotated shape to 23.629342635165774 degrees
+Rotated shape to 26.40926607787379 degrees
+Rotated shape to 27.7992294561909 degrees
+Rotated shape to 29.18918952058181 degrees
+Rotated shape to 31.96911296328983 degrees
+Rotated shape to 33.359073027680736 degrees
+Rotated shape to 34.749033092071656 degrees
+Rotated shape to 36.13899647038876 degrees
+Rotated shape to 37.528956534779674 degrees
+Rotated shape to 38.91891659917058 degrees
+Rotated shape to 41.6988433558048 degrees
+Rotated shape to 43.08880342019571 degrees
+Rotated shape to 44.47876348458662 degrees
+Rotated shape to 48.648650305611746 degrees
+Rotated shape to 50.038610370002665 degrees
+Rotated shape to 54.20849719102779 degrees
+Rotated shape to 55.5984572554187 degrees
+Rotated shape to 58.37837738420052 degrees
+Rotated shape to 61.15830414083474 degrees
+Rotated shape to 65.32818433400747 degrees
+Rotated shape to 66.71814439839838 degrees
+Rotated shape to 69.49807115503259 degrees
+Rotated shape to 70.88803121942351 degrees
+Rotated shape to 72.27799128381443 degrees
+Rotated shape to 75.05791804044864 degrees
+Rotated shape to 67.5 degrees
+Selected shape at (204.8, 192.79999999999998)
+Selected shape at (58.40, 129.60) with size 198.40 x 130.40
+Switched to node drawing mode
+Added graph node at (268.00, 180.80)
+Added graph node at (685.60, 329.60)
+Switched to edge drawing mode
+Selected node at (268.00, 180.80) for edge creation
+Created edge between nodes at (268.00, 180.80) and (685.60, 329.60)
+Selected shape type: line
+Created new line at (492.00, 145.60) with color 0x000000ff
+Created new line at (505.60, 184.00) with color 0x000000ff
+Created new line at (362.40, 253.60) with color 0x000000ff
+Started resizing shape at (366.40, 252.80) with initial size: 198.40 x 130.40
+Resized shape to 0.80 x 0.80
+Resized shape to 1.60 x 0.80
+Resized shape to 2.40 x 0.80
+Resized shape to 4.00 x 0.80
+Resized shape to 5.60 x 0.80
+Resized shape to 8.00 x 0.80
+Resized shape to 8.80 x 0.80
+Resized shape to 11.20 x 0.80
+Resized shape to 14.40 x 0.80
+Resized shape to 15.20 x 0.80
+Resized shape to 18.40 x 0.80
+Resized shape to 21.60 x 0.80
+Resized shape to 23.20 x 0.80
+Resized shape to 27.20 x 0.80
+Resized shape to 30.40 x 0.80
+Resized shape to 34.40 x 0.80
+Resized shape to 37.60 x 0.80
+Resized shape to 40.00 x 0.80
+Resized shape to 41.60 x 0.80
+Resized shape to 44.80 x 0.80
+Resized shape to 48.00 x 0.80
+Resized shape to 49.60 x 0.80
+Resized shape to 50.40 x 0.80
+Resized shape to 52.00 x 0.80
+Resized shape to 52.80 x 0.80
+Resized shape to 55.20 x 0.00
+Resized shape to 56.00 x 0.00
+Resized shape to 56.80 x 0.00
+Resized shape to 58.40 x 0.00
+Resized shape to 60.00 x 0.80
+Resized shape to 60.80 x 0.80
+Resized shape to 61.60 x 0.80
+Selected shape at (384.00000000000006, 253.6)
+Selected shape at (362.40, 253.60) with size 100.00 x 2.00
+Started resizing shape at (380.00, 251.20) with initial size: 100.00 x 2.00
+Started resizing shape at (360.80, 252.00) with initial size: 100.00 x 2.00
+Resized shape to 0.00 x 0.80
+Resized shape to 2.40 x 0.80
+Resized shape to 4.00 x 0.80
+Resized shape to 7.20 x 0.80
+Resized shape to 11.20 x 0.80
+Resized shape to 14.40 x 0.80
+Resized shape to 17.60 x 1.60
+Resized shape to 20.80 x 2.40
+Resized shape to 21.60 x 2.40
+Resized shape to 24.00 x 4.00
+Resized shape to 25.60 x 4.00
+Resized shape to 28.00 x 4.80
+Resized shape to 33.60 x 4.80
+Resized shape to 38.40 x 5.60
+Resized shape to 44.80 x 6.40
+Resized shape to 52.80 x 6.40
+Resized shape to 56.80 x 6.40
+Resized shape to 64.00 x 6.40
+Resized shape to 68.00 x 6.40
+Resized shape to 86.40 x 8.00
+Resized shape to 90.40 x 9.60
+Resized shape to 97.60 x 9.60
+Resized shape to 100.00 x 9.60
+Resized shape to 101.60 x 10.40
+Resized shape to 102.40 x 10.40
+Resized shape to 104.00 x 11.20
+Resized shape to 104.00 x 12.00
+Resized shape to 104.80 x 12.00
+Resized shape to 105.60 x 12.80
+Resized shape to 107.20 x 13.60
+Resized shape to 110.40 x 16.00
+Resized shape to 112.00 x 16.80
+Resized shape to 115.20 x 16.80
+Resized shape to 118.40 x 19.20
+Resized shape to 120.80 x 20.00
+Resized shape to 123.20 x 21.60
+Resized shape to 126.40 x 23.20
+Resized shape to 132.00 x 24.80
+Resized shape to 137.60 x 26.40
+Resized shape to 144.80 x 28.80
+Resized shape to 152.80 x 30.40
+Resized shape to 164.00 x 32.80
+Resized shape to 176.00 x 35.20
+Resized shape to 188.00 x 36.00
+Resized shape to 199.20 x 38.40
+Resized shape to 207.20 x 39.20
+Resized shape to 215.20 x 40.80
+Resized shape to 222.40 x 42.40
+Resized shape to 230.40 x 45.60
+Started resizing shape at (71.20, 325.60) with initial size: 230.40 x 45.60
+Started resizing shape at (593.60, 300.80) with initial size: 230.40 x 45.60
+Resized shape to 0.80 x 0.00
+Resized shape to 1.60 x 0.00
+Resized shape to 2.40 x 0.00
+Resized shape to 3.20 x 0.00
+Resized shape to 4.80 x 0.00
+Resized shape to 6.40 x 0.80
+Resized shape to 8.00 x 2.40
+Resized shape to 10.40 x 4.00
+Resized shape to 14.40 x 8.00
+Resized shape to 19.20 x 12.80
+Resized shape to 23.20 x 19.20
+Resized shape to 27.20 x 26.40
+Resized shape to 33.60 x 32.00
+Resized shape to 38.40 x 37.60
+Resized shape to 41.60 x 40.80
+Resized shape to 43.20 x 41.60
+Resized shape to 44.80 x 43.20
+Resized shape to 46.40 x 44.80
+Resized shape to 47.20 x 46.40
+Resized shape to 47.20 x 47.20
+Resized shape to 49.60 x 49.60
+Resized shape to 51.20 x 52.00
+Resized shape to 55.20 x 56.80
+Resized shape to 60.00 x 61.60
+Resized shape to 64.80 x 67.20
+Resized shape to 73.60 x 72.00
+Resized shape to 80.80 x 77.60
+Resized shape to 93.60 x 84.80
+Resized shape to 102.40 x 88.80
+Resized shape to 110.40 x 94.40
+Resized shape to 119.20 x 99.20
+Resized shape to 140.00 x 110.40
+Resized shape to 163.20 x 125.60
+Resized shape to 187.20 x 141.60
+Resized shape to 198.40 x 149.60
+Resized shape to 209.60 x 156.00
+Resized shape to 224.80 x 164.80
+Resized shape to 240.00 x 172.80
+Resized shape to 249.60 x 178.40
+Resized shape to 257.60 x 182.40
+Resized shape to 261.60 x 184.80
+Resized shape to 266.40 x 188.00
+Resized shape to 269.60 x 189.60
+Resized shape to 271.20 x 191.20
+Resized shape to 272.80 x 192.00
+Resized shape to 273.60 x 192.00
+Resized shape to 274.40 x 195.20
+Resized shape to 276.00 x 196.00
+Resized shape to 276.80 x 198.40
+Resized shape to 278.40 x 203.20
+Resized shape to 280.80 x 206.40
+Resized shape to 284.80 x 212.00
+Resized shape to 286.40 x 214.40
+Resized shape to 289.60 x 217.60
+Resized shape to 291.20 x 219.20
+Resized shape to 293.60 x 221.60
+Resized shape to 296.80 x 223.20
+Resized shape to 299.20 x 224.80
+Resized shape to 301.60 x 224.80
+Resized shape to 305.60 x 226.40
+Resized shape to 308.00 x 227.20
+Resized shape to 309.60 x 228.00
+Resized shape to 312.80 x 228.80
+Resized shape to 316.00 x 229.60
+Resized shape to 319.20 x 231.20
+Resized shape to 324.80 x 232.00
+Resized shape to 333.60 x 234.40
+Resized shape to 337.60 x 237.60
+Resized shape to 340.00 x 238.40
+Resized shape to 341.60 x 240.80
+Resized shape to 341.60 x 241.60
+Resized shape to 341.60 x 242.40
+Resized shape to 337.60 x 244.00
+Resized shape to 328.00 x 247.20
+Resized shape to 317.60 x 250.40
+Resized shape to 299.20 x 255.20
+Resized shape to 280.80 x 259.20
+Resized shape to 263.20 x 262.40
+Resized shape to 245.60 x 263.20
+Resized shape to 229.60 x 267.20
+Resized shape to 216.80 x 267.20
+Resized shape to 205.60 x 268.00
+Resized shape to 188.80 x 272.00
+Resized shape to 174.40 x 272.00
+Resized shape to 159.20 x 272.80
+Resized shape to 143.20 x 272.80
+Resized shape to 127.20 x 272.80
+Resized shape to 115.20 x 272.80
+Resized shape to 103.20 x 272.80
+Resized shape to 91.20 x 272.80
+Resized shape to 81.60 x 272.80
+Resized shape to 72.80 x 272.80
+Resized shape to 65.60 x 272.80
+Resized shape to 56.00 x 272.00
+Resized shape to 48.00 x 270.40
+Resized shape to 40.80 x 269.60
+Resized shape to 31.20 x 267.20
+Resized shape to 23.20 x 265.60
+Resized shape to 12.80 x 264.00
+Resized shape to 0.80 x 260.80
+Resized shape to 14.40 x 258.40
+Resized shape to 24.80 x 258.40
+Resized shape to 37.60 x 255.20
+Resized shape to 46.40 x 254.40
+Resized shape to 57.60 x 253.60
+Resized shape to 76.80 x 250.40
+Resized shape to 86.40 x 248.80
+Resized shape to 95.20 x 246.40
+Resized shape to 97.60 x 246.40
+Resized shape to 98.40 x 245.60
+Resized shape to 97.60 x 245.60
+Resized shape to 93.60 x 245.60
+Resized shape to 88.80 x 245.60
+Resized shape to 84.80 x 245.60
+Resized shape to 80.80 x 247.20
+Resized shape to 73.60 x 248.80
+Resized shape to 64.80 x 252.00
+Resized shape to 54.40 x 256.80
+Resized shape to 43.20 x 258.40
+Resized shape to 32.00 x 261.60
+Resized shape to 21.60 x 263.20
+Resized shape to 9.60 x 264.00
+Resized shape to 0.00 x 264.80
+Resized shape to 9.60 x 267.20
+Resized shape to 19.20 x 268.00
+Resized shape to 24.80 x 269.60
+Resized shape to 32.80 x 272.00
+Resized shape to 38.40 x 274.40
+Resized shape to 44.00 x 275.20
+Resized shape to 48.00 x 277.60
+Resized shape to 52.00 x 278.40
+Resized shape to 54.40 x 279.20
+Resized shape to 56.80 x 280.80
+Resized shape to 60.00 x 282.40
+Resized shape to 61.60 x 282.40
+Resized shape to 63.20 x 282.40
+Resized shape to 64.00 x 282.40
+Resized shape to 66.40 x 282.40
+Resized shape to 71.20 x 282.40
+Resized shape to 76.80 x 282.40
+Resized shape to 86.40 x 282.40
+Resized shape to 95.20 x 282.40
+Resized shape to 108.80 x 282.40
+Resized shape to 144.00 x 282.40
+Resized shape to 184.00 x 280.80
+Resized shape to 196.80 x 279.20
+Resized shape to 210.40 x 279.20
+Resized shape to 236.80 x 279.20
+Resized shape to 249.60 x 279.20
+Resized shape to 261.60 x 279.20
+Resized shape to 283.20 x 279.20
+Resized shape to 303.20 x 278.40
+Resized shape to 317.60 x 278.40
+Resized shape to 324.80 x 278.40
+Resized shape to 330.40 x 278.40
+Resized shape to 332.00 x 278.40
+Resized shape to 334.40 x 278.40
+Resized shape to 336.80 x 278.40
+Resized shape to 340.80 x 278.40
+Resized shape to 344.00 x 279.20
+Resized shape to 349.60 x 281.60
+Resized shape to 352.80 x 281.60
+Resized shape to 356.80 x 284.00
+Resized shape to 361.60 x 285.60
+Resized shape to 364.80 x 287.20
+Resized shape to 368.00 x 288.80
+Resized shape to 371.20 x 289.60
+Resized shape to 373.60 x 290.40
+Resized shape to 376.00 x 290.40
+Resized shape to 377.60 x 292.00
+Resized shape to 379.20 x 292.80
+Resized shape to 381.60 x 293.60
+Resized shape to 382.40 x 293.60
+Resized shape to 383.20 x 294.40
+Resized shape to 384.00 x 295.20
+Resized shape to 384.80 x 296.00
+Resized shape to 385.60 x 296.80
+Resized shape to 386.40 x 297.60
+Resized shape to 386.40 x 298.40
+Resized shape to 386.40 x 299.20
+Resized shape to 387.20 x 300.00
+Resized shape to 387.20 x 300.80
+Resized shape to 387.20 x 301.60
+Resized shape to 387.20 x 303.20
+Resized shape to 387.20 x 304.00
+Resized shape to 386.40 x 308.00
+Resized shape to 386.40 x 310.40
+Resized shape to 385.60 x 312.00
+Resized shape to 384.80 x 314.40
+Resized shape to 383.20 x 317.60
+Resized shape to 380.00 x 322.40
+Resized shape to 377.60 x 324.80
+Resized shape to 376.00 x 329.60
+Resized shape to 373.60 x 331.20
+Resized shape to 370.40 x 335.20
+Resized shape to 366.40 x 340.00
+Resized shape to 362.40 x 344.00
+Resized shape to 360.80 x 345.60
+Resized shape to 358.40 x 348.80
+Resized shape to 356.80 x 352.80
+Resized shape to 354.40 x 354.40
+Resized shape to 354.40 x 355.20
+Resized shape to 352.80 x 356.80
+Resized shape to 352.00 x 357.60
+Resized shape to 351.20 x 358.40
+Resized shape to 351.20 x 359.20
+Resized shape to 351.20 x 360.00
+Resized shape to 350.40 x 360.00
+Started resizing shape at (425.60, 498.40) with initial size: 350.40 x 360.00
+Selected shape at (520.0, 184.79999999999998)
+Selected shape at (505.60, 184.00) with size 100.00 x 2.00
+Selected shape at (365.59999999999997, 255.20000000000002)
+Selected shape at (362.40, 253.60) with size 350.40 x 360.00
+Saved drawing 'finally' with 3 shapes, 2 nodes, and 1 edges
+Application started - logging to console, file, and database (if available)
+Application started - logging to console, file, and database (if available)
+Application started - logging to console, file, and database (if available)
+Selected shape type: rectangle
+Created new rectangle at (160.80, 91.20) with color 0x000000ff
+Selected shape at (234.4, 131.2)
+Selected shape at (160.80, 91.20) with size 100.00 x 50.00
+Moved shape to (160.80, 91.20)
+Started moving shape at (215.20000000000002, 117.6)
+Selected shape at (160.80, 91.20) with size 100.00 x 50.00
+Moved shape by (-7.2000000000000455, 2.4000000000000057)
+Moved shape to (153.60, 93.60)
+Moved shape by (-3.1999999999999886, 0.0)
+Moved shape to (150.40, 93.60)
+Moved shape by (-6.399999999999977, 2.4000000000000057)
+Moved shape to (144.00, 96.00)
+Moved shape by (-4.0, 0.0)
+Moved shape to (140.00, 96.00)
+Moved shape by (-4.800000000000011, 0.799999999999983)
+Moved shape to (135.20, 96.80)
+Moved shape by (-3.1999999999999886, 0.8000000000000114)
+Moved shape to (132.00, 97.60)
+Moved shape by (-1.6000000000000227, 0.799999999999983)
+Moved shape to (130.40, 98.40)
+Moved shape by (-4.800000000000011, 3.200000000000017)
+Moved shape to (125.60, 101.60)
+Moved shape by (-1.599999999999966, 0.0)
+Moved shape to (124.00, 101.60)
+Moved shape by (-2.400000000000034, 2.4000000000000057)
+Moved shape to (121.60, 104.00)
+Moved shape by (-1.599999999999966, 1.5999999999999943)
+Moved shape to (120.00, 105.60)
+Moved shape by (-2.400000000000034, 1.5999999999999943)
+Moved shape to (117.60, 107.20)
+Moved shape by (-0.7999999999999545, 2.4000000000000057)
+Moved shape to (116.80, 109.60)
+Moved shape by (-1.6000000000000227, 3.1999999999999886)
+Moved shape to (115.20, 112.80)
+Moved shape by (0.0, 1.5999999999999943)
+Moved shape to (115.20, 114.40)
+Moved shape by (-0.8000000000000114, 1.6000000000000227)
+Moved shape to (114.40, 116.00)
+Moved shape by (0.0, 3.1999999999999886)
+Moved shape to (114.40, 119.20)
+Moved shape by (0.0, 2.4000000000000057)
+Moved shape to (114.40, 121.60)
+Moved shape by (0.0, 1.5999999999999943)
+Moved shape to (114.40, 123.20)
+Moved shape by (0.0, 2.4000000000000057)
+Moved shape to (114.40, 125.60)
+Moved shape by (0.0, 2.4000000000000057)
+Moved shape to (114.40, 128.00)
+Moved shape by (0.0, 2.3999999999999773)
+Moved shape to (114.40, 130.40)
+Moved shape by (0.8000000000000114, 4.800000000000011)
+Moved shape to (115.20, 135.20)
+Moved shape by (3.1999999999999886, 4.0)
+Moved shape to (118.40, 139.20)
+Moved shape by (4.0, 4.0)
+Moved shape to (122.40, 143.20)
+Moved shape by (3.1999999999999886, 2.4000000000000057)
+Moved shape to (125.60, 145.60)
+Moved shape by (3.2000000000000455, 2.4000000000000057)
+Moved shape to (128.80, 148.00)
+Moved shape by (4.7999999999999545, 4.0)
+Moved shape to (133.60, 152.00)
+Moved shape by (4.800000000000011, 4.0)
+Moved shape to (138.40, 156.00)
+Moved shape by (4.0, 2.3999999999999773)
+Moved shape to (142.40, 158.40)
+Moved shape by (3.1999999999999886, 4.0)
+Moved shape to (145.60, 162.40)
+Moved shape by (4.800000000000011, 4.0)
+Moved shape to (150.40, 166.40)
+Moved shape by (4.800000000000011, 1.6000000000000227)
+Moved shape to (155.20, 168.00)
+Moved shape by (4.800000000000011, 2.3999999999999773)
+Moved shape to (160.00, 170.40)
+Moved shape by (5.599999999999966, 3.200000000000017)
+Moved shape to (165.60, 173.60)
+Moved shape by (7.2000000000000455, 4.0)
+Moved shape to (172.80, 177.60)
+Moved shape by (7.199999999999989, 3.1999999999999886)
+Moved shape to (180.00, 180.80)
+Moved shape by (8.0, 0.8000000000000114)
+Moved shape to (188.00, 181.60)
+Moved shape by (8.800000000000011, 2.4000000000000057)
+Moved shape to (196.80, 184.00)
+Moved shape by (5.5999999999999375, 1.599999999999966)
+Moved shape to (202.40, 185.60)
+Moved shape by (4.800000000000068, 0.0)
+Moved shape to (207.20, 185.60)
+Moved shape by (8.799999999999955, 0.0)
+Moved shape to (216.00, 185.60)
+Moved shape by (12.800000000000068, 0.0)
+Moved shape to (228.80, 185.60)
+Moved shape by (12.0, -4.799999999999983)
+Moved shape to (240.80, 180.80)
+Moved shape by (9.600000000000023, -8.0)
+Moved shape to (250.40, 172.80)
+Moved shape by (5.599999999999909, -8.799999999999983)
+Moved shape to (256.00, 164.00)
+Moved shape by (0.8000000000000682, -5.600000000000023)
+Moved shape to (256.80, 158.40)
+Moved shape by (0.0, -4.0)
+Moved shape to (256.80, 154.40)
+Moved shape by (0.0, -5.599999999999994)
+Moved shape to (256.80, 148.80)
+Moved shape by (0.0, -5.599999999999994)
+Moved shape to (256.80, 143.20)
+Moved shape by (0.0, -6.400000000000006)
+Moved shape to (256.80, 136.80)
+Moved shape by (0.0, -5.599999999999994)
+Moved shape to (256.80, 131.20)
+Moved shape by (0.0, -5.599999999999994)
+Moved shape to (256.80, 125.60)
+Moved shape by (0.0, -8.0)
+Moved shape to (256.80, 117.60)
+Moved shape by (-1.6000000000000227, -5.599999999999994)
+Moved shape to (255.20, 112.00)
+Moved shape by (-3.2000000000000455, -8.800000000000011)
+Moved shape to (252.00, 103.20)
+Moved shape by (-4.0, -5.599999999999994)
+Moved shape to (248.00, 97.60)
+Moved shape by (-6.399999999999977, -8.0)
+Moved shape to (241.60, 89.60)
+Moved shape by (-4.7999999999999545, -4.800000000000011)
+Moved shape to (236.80, 84.80)
+Moved shape by (-8.0, -6.400000000000006)
+Moved shape to (228.80, 78.40)
+Moved shape by (-5.600000000000023, -4.799999999999983)
+Moved shape to (223.20, 73.60)
+Moved shape by (-6.399999999999977, -4.0)
+Moved shape to (216.80, 69.60)
+Moved shape by (-8.0, -3.200000000000017)
+Moved shape to (208.80, 66.40)
+Moved shape by (-6.400000000000091, -3.1999999999999886)
+Moved shape to (202.40, 63.20)
+Moved shape by (-5.5999999999999375, -0.8000000000000114)
+Moved shape to (196.80, 62.40)
+Moved shape by (-4.0, 0.0)
+Moved shape to (192.80, 62.40)
+Moved shape by (-4.800000000000011, -1.5999999999999943)
+Moved shape to (188.00, 60.80)
+Moved shape by (-2.400000000000034, 0.0)
+Moved shape to (185.60, 60.80)
+Moved shape by (-5.599999999999966, 0.0)
+Moved shape to (180.00, 60.80)
+Moved shape by (-4.0, 0.0)
+Moved shape to (176.00, 60.80)
+Moved shape by (-7.199999999999989, 1.5999999999999943)
+Moved shape to (168.80, 62.40)
+Moved shape by (-5.600000000000023, 4.0)
+Moved shape to (163.20, 66.40)
+Moved shape by (-7.199999999999989, 4.800000000000011)
+Moved shape to (156.00, 71.20)
+Moved shape by (-8.800000000000011, 6.400000000000006)
+Moved shape to (147.20, 77.60)
+Moved shape by (-4.800000000000011, 3.1999999999999886)
+Moved shape to (142.40, 80.80)
+Moved shape by (-6.399999999999977, 4.0)
+Moved shape to (136.00, 84.80)
+Moved shape by (-4.800000000000011, 6.400000000000006)
+Moved shape to (131.20, 91.20)
+Moved shape by (-1.6000000000000227, 3.1999999999999886)
+Moved shape to (129.60, 94.40)
+Moved shape by (-3.1999999999999886, 4.800000000000011)
+Moved shape to (126.40, 99.20)
+Moved shape by (0.0, 4.0)
+Moved shape to (126.40, 103.20)
+Moved shape by (-0.8000000000000114, 3.1999999999999886)
+Moved shape to (125.60, 106.40)
+Moved shape by (0.0, 1.6000000000000227)
+Moved shape to (125.60, 108.00)
+Moved shape by (0.0, 1.5999999999999943)
+Moved shape to (125.60, 109.60)
+Moved shape by (0.0, 4.0)
+Moved shape to (125.60, 113.60)
+Moved shape by (0.0, 0.799999999999983)
+Moved shape to (125.60, 114.40)
+Moved shape by (1.6000000000000227, 0.8000000000000114)
+Moved shape to (127.20, 115.20)
+Moved shape by (3.1999999999999886, 0.8000000000000114)
+Moved shape to (130.40, 116.00)
+Moved shape by (1.6000000000000227, 0.0)
+Moved shape to (132.00, 116.00)
+Moved shape by (1.599999999999966, -1.6000000000000227)
+Moved shape to (133.60, 114.40)
+Moved shape by (0.0, -4.0)
+Moved shape to (133.60, 110.40)
+Moved shape by (0.0, -3.1999999999999886)
+Moved shape to (133.60, 107.20)
+Moved shape by (0.0, -0.8000000000000114)
+Moved shape to (133.60, 106.40)
+Moved shape by (0.0, -0.799999999999983)
+Moved shape to (133.60, 105.60)
+Started resizing shape at (232.00, 148.80) with initial size: 100.00 x 50.00
+Resized shape to 1.60 x 0.00
+Resized shape to 2.40 x 0.00
+Resized shape to 2.40 x 0.80
+Resized shape to 3.20 x 1.60
+Resized shape to 4.00 x 2.40
+Resized shape to 5.60 x 2.40
+Resized shape to 8.00 x 3.20
+Resized shape to 10.40 x 4.80
+Resized shape to 13.60 x 5.60
+Resized shape to 16.80 x 7.20
+Resized shape to 20.00 x 8.80
+Resized shape to 22.40 x 9.60
+Resized shape to 23.20 x 10.40
+Resized shape to 27.20 x 12.80
+Resized shape to 27.20 x 13.60
+Resized shape to 29.60 x 15.20
+Resized shape to 30.40 x 16.00
+Resized shape to 31.20 x 16.80
+Resized shape to 33.60 x 19.20
+Resized shape to 34.40 x 20.00
+Resized shape to 36.80 x 23.20
+Resized shape to 37.60 x 24.00
+Resized shape to 38.40 x 25.60
+Resized shape to 39.20 x 27.20
+Resized shape to 40.00 x 28.00
+Resized shape to 40.80 x 29.60
+Resized shape to 41.60 x 30.40
+Resized shape to 42.40 x 32.00
+Resized shape to 44.00 x 32.80
+Resized shape to 46.40 x 35.20
+Resized shape to 48.00 x 37.60
+Resized shape to 50.40 x 40.80
+Resized shape to 54.40 x 45.60
+Resized shape to 57.60 x 48.00
+Resized shape to 60.80 x 51.20
+Resized shape to 65.60 x 54.40
+Resized shape to 70.40 x 58.40
+Resized shape to 74.40 x 62.40
+Resized shape to 78.40 x 67.20
+Resized shape to 80.00 x 69.60
+Resized shape to 82.40 x 73.60
+Resized shape to 84.80 x 76.00
+Resized shape to 89.60 x 80.80
+Resized shape to 92.00 x 84.00
+Resized shape to 97.60 x 90.40
+Resized shape to 102.40 x 96.80
+Resized shape to 107.20 x 101.60
+Resized shape to 112.00 x 106.40
+Resized shape to 116.00 x 108.80
+Resized shape to 120.80 x 112.00
+Resized shape to 124.00 x 113.60
+Resized shape to 125.60 x 114.40
+Resized shape to 126.40 x 115.20
+Resized shape to 128.00 x 116.80
+Resized shape to 128.00 x 119.20
+Resized shape to 128.80 x 120.80
+Resized shape to 129.60 x 120.80
+Resized shape to 130.40 x 122.40
+Resized shape to 131.20 x 124.00
+Resized shape to 131.20 x 124.80
+Resized shape to 132.00 x 126.40
+Resized shape to 133.60 x 128.00
+Resized shape to 134.40 x 128.00
+Resized shape to 136.00 x 130.40
+Resized shape to 136.80 x 131.20
+Resized shape to 137.60 x 131.20
+Resized shape to 138.40 x 132.80
+Resized shape to 140.00 x 133.60
+Resized shape to 143.20 x 134.40
+Resized shape to 145.60 x 135.20
+Resized shape to 148.00 x 135.20
+Resized shape to 152.80 x 136.80
+Resized shape to 155.20 x 136.80
+Resized shape to 158.40 x 136.80
+Resized shape to 161.60 x 136.80
+Resized shape to 164.00 x 136.80
+Resized shape to 164.80 x 136.80
+Resized shape to 165.60 x 136.80
+Resized shape to 166.40 x 136.80
+Resized shape to 168.00 x 136.80
+Resized shape to 168.80 x 136.80
+Resized shape to 169.60 x 136.00
+Resized shape to 171.20 x 136.00
+Resized shape to 172.00 x 134.40
+Resized shape to 173.60 x 132.80
+Resized shape to 175.20 x 132.00
+Resized shape to 176.80 x 130.40
+Resized shape to 177.60 x 129.60
+Resized shape to 180.00 x 128.00
+Resized shape to 182.40 x 125.60
+Resized shape to 184.80 x 121.60
+Resized shape to 187.20 x 119.20
+Resized shape to 188.00 x 115.20
+Resized shape to 189.60 x 113.60
+Resized shape to 190.40 x 112.00
+Resized shape to 190.40 x 110.40
+Started resizing shape at (148.00, 83.20) with initial size: 190.40 x 110.40
+Resized shape to 0.80 x 0.80
+Started resizing shape at (141.60, 109.60) with initial size: 0.80 x 0.80
+Selected shape at (136.79999999999998, 110.4)
+Selected shape at (133.60, 105.60) with size 0.80 x 0.80
+Started resizing shape at (138.40, 114.40) with initial size: 0.80 x 0.80
+Resized shape to 0.80 x 2.40
+Resized shape to 0.80 x 3.20
+Resized shape to 1.60 x 3.20
+Resized shape to 2.40 x 4.00
+Resized shape to 3.20 x 5.60
+Resized shape to 4.00 x 5.60
+Resized shape to 5.60 x 6.40
+Resized shape to 7.20 x 7.20
+Resized shape to 12.80 x 9.60
+Resized shape to 17.60 x 12.00
+Resized shape to 24.00 x 14.40
+Resized shape to 32.80 x 16.80
+Resized shape to 42.40 x 20.80
+Resized shape to 56.00 x 25.60
+Resized shape to 68.00 x 28.00
+Resized shape to 80.80 x 32.00
+Resized shape to 90.40 x 35.20
+Resized shape to 102.40 x 41.60
+Resized shape to 108.00 x 42.40
+Resized shape to 116.80 x 44.00
+Resized shape to 121.60 x 48.00
+Resized shape to 125.60 x 48.80
+Resized shape to 126.40 x 50.40
+Resized shape to 127.20 x 51.20
+Resized shape to 127.20 x 52.80
+Resized shape to 127.20 x 54.40
+Resized shape to 128.00 x 57.60
+Resized shape to 132.00 x 61.60
+Resized shape to 137.60 x 64.80
+Resized shape to 144.00 x 69.60
+Resized shape to 148.80 x 73.60
+Resized shape to 156.00 x 78.40
+Resized shape to 160.80 x 82.40
+Resized shape to 165.60 x 87.20
+Resized shape to 170.40 x 92.00
+Resized shape to 176.00 x 98.40
+Resized shape to 180.80 x 105.60
+Resized shape to 187.20 x 112.80
+Resized shape to 191.20 x 119.20
+Resized shape to 196.80 x 126.40
+Resized shape to 200.80 x 133.60
+Resized shape to 205.60 x 140.00
+Resized shape to 210.40 x 147.20
+Resized shape to 212.80 x 152.00
+Resized shape to 216.00 x 156.80
+Resized shape to 216.80 x 157.60
+Resized shape to 217.60 x 158.40
+Resized shape to 218.40 x 158.40
+Started resizing shape at (457.60, 90.40) with initial size: 218.40 x 158.40
+Started resizing shape at (254.40, 381.60) with initial size: 218.40 x 158.40
+Rotated shape to 1.3899617213540096 degrees
+Rotated shape to 4.169883507098931 degrees
+Rotated shape to 5.55984522845294 degrees
+Rotated shape to 6.949806949806949 degrees
+Rotated shape to 9.72973039251497 degrees
+Rotated shape to 11.11969045690588 degrees
+Rotated shape to 13.899613899613898 degrees
+Rotated shape to 15.289573964004813 degrees
+Rotated shape to 16.67953734232192 degrees
+Rotated shape to 19.45946078502994 degrees
+Rotated shape to 20.84942084942085 degrees
+Rotated shape to 22.23938091381176 degrees
+Rotated shape to 25.019304356519783 degrees
+Rotated shape to 26.409267734836888 degrees
+Rotated shape to 27.799227799227797 degrees
+Rotated shape to 29.189187863618713 degrees
+Rotated shape to 30.57915124193582 degrees
+Rotated shape to 31.969111306326734 degrees
+Rotated shape to 22.5 degrees
+Rotated shape at (133.60, 105.60) right by 90 degrees to 112.50 degrees
+Started resizing shape at (256.00, 204.80) with initial size: 218.40 x 158.40
+Started resizing shape at (311.20, 311.20) with initial size: 218.40 x 158.40
+Started resizing shape at (361.60, 293.60) with initial size: 218.40 x 158.40
+Loaded drawing 'finally' with 3 shapes, 2 nodes, and 1 edges

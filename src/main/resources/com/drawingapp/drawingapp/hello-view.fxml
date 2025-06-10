@@ -24,12 +24,16 @@
             <Button text="Select" onAction="#onSelectModeClicked" styleClass="btn,btn-primary"/>
             <Button text="Move" onAction="#onMoveModeClicked" styleClass="btn,btn-primary"/>
             <Button text="Resize" onAction="#onResizeModeClicked" styleClass="btn,btn-primary"/>
+            <Button text="Undo" onAction="#onUndoClicked" styleClass="btn,btn-warning"/>
+            <Button text="Redo" onAction="#onRedoClicked" styleClass="btn,btn-warning"/>
+            <Button text="Delete" onAction="#onDeleteShapeClicked" styleClass="btn,btn-danger"/>
             <Separator orientation="VERTICAL"/>
             <Label text="Couleur:" style="-fx-font-weight: bold;"/>
             <ColorPicker fx:id="colorPicker" onAction="#onColorChanged"/>
             <Region HBox.hgrow="ALWAYS"/>
             <Button text="Sauvegarder" onAction="#onSaveDrawingClicked" styleClass="btn,btn-success"/>
             <Button text="Charger" onAction="#onLoadDrawingClicked" styleClass="btn,btn-info"/>
+        
         </HBox>
     </top>
 
