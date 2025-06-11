@@ -4025,3 +4025,580 @@ Selected shape type: circle
 Created new circle at (339.20, 323.20) with color 0x000000ff
 Selected shape at (362.40000000000003, 346.40000000000003)
 Selected shape at (339.20, 323.20) with size 50.00 x 50.00
+Application started - logging to console, file, and database (if available)
+Selected shape type: rectangle
+Switched to node drawing mode
+Switched to node drawing mode
+Added graph node at (36.80, 372.80)
+Added graph node at (353.60, 304.80)
+Added graph node at (399.20, 536.00)
+Added graph node at (144.80, 509.60)
+Added graph node at (85.60, 432.80)
+Switched to edge drawing mode
+Selected node at (36.80, 372.80) for edge creation
+Created edge between nodes at (36.80, 372.80) and (399.20, 536.00)
+Selected node at (353.60, 304.80) for edge creation
+Switched to edge drawing mode
+Created edge between nodes at (353.60, 304.80) and (144.80, 509.60)
+Selected node at (85.60, 432.80) for edge creation
+Created edge between nodes at (85.60, 432.80) and (353.60, 304.80)
+Selected node at (399.20, 536.00) for edge creation
+Created edge between nodes at (399.20, 536.00) and (85.60, 432.80)
+Selected node at (353.60, 304.80) for edge creation
+Created edge between nodes at (353.60, 304.80) and (36.80, 372.80)
+Selected node at (85.60, 432.80) for edge creation
+Created edge between nodes at (85.60, 432.80) and (85.60, 432.80)
+Selected node at (36.80, 372.80) for edge creation
+Created edge between nodes at (36.80, 372.80) and (399.20, 536.00)
+Selected node at (399.20, 536.00) for edge creation
+Created edge between nodes at (399.20, 536.00) and (399.20, 536.00)
+Selected node at (399.20, 536.00) for edge creation
+Created edge between nodes at (399.20, 536.00) and (399.20, 536.00)
+Selected node at (399.20, 536.00) for edge creation
+Switched to path finding mode
+Set start node for path finding
+Found shortest path with 2 nodes
+Application started - logging to console, file, and database (if available)
+Application started - logging to console, file, and database (if available)
+Selected shape type: rectangle
+Created new rectangle at (145.60, 173.60) with color 0x000000ff
+Created new rectangle at (182.40, 196.80) with color 0x000000ff
+Created new rectangle at (133.60, 314.40) with color 0x000000ff
+Selected shape at (212.0, 223.20000000000002)
+Selected shape at (212.0, 223.20000000000002)
+Selected shape at (182.40, 196.80) with size 100.00 x 50.00
+Application started - logging to console, file, and database (if available)
+Selected shape type: rectangle
+Created new rectangle at (0.00, 220.80) with color 0x000000ff
+Created new rectangle at (21.60, 344.80) with color 0x000000ff
+Created new rectangle at (150.40, 462.40) with color 0x000000ff
+Created new rectangle at (190.40, 250.40) with color 0x000000ff
+Created new rectangle at (-72.00, -31.20) with color 0x000000ff
+Created new rectangle at (-33.60, -30.40) with color 0x000000ff
+Created new rectangle at (-33.60, -30.40) with color 0x000000ff
+Created new rectangle at (28.00, 213.60) with color 0x000000ff
+Created new rectangle at (160.00, 370.40) with color 0x000000ff
+Selected shape at (94.39999999999998, 244.0)
+Selected shape at (28.00, 213.60) with size 100.00 x 50.00
+Rotated shape at (28.00, 213.60) left by 90 degrees to 270.00 degrees
+Rotated shape at (28.00, 213.60) left by 90 degrees to 180.00 degrees
+Rotated shape to 1.8556705455190128 degrees
+Rotated shape to 3.7113410910380256 degrees
+Rotated shape to 5.567011636557039 degrees
+Rotated shape to 7.422682182076051 degrees
+Rotated shape to 9.278350515463918 degrees
+Rotated shape to 11.134021060982931 degrees
+Rotated shape to 12.989691606501944 degrees
+Rotated shape to 14.845362152020957 degrees
+Rotated shape to 18.556701030927837 degrees
+Rotated shape to 20.412373788577995 degrees
+Rotated shape to 22.268042121965863 degrees
+Rotated shape to 24.12371487961602 degrees
+Rotated shape to 25.97938321300389 degrees
+Rotated shape to 29.690724304041915 degrees
+Rotated shape to 31.54639263742978 degrees
+Rotated shape to 35.257733728467805 degrees
+Rotated shape to 37.11340206185567 degrees
+Rotated shape to 38.969074819505835 degrees
+Rotated shape to 40.824743152893696 degrees
+Rotated shape to 42.68041591054386 degrees
+Rotated shape to 44.536084243931725 degrees
+Rotated shape to 46.39175257731959 degrees
+Rotated shape to 50.103093668357616 degrees
+Rotated shape to 51.95876642600778 degrees
+Rotated shape to 53.814434759395645 degrees
+Rotated shape to 55.670103092783506 degrees
+Rotated shape to 59.38144860808383 degrees
+Rotated shape to 61.23711694147169 degrees
+Rotated shape to 63.09278527485956 degrees
+Rotated shape to 64.94845360824743 degrees
+Rotated shape to 66.8041219416353 degrees
+Rotated shape to 68.65979912354774 degrees
+Rotated shape to 70.51546745693561 degrees
+Rotated shape to 72.37113579032348 degrees
+Rotated shape to 74.22680412371135 degrees
+Rotated shape to 76.08247245709921 degrees
+Rotated shape to 77.93814963901167 degrees
+Rotated shape to 79.79381797239954 degrees
+Rotated shape to 81.64948630578739 degrees
+Rotated shape to 83.50515463917526 degrees
+Rotated shape to 85.36082297256314 degrees
+Rotated shape to 87.21650015447558 degrees
+Rotated shape to 89.07216848786345 degrees
+Rotated shape to 90.9278368212513 degrees
+Rotated shape to 94.63917348802704 degrees
+Rotated shape to 96.49485066993951 degrees
+Rotated shape to 98.35051900332736 degrees
+Rotated shape to 100.20618733671523 degrees
+Rotated shape to 102.06185567010311 degrees
+Rotated shape to 103.91752400349097 degrees
+Rotated shape to 105.77320118540341 degrees
+Rotated shape to 107.62886951879129 degrees
+Rotated shape to 109.48453785217916 degrees
+Rotated shape to 113.1958745189549 degrees
+Rotated shape to 115.05155170086734 degrees
+Rotated shape to 118.76288836764306 degrees
+Rotated shape to 122.47422503441881 degrees
+Rotated shape to 124.32990221633126 degrees
+Rotated shape to 128.04123888310698 degrees
+Rotated shape to 129.89691606501944 degrees
+Rotated shape to 131.75257554988272 degrees
+Rotated shape to 133.60825273179518 degrees
+Rotated shape to 135.46391221665846 degrees
+Rotated shape to 137.3195893985709 degrees
+Rotated shape to 139.17526658048337 degrees
+Rotated shape to 141.03092606534665 degrees
+Rotated shape to 142.8866032472591 degrees
+Rotated shape to 144.74226273212238 degrees
+Rotated shape to 146.5979399140348 degrees
+Rotated shape to 148.4536170959473 degrees
+Rotated shape to 150.30927658081058 degrees
+Rotated shape to 152.164953762723 degrees
+Rotated shape to 154.02061324758628 degrees
+Rotated shape to 155.87629042949874 degrees
+Rotated shape to 157.7319676114112 degrees
+Rotated shape to 159.58762709627447 degrees
+Rotated shape to 161.44330427818693 degrees
+Rotated shape to 163.2989637630502 degrees
+Rotated shape to 165.15464094496267 degrees
+Rotated shape to 167.01031812687512 degrees
+Rotated shape to 168.8659776117384 degrees
+Rotated shape to 170.72165479365086 degrees
+Rotated shape to 172.57731427851414 degrees
+Rotated shape to 174.43299146042656 degrees
+Rotated shape to 176.28866864233905 degrees
+Rotated shape to 180.00000530911475 degrees
+Rotated shape to 181.85566479397804 degrees
+Rotated shape to 180.00000530911475 degrees
+Rotated shape to 178.14432812720233 degrees
+Rotated shape to 176.28866864233905 degrees
+Rotated shape to 174.43299146042656 degrees
+Rotated shape to 168.8659776117384 degrees
+Rotated shape to 163.2989637630502 degrees
+Rotated shape to 161.44330427818693 degrees
+Rotated shape to 157.7319676114112 degrees
+Rotated shape to 155.87629042949874 degrees
+Rotated shape to 154.02061324758628 degrees
+Rotated shape to 152.164953762723 degrees
+Rotated shape to 148.4536170959473 degrees
+Rotated shape to 146.5979399140348 degrees
+Rotated shape to 142.8866032472591 degrees
+Rotated shape to 141.03092606534665 degrees
+Rotated shape to 139.17526658048337 degrees
+Rotated shape to 137.3195893985709 degrees
+Rotated shape to 135.46391221665846 degrees
+Rotated shape to 133.60825273179518 degrees
+Rotated shape to 131.75257554988272 degrees
+Rotated shape to 129.89691606501944 degrees
+Rotated shape to 126.18557054971912 degrees
+Rotated shape to 124.32990221633126 degrees
+Rotated shape to 122.47422503441881 degrees
+Rotated shape to 120.61855670103094 degrees
+Rotated shape to 112.5 degrees
+Rotated shape at (28.00, 213.60) left by 90 degrees to 22.50 degrees
+Rotated shape at (28.00, 213.60) left by 90 degrees to 292.50 degrees
+Rotated shape at (28.00, 213.60) left by 90 degrees to 202.50 degrees
+Rotated shape to 110.64433166661213 degrees
+Rotated shape to 108.78866333322428 degrees
+Rotated shape to 106.9329949998364 degrees
+Rotated shape to 105.07732666644854 degrees
+Rotated shape to 103.22164948453607 degrees
+Rotated shape to 101.36598115114822 degrees
+Rotated shape to 99.51031281776035 degrees
+Rotated shape to 97.6546444843725 degrees
+Rotated shape to 95.79897615098461 degrees
+Rotated shape to 93.94329896907217 degrees
+Rotated shape to 92.08763063568429 degrees
+Rotated shape to 90.23196230229642 degrees
+Rotated shape to 90.0 degrees
+Selected shape type: line
+Created new line at (204.00, 376.00) with color 0x000000ff
+Created new line at (308.80, 425.60) with color 0x000000ff
+Created new line at (39.20, 499.20) with color 0x000000ff
+Created new line at (47.20, 592.00) with color 0x000000ff
+Created new line at (173.60, 536.00) with color 0x000000ff
+Application started - logging to console, file, and database (if available)
+Application started - logging to console, file, and database (if available)
+Application started - logging to console, file, and database (if available)
+Selected shape type: star
+Created new star at (49.60, 218.40) with color 0x000000ff
+Selected shape type: line
+Created new line at (340.80, 216.00) with color 0x000000ff
+Created new line at (360.80, 284.00) with color 0x000000ff
+Created new line at (353.60, 353.60) with color 0x000000ff
+Created new line at (255.20, 100.80) with color 0x000000ff
+Selected shape at (292.80000000000007, 98.4)
+Selected shape at (255.20, 100.80) with size 100.00 x 2.00
+Selected shape at (255.20000000000005, 96.79999999999998)
+Selected shape at (255.20, 100.80) with size 100.00 x 2.00
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Moved shape to (255.20, 100.80)
+Selected shape at (256.80000000000007, 101.6)
+Selected shape at (255.20, 100.80) with size 100.00 x 2.00
+Moved shape to (255.20, 100.80)
+Started moving shape at (255.20000000000005, 101.6)
+Selected shape at (255.20, 100.80) with size 100.00 x 2.00
+Moved shape by (0.0, 0.8000000000000114)
+Moved shape to (255.20, 101.60)
+Moved shape by (0.0, 0.799999999999983)
+Moved shape to (255.20, 102.40)
+Moved shape by (0.0, 0.8000000000000114)
+Moved shape to (255.20, 103.20)
+Moved shape by (0.0, 0.799999999999983)
+Moved shape to (255.20, 104.00)
+Moved shape by (0.0, 0.8000000000000114)
+Moved shape to (255.20, 104.80)
+Moved shape by (0.0, 1.5999999999999943)
+Moved shape to (255.20, 106.40)
+Moved shape by (0.0, 0.8000000000000114)
+Moved shape to (255.20, 107.20)
+Moved shape by (0.0, 0.799999999999983)
+Moved shape to (255.20, 108.00)
+Moved shape by (0.0, 1.6000000000000227)
+Moved shape to (255.20, 109.60)
+Moved shape by (0.0, 1.5999999999999943)
+Moved shape to (255.20, 111.20)
+Moved shape by (0.0, 0.799999999999983)
+Moved shape to (255.20, 112.00)
+Moved shape by (0.0, 0.8000000000000114)
+Moved shape to (255.20, 112.80)
+Moved shape by (0.0, 3.1999999999999886)
+Moved shape to (255.20, 116.00)
+Moved shape by (3.199999999999932, 15.200000000000017)
+Moved shape to (258.40, 131.20)
+Moved shape by (1.6000000000000227, 3.1999999999999886)
+Moved shape to (260.00, 134.40)
+Moved shape by (6.399999999999977, 16.0)
+Moved shape to (266.40, 150.40)
+Moved shape by (0.8000000000000682, 2.4000000000000057)
+Moved shape to (267.20, 152.80)
+Moved shape by (2.3999999999999773, 5.599999999999994)
+Moved shape to (269.60, 158.40)
+Moved shape by (0.7999999999999545, 1.5999999999999943)
+Moved shape to (270.40, 160.00)
+Moved shape by (0.8000000000000682, 2.4000000000000057)
+Moved shape to (271.20, 162.40)
+Moved shape by (0.0, 0.8000000000000114)
+Moved shape to (271.20, 163.20)
+Moved shape by (0.7999999999999545, 1.5999999999999943)
+Moved shape to (272.00, 164.80)
+Moved shape by (0.8000000000000682, 1.5999999999999943)
+Moved shape to (272.80, 166.40)
+Moved shape by (1.599999999999909, 4.800000000000011)
+Moved shape to (274.40, 171.20)
+Moved shape by (0.8000000000000682, 3.1999999999999886)
+Moved shape to (275.20, 174.40)
+Moved shape by (0.0, 0.8000000000000114)
+Moved shape to (275.20, 175.20)
+Moved shape by (2.3999999999999773, 5.599999999999994)
+Moved shape to (277.60, 180.80)
+Moved shape by (0.0, 2.4000000000000057)
+Moved shape to (277.60, 183.20)
+Moved shape by (0.7999999999999545, 2.4000000000000057)
+Moved shape to (278.40, 185.60)
+Moved shape by (1.6000000000000227, 2.3999999999999773)
+Moved shape to (280.00, 188.00)
+Moved shape by (0.8000000000000682, 0.0)
+Moved shape to (280.80, 188.00)
+Moved shape by (0.0, 0.8000000000000114)
+Moved shape to (280.80, 188.80)
+Moved shape by (0.0, 0.8000000000000114)
+Moved shape to (280.80, 189.60)
+Moved shape by (0.0, 0.799999999999983)
+Moved shape to (280.80, 190.40)
+Moved shape by (0.0, 1.5999999999999943)
+Moved shape to (280.80, 192.00)
+Moved shape by (0.0, 1.6000000000000227)
+Moved shape to (280.80, 193.60)
+Moved shape by (0.7999999999999545, 0.799999999999983)
+Moved shape to (281.60, 194.40)
+Moved shape by (0.0, 2.4000000000000057)
+Moved shape to (281.60, 196.80)
+Moved shape by (0.7999999999999545, 1.6000000000000227)
+Moved shape to (282.40, 198.40)
+Moved shape by (0.8000000000000682, 2.3999999999999773)
+Moved shape to (283.20, 200.80)
+Moved shape by (0.0, 0.8000000000000114)
+Moved shape to (283.20, 201.60)
+Moved shape by (0.0, 1.599999999999966)
+Moved shape to (283.20, 203.20)
+Moved shape by (1.6000000000000227, 0.0)
+Moved shape to (284.80, 203.20)
+Moved shape by (0.0, 1.6000000000000227)
+Moved shape to (284.80, 204.80)
+Moved shape by (0.7999999999999545, 2.3999999999999773)
+Moved shape to (285.60, 207.20)
+Moved shape by (1.6000000000000227, 0.8000000000000114)
+Moved shape to (287.20, 208.00)
+Moved shape by (8.0, 2.400000000000034)
+Moved shape to (295.20, 210.40)
+Moved shape by (1.6000000000000227, 0.0)
+Moved shape to (296.80, 210.40)
+Moved shape by (3.199999999999932, -0.8000000000000114)
+Moved shape to (300.00, 209.60)
+Moved shape by (1.6000000000000227, -1.6000000000000227)
+Moved shape to (301.60, 208.00)
+Moved shape by (2.3999999999999773, -2.3999999999999773)
+Moved shape to (304.00, 205.60)
+Moved shape by (4.0, -3.1999999999999886)
+Moved shape to (308.00, 202.40)
+Moved shape by (4.0, -4.800000000000011)
+Moved shape to (312.00, 197.60)
+Moved shape by (6.399999999999977, -7.200000000000017)
+Moved shape to (318.40, 190.40)
+Moved shape by (2.400000000000091, -3.1999999999999886)
+Moved shape to (320.80, 187.20)
+Moved shape by (3.199999999999932, -7.200000000000017)
+Moved shape to (324.00, 180.00)
+Moved shape by (0.8000000000000682, -2.3999999999999773)
+Moved shape to (324.80, 177.60)
+Moved shape by (0.7999999999999545, -2.4000000000000057)
+Moved shape to (325.60, 175.20)
+Moved shape by (0.7999999999999545, -1.5999999999999943)
+Moved shape to (326.40, 173.60)
+Moved shape by (0.0, -0.8000000000000114)
+Moved shape to (326.40, 172.80)
+Moved shape by (0.8000000000000682, 0.0)
+Moved shape to (327.20, 172.80)
+Moved shape by (0.7999999999999545, 0.0)
+Moved shape to (328.00, 172.80)
+Moved shape by (0.0, 0.8000000000000114)
+Moved shape to (328.00, 173.60)
+Moved shape by (4.800000000000068, 4.0)
+Moved shape to (332.80, 177.60)
+Moved shape by (3.199999999999932, 1.5999999999999943)
+Moved shape to (336.00, 179.20)
+Moved shape by (7.2000000000000455, 2.4000000000000057)
+Moved shape to (343.20, 181.60)
+Moved shape by (6.399999999999977, 0.0)
+Moved shape to (349.60, 181.60)
+Moved shape by (8.0, 0.799999999999983)
+Moved shape to (357.60, 182.40)
+Moved shape by (5.600000000000023, 0.0)
+Moved shape to (363.20, 182.40)
+Moved shape by (0.7999999999999545, 0.0)
+Moved shape to (364.00, 182.40)
+Moved shape by (0.0, -0.799999999999983)
+Moved shape to (364.00, 181.60)
+Moved shape by (-0.7999999999999545, 0.0)
+Moved shape to (363.20, 181.60)
+Moved shape by (-1.6000000000000227, -0.8000000000000114)
+Moved shape to (361.60, 180.80)
+Moved shape by (-2.3999999999999773, 0.0)
+Moved shape to (359.20, 180.80)
+Moved shape by (-8.0, -3.1999999999999886)
+Moved shape to (351.20, 177.60)
+Moved shape by (-3.2000000000000455, -0.8000000000000114)
+Moved shape to (348.00, 176.80)
+Moved shape by (-4.0, -2.4000000000000057)
+Moved shape to (344.00, 174.40)
+Moved shape by (-1.6000000000000227, -0.799999999999983)
+Moved shape to (342.40, 173.60)
+Moved shape by (-1.599999999999909, -0.8000000000000114)
+Moved shape to (340.80, 172.80)
+Moved shape by (-0.8000000000000682, 0.0)
+Moved shape to (340.00, 172.80)
+Moved shape by (-0.7999999999999545, 0.0)
+Moved shape to (339.20, 172.80)
+Selected shape at (356.0, 214.4)
+Selected shape at (340.80, 216.00) with size 100.00 x 2.00
+Selected shape at (102.39999999999998, 260.8)
+Selected shape at (49.60, 218.40) with size 100.00 x 100.00
+Moved shape to (49.60, 218.40)
+Moved shape to (49.60, 218.40)
+Moved shape to (49.60, 218.40)
+Moved shape to (49.60, 218.40)
+Selected shape at (381.6, 288.8)
+Selected shape at (360.80, 284.00) with size 100.00 x 2.00
+Selected shape at (381.6, 288.8)
+Selected shape at (360.80, 284.00) with size 100.00 x 2.00
+Selected shape at (412.80000000000007, 353.6)
+Selected shape at (353.60, 353.60) with size 100.00 x 2.00
+Rotated shape to 1.4937762897538942 degrees
+Rotated shape to 4.481328869261682 degrees
+Rotated shape to 7.468879668049793 degrees
+Rotated shape to 8.962655957803687 degrees
+Rotated shape to 11.950208537311473 degrees
+Rotated shape to 13.44398304634569 degrees
+Rotated shape to 14.937759336099585 degrees
+Rotated shape to 16.431535625853478 degrees
+Rotated shape to 17.925310134887695 degrees
+Rotated shape to 19.419088205361266 degrees
+Rotated shape to 20.912862714395484 degrees
+Rotated shape to 22.406640784869055 degrees
+Rotated shape to 23.900415293903272 degrees
+Rotated shape to 25.394189802937486 degrees
+Rotated shape to 26.88796787341106 degrees
+Rotated shape to 31.369294961953063 degrees
+Rotated shape to 34.35684754146085 degrees
+Rotated shape to 35.85062205049507 degrees
+Rotated shape to 37.344400120968636 degrees
+Rotated shape to 41.825727209510646 degrees
+Rotated shape to 43.319501718544856 degrees
+Rotated shape to 46.30705429805264 degrees
+Rotated shape to 47.80082880708686 degrees
+Rotated shape to 49.294603316121076 degrees
+Rotated shape to 50.78838494803401 degrees
+Rotated shape to 52.282159457068225 degrees
+Rotated shape to 53.77593396610244 degrees
+Rotated shape to 55.26970847513665 degrees
+Rotated shape to 56.76348298417087 degrees
+Rotated shape to 58.257264616083795 degrees
+Rotated shape to 61.24481363415224 degrees
+Rotated shape to 62.73858814318645 degrees
+Rotated shape to 64.23236265222067 degrees
+Rotated shape to 68.71369330220202 degrees
+Rotated shape to 70.20746781123624 degrees
+Rotated shape to 73.19502395218339 degrees
+Rotated shape to 76.18257297025181 degrees
+Rotated shape to 79.17012198832025 degrees
+Rotated shape to 80.66390362023317 degrees
+Rotated shape to 85.14522714733582 degrees
+Rotated shape to 86.63900165637004 degrees
+Rotated shape to 89.62655779731719 degrees
+Rotated shape to 88.13278328828297 degrees
+Rotated shape to 86.63900165637004 degrees
+Rotated shape to 85.14522714733582 degrees
+Rotated shape to 80.66390362023317 degrees
+Rotated shape to 77.67634747928604 degrees
+Rotated shape to 76.18257297025181 degrees
+Rotated shape to 74.6887984612176 degrees
+Rotated shape to 73.19502395218339 degrees
+Rotated shape to 71.70124232027045 degrees
+Rotated shape to 68.71369330220202 degrees
+Rotated shape to 62.73858814318645 degrees
+Rotated shape to 61.24481363415224 degrees
+Rotated shape to 55.26970847513665 degrees
+Rotated shape to 52.282159457068225 degrees
+Rotated shape to 50.78838494803401 degrees
+Rotated shape to 43.319501718544856 degrees
+Rotated shape to 41.825727209510646 degrees
+Rotated shape to 28.381742382445275 degrees
+Rotated shape to 22.406640784869055 degrees
+Rotated shape to 19.419088205361266 degrees
+Rotated shape to 13.44398304634569 degrees
+Rotated shape to 10.45643224755758 degrees
+Rotated shape to 2.9875525795077884 degrees
+Rotated shape to 0.0 degrees
+Switched to edge drawing mode
+Switched to node drawing mode
+Rotated shape to 1.4937762897538942 degrees
+Rotated shape to 2.98755079878811 degrees
+Rotated shape to 4.481327088542004 degrees
+Rotated shape to 5.975103378295898 degrees
+Rotated shape to 7.468879668049793 degrees
+Rotated shape to 10.456430466837903 degrees
+Rotated shape to 13.44398304634569 degrees
+Rotated shape to 14.937757555379905 degrees
+Rotated shape to 16.431535625853478 degrees
+Rotated shape to 19.419088205361266 degrees
+Rotated shape to 20.912862714395484 degrees
+Rotated shape to 22.406637223429698 degrees
+Rotated shape to 23.900415293903272 degrees
+Rotated shape to 26.88796787341106 degrees
+Rotated shape to 29.875516891479492 degrees
+Rotated shape to 31.369294961953063 degrees
+Rotated shape to 32.86306947098728 degrees
+Rotated shape to 34.35684754146085 degrees
+Rotated shape to 37.34439655952929 degrees
+Rotated shape to 40.33194913903707 degrees
+Rotated shape to 43.319501718544856 degrees
+Rotated shape to 44.813276227579074 degrees
+Rotated shape to 47.80083236852622 degrees
+Rotated shape to 49.29460687756044 degrees
+Rotated shape to 50.78838138659465 degrees
+Rotated shape to 52.28215589562887 degrees
+Rotated shape to 56.76348654561023 degrees
+Rotated shape to 58.25726105464444 degrees
+Rotated shape to 59.751035563678656 degrees
+Rotated shape to 61.24481007271287 degrees
+Rotated shape to 64.23236621366001 degrees
+Rotated shape to 65.72614072269424 degrees
+Rotated shape to 67.21991523172845 degrees
+Rotated shape to 68.71368974076267 degrees
+Rotated shape to 70.20747137267558 degrees
+Rotated shape to 71.70124588170981 degrees
+Rotated shape to 73.19502039074402 degrees
+Rotated shape to 74.68879489977824 degrees
+Rotated shape to 76.18256940881247 degrees
+Rotated shape to 74.68879489977824 degrees
+Rotated shape to 73.19502039074402 degrees
+Rotated shape to 71.70124588170981 degrees
+Rotated shape to 70.20747137267558 degrees
+Rotated shape to 68.71368974076267 degrees
+Rotated shape to 67.21991523172845 degrees
+Rotated shape to 65.72614072269424 degrees
+Rotated shape to 64.23236621366001 degrees
+Rotated shape to 62.738591704625804 degrees
+Rotated shape to 59.751035563678656 degrees
+Rotated shape to 58.25726105464444 degrees
+Rotated shape to 56.76348654561023 degrees
+Rotated shape to 52.28215589562887 degrees
+Rotated shape to 49.29460687756044 degrees
+Rotated shape to 46.30705073661329 degrees
+Rotated shape to 44.813276227579074 degrees
+Rotated shape to 41.825727209510646 degrees
+Rotated shape to 40.33194913903707 degrees
+Rotated shape to 38.838174630002854 degrees
+Rotated shape to 35.85062205049507 degrees
+Rotated shape to 32.86306947098728 degrees
+Rotated shape to 25.394189802937486 degrees
+Rotated shape to 22.406637223429698 degrees
+Rotated shape to 19.419088205361266 degrees
+Rotated shape to 16.431535625853478 degrees
+Rotated shape to 14.937757555379905 degrees
+Rotated shape to 11.950206756591797 degrees
+Rotated shape to 0.0 degrees
+Added graph node at (67.20, 228.80)
+Added graph node at (75.20, 394.40)
+Moved shape to (353.60, 353.60)
+Added graph node at (84.00, 338.40)
+Added graph node at (84.00, 338.40)
+Switched to node drawing mode
+Selected shape type: star
+Selected shape type: line
+Selected shape type: circle
+Created new circle at (128.80, 294.40) with color 0x000000ff
+Created new circle at (128.80, 294.40) with color 0x000000ff
+Created new circle at (256.00, 293.60) with color 0x000000ff
+Created new circle at (256.00, 293.60) with color 0x000000ff
+Application started - logging to console, file, and database (if available)
+Selected shape type: circle
+Created new circle at (9.60, 199.20) with color 0x000000ff
+Created new circle at (81.60, 156.80) with color 0x000000ff
+Created new circle at (100.00, 156.80) with color 0x000000ff
+Created new circle at (214.40, 168.80) with color 0x000000ff
+Created new circle at (353.60, 216.80) with color 0x000000ff
+Created new circle at (992.80, 220.80) with color 0x000000ff
+Created new circle at (1101.60, 213.60) with color 0x000000ff
+Created new circle at (1163.20, 210.40) with color 0x000000ff
+Created new circle at (13.60, 276.00) with color 0x000000ff
+Created new circle at (20.80, 278.40) with color 0x000000ff
+Created new circle at (15.20, 280.80) with color 0x000000ff
+Created new circle at (7.20, 280.80) with color 0x000000ff
+Created new circle at (7.20, 280.80) with color 0x000000ff
+Created new circle at (7.20, 280.80) with color 0x000000ff

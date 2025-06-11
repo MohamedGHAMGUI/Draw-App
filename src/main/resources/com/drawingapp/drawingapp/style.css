@@ -1,0 +1,266 @@
+/* Root variables for consistent theming */
+.root {
+    -fx-font-family: "Inter", "Segoe UI", "SF Pro Display", system-ui, sans-serif;
+    -fx-font-size: 13px;
+
+    /* Color palette */
+    -fx-primary: #6366f1;
+    -fx-primary-hover: #5855eb;
+    -fx-secondary: #f1f5f9;
+    -fx-accent: #0ea5e9;
+    -fx-success: #10b981;
+    -fx-warning: #f59e0b;
+    -fx-danger: #ef4444;
+    -fx-muted: #64748b;
+    -fx-border: #e2e8f0;
+    -fx-background: #ffffff;
+    -fx-surface: #f8fafc;
+    -fx-text-primary: #0f172a;
+    -fx-text-secondary: #475569;
+    -fx-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Main container */
+.border-pane {
+    -fx-background-color: -fx-surface;
+}
+
+/* Toolbar styling */
+.toolbar {
+    -fx-background-color: -fx-background;
+    -fx-padding: 12 20;
+    -fx-border-color: -fx-border;
+    -fx-border-width: 0 0 1 0;
+    -fx-effect: dropshadow(gaussian, -fx-shadow, 4, 0, 0, 1);
+    -fx-alignment: center-left;
+}
+
+/* Sidebar styling */
+.sidebar {
+    -fx-background-color: -fx-background;
+    -fx-border-color: -fx-border;
+    -fx-border-width: 0 1 0 0;
+    -fx-pref-width: 240;
+    -fx-effect: dropshadow(gaussian, -fx-shadow, 2, 0, 1, 0);
+}
+
+/* Canvas styling */
+.canvas {
+    -fx-background-color: white;
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.05), 8, 0, 0, 0);
+}
+
+/* Section titles */
+.section-title {
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-weight: 600;
+    -fx-font-size: 12px;
+    -fx-text-transform: uppercase;
+    -fx-letter-spacing: 1px;
+}
+
+/* Base button styling */
+.btn {
+    -fx-background-color: -fx-background;
+    -fx-text-fill: -fx-text-primary;
+    -fx-border-color: -fx-border;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8 16;
+    -fx-font-size: 13px;
+    -fx-font-weight: 500;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.04), 2, 0, 0, 1);
+}
+
+.btn:hover {
+    -fx-background-color: -fx-secondary;
+    -fx-border-color: #cbd5e0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 4, 0, 0, 2);
+}
+
+.btn:pressed {
+    -fx-background-color: #e2e8f0;
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.1), 2, 0, 0, 1);
+}
+
+/* Icon buttons */
+.btn-icon {
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: -fx-text-primary;
+    -fx-border-color: -fx-border;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 8;
+    -fx-font-size: 16px;
+    -fx-font-weight: 600;
+    -fx-cursor: hand;
+    -fx-min-width: 36;
+    -fx-min-height: 36;
+    -fx-max-width: 36;
+    -fx-max-height: 36;
+}
+
+.btn-icon:hover {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: white;
+    -fx-border-color: -fx-primary;
+}
+
+/* Variant buttons */
+.btn-success {
+    -fx-background-color: -fx-success;
+    -fx-text-fill: white;
+    -fx-border-color: -fx-success;
+}
+
+.btn-success:hover {
+    -fx-background-color: #059669;
+    -fx-border-color: #059669;
+}
+
+.btn-warning {
+    -fx-background-color: -fx-warning;
+    -fx-text-fill: white;
+    -fx-border-color: -fx-warning;
+}
+
+.btn-warning:hover {
+    -fx-background-color: #d97706;
+    -fx-border-color: #d97706;
+}
+
+.btn-danger {
+    -fx-background-color: -fx-danger;
+    -fx-text-fill: white;
+    -fx-border-color: -fx-danger;
+}
+
+.btn-danger:hover {
+    -fx-background-color: #dc2626;
+    -fx-border-color: #dc2626;
+}
+
+.btn-info {
+    -fx-background-color: -fx-accent;
+    -fx-text-fill: white;
+    -fx-border-color: -fx-accent;
+}
+
+.btn-info:hover {
+    -fx-background-color: #0284c7;
+    -fx-border-color: #0284c7;
+}
+
+/* Color picker styling */
+.color-picker {
+    -fx-background-color: -fx-background;
+    -fx-border-color: -fx-border;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 4;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.04), 2, 0, 0, 1);
+}
+
+.color-picker:hover {
+    -fx-border-color: -fx-primary;
+}
+
+.color-picker .arrow-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.color-picker .color-picker-label {
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-min-width: 32;
+    -fx-min-height: 20;
+}
+
+/* Slider styling */
+.slider {
+    -fx-padding: 8 0;
+}
+
+.slider .track {
+    -fx-background-color: -fx-border;
+    -fx-background-radius: 3;
+    -fx-pref-height: 6;
+}
+
+.slider .thumb {
+    -fx-background-color: -fx-primary;
+    -fx-background-radius: 8;
+    -fx-pref-width: 16;
+    -fx-pref-height: 16;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0, 0, 1);
+}
+
+.slider .thumb:hover {
+    -fx-background-color: -fx-primary-hover;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 6, 0, 0, 2);
+}
+
+.slider .colored-track {
+    -fx-background-color: -fx-primary;
+    -fx-background-radius: 3;
+}
+
+/* ComboBox styling */
+.combo-box {
+    -fx-background-color: -fx-background;
+    -fx-border-color: -fx-border;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8 12;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.04), 2, 0, 0, 1);
+}
+
+.combo-box:hover {
+    -fx-border-color: -fx-primary;
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.combo-box .arrow {
+    -fx-background-color: -fx-text-secondary;
+}
+
+/* Separator styling */
+.separator:vertical .line {
+    -fx-border-color: -fx-border;
+    -fx-border-width: 0 0 0 1;
+    -fx-opacity: 0.6;
+}
+
+.separator:horizontal .line {
+    -fx-border-color: -fx-border;
+    -fx-border-width: 0 0 1 0;
+    -fx-opacity: 0.6;
+}
+
+/* Labels */
+.label {
+    -fx-text-fill: -fx-text-secondary;
+    -fx-font-size: 13px;
+}
+
+/* Focus indicators */
+.btn:focused,
+.color-picker:focused,
+.combo-box:focused {
+    -fx-border-color: -fx-primary;
+    -fx-effect: dropshadow(gaussian, rgba(99, 102, 241, 0.3), 4, 0, 0, 0);
+}
+
+/* Animations would be added here if JavaFX supported CSS transitions */

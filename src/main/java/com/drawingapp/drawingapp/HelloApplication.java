@@ -35,12 +35,10 @@ public class HelloApplication extends Application {
         controller.setShapeManager(new ShapeManager());
         controller.setModeManager(new ModeManager());
         
-        // Initialize database connection and repository
+
         try {
-            // Load MySQL JDBC driver
             Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Connect to database with credentials
+
             Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPass);
             DrawingRepository repository = new JdbcDrawingRepository(connection);
             controller.setDrawingRepository(repository);
@@ -48,7 +46,7 @@ public class HelloApplication extends Application {
         } catch (SQLException e) {
             System.err.println("Database connection error: " + e.getMessage());
             e.printStackTrace();
-            // Create a default repository that does nothing
+
             controller.setDrawingRepository(new DrawingRepository() {
                 @Override
                 public void saveDrawing(String name, List<Shape> shapes, List<GraphNode> nodes, List<GraphEdge> edges) {

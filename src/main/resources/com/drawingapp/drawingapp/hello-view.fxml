@@ -1,87 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.canvas.Canvas?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ColorPicker?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.Slider?>
 
 <BorderPane xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.drawingapp.drawingapp.HelloController">
+            fx:controller="com.drawingapp.drawingapp.HelloController"
+            stylesheets="@style.css">
 
-    <!-- Top navigation bar with edit tools -->
+    <!-- Top Bar -->
     <top>
-        <HBox spacing="10.0" style="-fx-background-color: #f0f0f0; -fx-padding: 10;">
-            <Label text="Modifier:" style="-fx-font-weight: bold;"/>
-            <Button text="Select" onAction="#onSelectModeClicked" styleClass="btn,btn-primary"/>
-            <Button text="Move" onAction="#onMoveModeClicked" styleClass="btn,btn-primary"/>
-            <Button text="Resize" onAction="#onResizeModeClicked" styleClass="btn,btn-primary"/>
-            <Button text="Undo" onAction="#onUndoClicked" styleClass="btn,btn-warning"/>
-            <Button text="Redo" onAction="#onRedoClicked" styleClass="btn,btn-warning"/>
-            <Button text="Delete" onAction="#onDeleteShapeClicked" styleClass="btn,btn-danger"/>
+        <HBox spacing="12" styleClass="toolbar">
+            <Label text="Modifier:" styleClass="section-title"/>
+            <Button text="Select" onAction="#onSelectModeClicked" styleClass="btn"/>
+            <Button text="Move" onAction="#onMoveModeClicked" styleClass="btn"/>
+            <Button text="Resize" onAction="#onResizeModeClicked" styleClass="btn"/>
+            <Button text="Undo" onAction="#onUndoClicked" styleClass="btn-warning"/>
+            <Button text="Redo" onAction="#onRedoClicked" styleClass="btn-warning"/>
+            <Button text="Delete" onAction="#onDeleteShapeClicked" styleClass="btn-danger"/>
+
             <Separator orientation="VERTICAL"/>
-            <Label text="Couleur:" style="-fx-font-weight: bold;"/>
+
+            <Label text="Couleur:" styleClass="section-title"/>
             <ColorPicker fx:id="colorPicker" onAction="#onColorChanged"/>
+
             <Region HBox.hgrow="ALWAYS"/>
-            <Button text="Sauvegarder" onAction="#onSaveDrawingClicked" styleClass="btn,btn-success"/>
-            <Button text="Charger" onAction="#onLoadDrawingClicked" styleClass="btn,btn-info"/>
-        
+
+            <Button text="Sauvegarder" onAction="#onSaveDrawingClicked" styleClass="btn-success"/>
+            <Button text="Charger" onAction="#onLoadDrawingClicked" styleClass="btn-info"/>
         </HBox>
     </top>
 
-    <!-- Left sidebar with shapes and graph tools -->
+    <!-- Sidebar -->
     <left>
-        <VBox spacing="10.0" style="-fx-background-color: #f8f8f8;">
-            <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
-            </padding>
+        <VBox spacing="14" styleClass="sidebar">
+            <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
 
-            <!-- Shapes Section -->
-            <Label text="Formes" style="-fx-font-weight: bold;"/>
-            <Button text="Rectangle" onAction="#onRectangleClicked"/>
-            <Button text="Circle" onAction="#onCircleClicked"/>
-            <Button text="Line" onAction="#onLineClicked"/>
-            <Button text="Star" onAction="#onStarClicked"/>
+            <Label text="Formes" styleClass="section-title"/>
+            <Button text="Rectangle" onAction="#onRectangleClicked" styleClass="btn"/>
+            <Button text="Circle" onAction="#onCircleClicked" styleClass="btn"/>
+            <Button text="Line" onAction="#onLineClicked" styleClass="btn"/>
+            <Button text="Star" onAction="#onStarClicked" styleClass="btn"/>
             <Separator/>
 
-            <!-- Rotation Controls -->
-            <Label text="Rotation" style="-fx-font-weight: bold;"/>
-            <Slider fx:id="rotationSlider" 
-                    min="0" 
-                    max="360" 
-                    value="0"
-                    showTickLabels="true"
-                    showTickMarks="true"
-                    majorTickUnit="90"
-                    minorTickCount="3"
+            <Label text="Rotation" styleClass="section-title"/>
+            <Slider fx:id="rotationSlider" min="0" max="360" value="0"
+                    showTickLabels="true" showTickMarks="true"
+                    majorTickUnit="90" minorTickCount="3"
                     snapToTicks="true"/>
+
             <HBox spacing="10">
-                <Button text="Tourner à gauche" onAction="#onRotateLeftClicked"/>
-                <Button text="Tourner à droite" onAction="#onRotateRightClicked"/>
+                <Button text="⟲" onAction="#onRotateLeftClicked" styleClass="btn-icon"/>
+                <Button text="⟳" onAction="#onRotateRightClicked" styleClass="btn-icon"/>
             </HBox>
             <Separator/>
 
-            <!-- Graph Tools Section -->
-            <Label text="Outils de graphe" style="-fx-font-weight: bold;"/>
-            <Button text="Ajouter un nœud" onAction="#onAddNodeClicked"/>
-            <Button text="Ajouter une arête" onAction="#onAddEdgeClicked"/>
-            <Button text="Trouver un chemin" onAction="#onFindPathClicked"/>
-            <Label text="Algorithme:" style="-fx-font-weight: bold;"/>
+            <Label text="Outils de graphe" styleClass="section-title"/>
+            <Button text="Ajouter un nœud" onAction="#onAddNodeClicked" styleClass="btn"/>
+            <Button text="Ajouter une arête" onAction="#onAddEdgeClicked" styleClass="btn"/>
+            <Button text="Trouver un chemin" onAction="#onFindPathClicked" styleClass="btn"/>
+            <Label text="Algorithme:" styleClass="section-title"/>
             <ComboBox fx:id="algorithmComboBox"/>
         </VBox>
     </left>
 
-    <!-- Center canvas for drawing -->
+    <!-- Canvas -->
     <center>
-        <Canvas fx:id="canvas" width="900.0" height="800.0"/>
+        <Canvas fx:id="canvas" width="1200.0" height="800.0" styleClass="canvas"/>
     </center>
-
 </BorderPane>

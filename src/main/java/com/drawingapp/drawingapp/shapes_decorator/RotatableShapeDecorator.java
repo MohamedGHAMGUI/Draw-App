@@ -16,23 +16,16 @@ public class RotatableShapeDecorator extends ShapeDecorator implements Rotatable
 
     @Override
     public void draw(GraphicsContext gc) {
-        gc.save(); // Save the current graphics context state
-        
-        // Translate to the center of the shape
+        gc.save();
+
         double centerX = decoratedShape.getX() + decoratedShape.getWidth() / 2;
         double centerY = decoratedShape.getY() + decoratedShape.getHeight() / 2;
         gc.translate(centerX, centerY);
-        
-        // Rotate around the center
         gc.rotate(rotationAngle);
-        
-        // Translate back
         gc.translate(-centerX, -centerY);
-        
-        // Draw the shape
         decoratedShape.draw(gc);
         
-        gc.restore(); // Restore the graphics context state
+        gc.restore();
     }
 
     @Override

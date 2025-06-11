@@ -35,7 +35,7 @@ public class GraphSerializer {
         try {
             NodeDto[] dtos = gson.fromJson(json, NodeDto[].class);
             if (dtos == null) {
-                LOGGER.warning("Deserialized JSON resulted in null array for nodes");
+                LOGGER.warning("JSON null");
                 return List.of();
             }
             return Arrays.stream(dtos)

@@ -97,19 +97,17 @@ public class GraphManager {
         GraphNode nodeC = new GraphNode(100, 300);
         GraphNode nodeD = new GraphNode(300, 300);
         
-        // Add nodes to graph
+
         addNode(nodeA);
         addNode(nodeB);
         addNode(nodeC);
         addNode(nodeD);
-        
-        // Create edges with weights
+
         GraphEdge edgeAB = new GraphEdge(nodeA, nodeB, 5.0);
         GraphEdge edgeAC = new GraphEdge(nodeA, nodeC, 2.0);
         GraphEdge edgeBD = new GraphEdge(nodeB, nodeD, 1.0);
         GraphEdge edgeCD = new GraphEdge(nodeC, nodeD, 3.0);
-        
-        // Add edges to graph
+
         addEdge(edgeAB);
         addEdge(edgeAC);
         addEdge(edgeBD);

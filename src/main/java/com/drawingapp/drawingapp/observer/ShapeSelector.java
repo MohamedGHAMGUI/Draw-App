@@ -3,9 +3,7 @@ package com.drawingapp.drawingapp.observer;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Singleton class responsible for managing shape selection and notifying observers.
- */
+
 public class ShapeSelector implements Observable {
     private static ShapeSelector instance;
     private final List<Observer> observers = new ArrayList<>();

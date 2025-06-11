@@ -232,4 +232,5 @@ public class HelloController implements Observer {
             drawingModeHandler.redrawCanvas();
         }
     }
+
 }
