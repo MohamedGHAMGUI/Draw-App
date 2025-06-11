@@ -21,8 +21,7 @@ public interface DrawingRepository {
             this.nodes = nodes;
             this.edges = edges;
         }
-        
-        // Getters
+
         public List<Shape> getShapes() { return shapes; }
         public List<GraphNode> getNodes() { return nodes; }
         public List<GraphEdge> getEdges() { return edges; }

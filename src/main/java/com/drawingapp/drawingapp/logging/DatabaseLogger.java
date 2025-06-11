@@ -9,7 +9,6 @@ public class DatabaseLogger implements LoggerStrategy {
 
     public DatabaseLogger(String dbUrl, String user, String pass) throws SQLException {
         this.conn = DatabaseConnection.getInstance(dbUrl, user, pass).getConnection();
-        // Table creation can be skipped if already created
     }
 
     @Override

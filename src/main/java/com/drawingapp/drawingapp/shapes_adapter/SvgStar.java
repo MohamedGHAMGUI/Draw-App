@@ -5,7 +5,6 @@ import javafx.scene.paint.Color;
 
 public class SvgStar {
     private static final int DEFAULT_POINTS = 5;
-    private static final double DEFAULT_RADIUS = 40;
 
     public void draw(GraphicsContext gc, double x, double y, double width, double height) {
         double centerX = x + width / 2;

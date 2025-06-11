@@ -51,13 +51,11 @@ public class ShapeSerializer {
         try {
             ShapeDto dto = new ShapeDto();
 
-            // Unwrap decorators to get the base shape
             Shape base = shape;
             boolean isRotatable = false;
             double rotation = 0;
             boolean isResizable = false;
 
-            // Unwrap decorators
             while (base instanceof com.drawingapp.drawingapp.shapes_decorator.RotatableShapeDecorator ||
                    base instanceof com.drawingapp.drawingapp.shapes_decorator.ResizableShape) {
                 if (base instanceof com.drawingapp.drawingapp.shapes_decorator.RotatableShapeDecorator) {
@@ -100,11 +98,9 @@ public class ShapeSerializer {
             return null;
         }
         try {
-            // Create the base shape
             Shape shape = null;
             String type = dto.type.toLowerCase();
-            
-            // Handle special cases
+
             if (type.equals("svgstaradapter")) {
                 type = "star";
             }

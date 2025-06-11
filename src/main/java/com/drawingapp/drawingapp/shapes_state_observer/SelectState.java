@@ -38,7 +38,6 @@ public class SelectState implements State {
 
     @Override
     public void onMouseDragged(double x, double y) {
-        // Optionally implement for drag-to-select
     }
 
     @Override

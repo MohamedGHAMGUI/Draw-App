@@ -14,12 +14,12 @@
     <top>
         <HBox spacing="12" styleClass="toolbar">
             <Label text="Modifier:" styleClass="section-title"/>
-            <Button text="Select" onAction="#onSelectModeClicked" styleClass="btn"/>
-            <Button text="Move" onAction="#onMoveModeClicked" styleClass="btn"/>
-            <Button text="Resize" onAction="#onResizeModeClicked" styleClass="btn"/>
-            <Button text="Undo" onAction="#onUndoClicked" styleClass="btn-warning"/>
-            <Button text="Redo" onAction="#onRedoClicked" styleClass="btn-warning"/>
-            <Button text="Delete" onAction="#onDeleteShapeClicked" styleClass="btn-danger"/>
+            <Button text="➤ Sélectionner" onAction="#onSelectModeClicked" styleClass="btn"/>
+            <Button text="⇆ Déplacer" onAction="#onMoveModeClicked" styleClass="btn"/>
+            <Button text="⇕ Redimensionner" onAction="#onResizeModeClicked" styleClass="btn"/>
+            <Button text="↶ Annuler" onAction="#onUndoClicked" styleClass="btn-warning"/>
+            <Button text="↷ Rétablir" onAction="#onRedoClicked" styleClass="btn-warning"/>
+            <Button text="🗑 Supprimer" onAction="#onDeleteShapeClicked" styleClass="btn-danger"/>
 
             <Separator orientation="VERTICAL"/>
 
@@ -39,10 +39,10 @@
             <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
 
             <Label text="Formes" styleClass="section-title"/>
-            <Button text="Rectangle" onAction="#onRectangleClicked" styleClass="btn"/>
-            <Button text="Circle" onAction="#onCircleClicked" styleClass="btn"/>
-            <Button text="Line" onAction="#onLineClicked" styleClass="btn"/>
-            <Button text="Star" onAction="#onStarClicked" styleClass="btn"/>
+            <Button text="▭ Rectangle" onAction="#onRectangleClicked" styleClass="btn"/>
+            <Button text="○ Cercle" onAction="#onCircleClicked" styleClass="btn"/>
+            <Button text="— Ligne" onAction="#onLineClicked" styleClass="btn"/>
+            <Button text="☆ Étoile" onAction="#onStarClicked" styleClass="btn"/>
             <Separator/>
 
             <Label text="Rotation" styleClass="section-title"/>
@@ -59,8 +59,7 @@
 
             <Label text="Outils de graphe" styleClass="section-title"/>
             <Button text="Ajouter un nœud" onAction="#onAddNodeClicked" styleClass="btn"/>
-            <Button text="Ajouter une arête" onAction="#onAddEdgeClicked" styleClass="btn"/>
-            <Button text="Trouver un chemin" onAction="#onFindPathClicked" styleClass="btn"/>
+            <Button text="Ajouter une arrête" onAction="#onAddEdgeClicked" styleClass="btn"/>
             <Label text="Algorithme:" styleClass="section-title"/>
             <ComboBox fx:id="algorithmComboBox"/>
         </VBox>

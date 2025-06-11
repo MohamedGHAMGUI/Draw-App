@@ -32,7 +32,6 @@ public class ShapeSelector implements Observable {
 
     @Override
     public void notifyObservers(String shapeType) {
-        // Use defensive copying to avoid concurrent modification issues
         new ArrayList<>(observers).forEach(observer -> 
             observer.onShapeSelected(shapeType)
         );

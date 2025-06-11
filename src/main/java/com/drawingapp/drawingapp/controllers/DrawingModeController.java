@@ -65,7 +65,7 @@ public class DrawingModeController extends BaseController implements DrawingMode
                     resizingShape = selected;
                     initialX = event.getX();
                     initialY = event.getY();
-                    LoggerManager.getInstance().log(String.format("Started resizing shape at (%.2f, %.2f) with initial size: %.2f x %.2f", 
+                    LoggerManager.getInstance().log(String.format("resizing (%.2f, %.2f) with size: %.2f x %.2f",
                         initialX, initialY, selected.getWidth(), selected.getHeight()));
                 }
                 break;
@@ -79,7 +79,6 @@ public class DrawingModeController extends BaseController implements DrawingMode
                         if (selectedShape.equals("rectangle") || selectedShape.equals("line") || selectedShape.equals("star")) {
                             shape = new RotatableShapeDecorator(shape);
                         }
-                        // Use Command Pattern for adding shape
                         if (commandManager != null) {
                             commandManager.executeCommand(new AddShapeCommand(shapeManager, shape));
                         } else {
@@ -125,15 +124,12 @@ public class DrawingModeController extends BaseController implements DrawingMode
                     } else if (graphManager.getEndNode() == null) {
                         graphManager.setEndNode(pathNode);
                         pathNode.setColor(Color.RED);
-                        
-                        // Find and highlight shortest path
+
                         List<GraphNode> path = currentAlgorithm.findShortestPath(
                             graphManager.getStartNode(),
                             graphManager.getEndNode(),
                             graphManager
                         );
-                        
-                        // Highlight path
                         for (GraphNode nodeInPath : path) {
                             nodeInPath.setColor(Color.YELLOW);
                         }

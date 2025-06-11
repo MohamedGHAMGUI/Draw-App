@@ -20,25 +20,21 @@ public class CircleShape implements Shape {
 
     @Override
     public void draw(GraphicsContext gc) {
-        gc.save(); // Save the current graphics context state
-        
-        // Translate to the center of the circle
+        gc.save();
         double centerX = x + width / 2;
         double centerY = y + height / 2;
         gc.translate(centerX, centerY);
-        
-        // Draw the circle
+
         gc.setFill(color);
         gc.fillOval(-width/2, -height/2, width, height);
-        
-        // Add stroke if selected
+
         if (selected) {
             gc.setStroke(Color.BLACK);
             gc.setLineWidth(2.0);
             gc.strokeOval(-width/2, -height/2, width, height);
         }
         
-        gc.restore(); // Restore the graphics context state
+        gc.restore();
     }
 
     @Override

@@ -35,20 +35,15 @@ public class RotatableShapeDecorator extends ShapeDecorator implements Rotatable
 
     @Override
     public boolean contains(double x, double y) {
-        // For rotated shape, we need to transform the point
         double centerX = decoratedShape.getX() + decoratedShape.getWidth() / 2;
         double centerY = decoratedShape.getY() + decoratedShape.getHeight() / 2;
-        
-        // Translate point to origin
         double translatedX = x - centerX;
         double translatedY = y - centerY;
-        
-        // Rotate point back
+
         double angle = -rotationAngle * Math.PI / 180;
         double rotatedX = translatedX * Math.cos(angle) - translatedY * Math.sin(angle);
         double rotatedY = translatedX * Math.sin(angle) + translatedY * Math.cos(angle);
-        
-        // Translate point back
+
         rotatedX += centerX;
         rotatedY += centerY;
         

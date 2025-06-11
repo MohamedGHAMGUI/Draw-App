@@ -11,7 +11,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.List;
-
+import javafx.scene.image.Image;
 import com.drawingapp.drawingapp.services.ShapeManager;
 import com.drawingapp.drawingapp.services.ModeManager;
 import com.drawingapp.drawingapp.services.DrawingRepository;
@@ -28,13 +28,13 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-        stage.setTitle("Drawing App");
+        Scene scene = new Scene(fxmlLoader.load(), 1500, 800);
+        stage.setTitle("Projet JAVA - Application de Dessin");
         stage.setScene(scene);
         HelloController controller = fxmlLoader.getController();
         controller.setShapeManager(new ShapeManager());
         controller.setModeManager(new ModeManager());
-        
+        stage.getIcons().add(new Image(HelloApplication.class.getResourceAsStream("/images/icon.png")));
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

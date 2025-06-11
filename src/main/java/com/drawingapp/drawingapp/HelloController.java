@@ -68,8 +68,7 @@ public class HelloController implements Observer {
     public void postInjectInit() {
         gc = canvas.getGraphicsContext2D();
         ShapeSelector.getInstance().addObserver(this);
-        
-        // Initialize graph manager if not injected
+
         if (graphManager == null) {
             graphManager = new GraphManager();
         }
@@ -93,14 +92,12 @@ public class HelloController implements Observer {
         colorPicker.valueProperty().addListener((obs, oldVal, newVal) -> {
             onColorChanged();
         });
-        
-        // Initialize algorithm combo box
+
         algorithmComboBox.setItems(FXCollections.observableArrayList(
             "Dijkstra's Algorithm"
         ));
         algorithmComboBox.getSelectionModel().selectFirst();
 
-        // Add rotation slider listener
         rotationSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
             shapeOperationHandler.onRotationSliderChanged(newVal.doubleValue());
         });

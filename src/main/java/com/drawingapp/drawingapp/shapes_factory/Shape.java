@@ -14,8 +14,6 @@ public interface Shape {
     void setColor(Color color);
     Color getColor();
     void resize(double newWidth, double newHeight);
-    
-    // Position and size methods
     double getX();
     double getY();
     double getWidth();

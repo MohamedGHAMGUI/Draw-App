@@ -90,8 +90,7 @@ public class GraphManager {
 
     public void createExampleGraph() {
         clear();
-        
-        // Create nodes
+
         GraphNode nodeA = new GraphNode(100, 100);
         GraphNode nodeB = new GraphNode(300, 100);
         GraphNode nodeC = new GraphNode(100, 300);

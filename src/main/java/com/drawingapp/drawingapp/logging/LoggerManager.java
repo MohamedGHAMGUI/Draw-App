@@ -7,7 +7,6 @@ package com.drawingapp.drawingapp.logging;
         private LoggerStrategy strategy;
 
         private LoggerManager() {
-            // Set ConsoleLogger as default strategy
             this.strategy = new ConsoleLogger();
         }
 
