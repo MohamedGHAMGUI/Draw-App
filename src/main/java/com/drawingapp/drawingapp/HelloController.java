@@ -9,8 +9,8 @@ import com.drawingapp.drawingapp.services.DrawingRepository;
 import com.drawingapp.drawingapp.services.GraphManager;
 import com.drawingapp.drawingapp.services.ModeManager;
 import com.drawingapp.drawingapp.services.ShapeManager;
-import com.drawingapp.drawingapp.shapes_observer.ShapeObserver;
-import com.drawingapp.drawingapp.shapes_state_observer.ShapeSelector;
+import com.drawingapp.drawingapp.observer.Observer;
+import com.drawingapp.drawingapp.observer.ShapeSelector;
 import com.drawingapp.drawingapp.commands.CommandManager;
 import com.drawingapp.drawingapp.commands.DeleteShapeCommand;
 import com.drawingapp.drawingapp.commands.MoveShapeCommand;
@@ -23,8 +23,9 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Slider;
 import javafx.collections.FXCollections;
+import javafx.application.Platform;
 
-public class HelloController implements ShapeObserver {
+public class HelloController implements Observer {
 
     @FXML
     private Canvas canvas;
@@ -66,7 +67,7 @@ public class HelloController implements ShapeObserver {
 
     public void postInjectInit() {
         gc = canvas.getGraphicsContext2D();
-        ShapeSelector.getInstance().getSubject().addObserver(this);
+        ShapeSelector.getInstance().addObserver(this);
         
         // Initialize graph manager if not injected
         if (graphManager == null) {
@@ -107,7 +108,15 @@ public class HelloController implements ShapeObserver {
 
     @Override
     public void onShapeSelected(String shapeType) {
-        shapeOperationHandler.onShapeSelected(shapeType);
+        Platform.runLater(() -> {
+            shapeOperationHandler.onShapeSelected(shapeType);
+            updateUIForShapeSelection(shapeType);
+        });
+    }
+
+    private void updateUIForShapeSelection(String shapeType) {
+        // Update UI elements based on the selected shape
+        // For example: highlight the selected shape button
     }
 
     @FXML

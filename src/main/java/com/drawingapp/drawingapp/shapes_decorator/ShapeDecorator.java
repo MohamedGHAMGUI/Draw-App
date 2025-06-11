@@ -7,7 +7,7 @@ import com.drawingapp.drawingapp.shapes_factory.Shape;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public abstract class ShapeDecorator implements Shape {
+public abstract class ShapeDecorator implements Shape , ColorStrategy {
     protected Shape decoratedShape;
     protected ColorStrategy colorStrategy;
 

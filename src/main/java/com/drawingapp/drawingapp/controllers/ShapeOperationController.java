@@ -7,11 +7,12 @@ import com.drawingapp.drawingapp.services.ModeManager;
 import com.drawingapp.drawingapp.services.ShapeManager;
 import com.drawingapp.drawingapp.shapes_factory.RotatableShape;
 import com.drawingapp.drawingapp.shapes_factory.Shape;
-import com.drawingapp.drawingapp.shapes_observer.ShapeObserver;
-import com.drawingapp.drawingapp.shapes_observer.ShapeSubject;
+import com.drawingapp.drawingapp.observer.Observer;
+import com.drawingapp.drawingapp.observer.ShapeSelector;
+
 import javafx.scene.paint.Color;
 
-public class ShapeOperationController extends BaseController implements ShapeOperationHandler, ShapeObserver {
+public class ShapeOperationController extends BaseController implements ShapeOperationHandler, Observer {
     private String selectedShape = "";
     private DrawingModeHandler drawingModeHandler;
     private double rotationValue = 0;
